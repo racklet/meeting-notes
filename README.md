@@ -1,6 +1,6 @@
-# base-repo-layout
+# meeting-notes
 
-Template (base) repository file layout for Racklet projects.
+This is a repo where we store public community meeting notes from the Racklet project.
 
 ## Contributing
 
