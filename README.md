@@ -17,17 +17,17 @@ access to this repo) should perform the following steps to keep HackMD and GitHu
 
 1. Make sure you have signed into HackMD, and allowed it OAuth2 access to your GitHub account, and have push access to this repo.
 2. Click the three dots `...` in the upper-left corner, and select `Versions and GitHub Sync`
-   1. <img src="docs/images/2.png" width="400"/>
+   - <img src="docs/images/2.png" width="400"/>
 3. You will now see a diff since the last version that was pushed.
-   1. **Note:** To avoid unnecessary complexity, the flow is one-way only; HackMD should always push its changes to GitHub, and not vice versa, meaning these files should NOT be edited "by hand" in GitHub usually.
-   2. <img src="docs/images/3.png" width="400"/>
+   - **Note:** To avoid unnecessary complexity, the flow is one-way only; HackMD should always push its changes to GitHub, and not vice versa, meaning these files should NOT be edited "by hand" in GitHub usually.
+   - <img src="docs/images/3.png" width="400"/>
 4. Click the "Push" button.
 5. The branch should be filled in automatically (if not, set it to `main`). Describe the changes shortly as follows, this will be the commit message.
-   1. <img src="docs/images/5.png" width="400"/>
+   - <img src="docs/images/5.png" width="400"/>
 6. Confirm the push operation by clicking the blue `Push` button
 7. Now the change will show up in the GitHub UI as follows:
-   1. ![GitHub commit message](docs/images/7_1.png)
-   2. ![GitHub commit diff](docs/images/7_2.png)
+   - ![GitHub commit message](docs/images/7_1.png)
+   - ![GitHub commit diff](docs/images/7_2.png)
 8. Cool, you're done :)
 
 ## Contributing
