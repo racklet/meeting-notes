@@ -1,6 +1,6 @@
 # Community Meeting Notes
 
-This document can be edited online using [`hackmd.io`](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw).
+This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw/badge)](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw)
 
 [TOC]
 
