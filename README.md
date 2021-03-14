@@ -11,8 +11,8 @@ Other interesting resources include:
 - [The issue tracker](https://github.com/racklet/racklet/issues)
 - [The discussions forum](https://github.com/racklet/racklet/discussions)
 - [The list of milestones](https://github.com/racklet/racklet/milestones)
-- _The roadmap (TODO)_
-- _The changelog (TODO)_
+- [The roadmap](https://github.com/orgs/racklet/projects/1)
+- [The changelog](https://github.com/racklet/racklet/blob/main/CHANGELOG.md)
 
 ## Getting Help
 
@@ -22,14 +22,16 @@ If you have any questions about, feedback for or problems with Racklet:
 - Ask a question on the [#racklet](https://osfw.slack.com/messages/racklet/) slack channel.
 - Ask a question on the [discussions forum](https://github.com/racklet/racklet/discussions).
 - [File an issue](https://github.com/racklet/racklet/issues/new).
-- Join [racklet@groups.io](https://groups.io/g/racklet) for calendar invites to calls and edit access to community documents.
-- Join our _developer meetings (TODO)_.
+- Join our [community meetings](community/README.md).
 
 Your feedback is always welcome!
 
 ## Maintainers
 
+In alphabetical order:
+
 - Dennis Marttinen, [@twelho](https://github.com/twelho)
+- Jaakko Sirén, [@Jaakkonen](https://github.com/Jaakkonen)
 - Lucas Käldström, [@luxas](https://github.com/luxas)
 - Verneri Hirvonen, [@chiplet](https://github.com/chiplet)
 
