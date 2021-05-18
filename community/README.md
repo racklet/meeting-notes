@@ -4,39 +4,28 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# Nov 1, 2030 2:30 PM (EEST) (formatting example/template)
+# May 18, 2021 3:30 PM UTC
 
 :::info
-- **Location:** Online
-- **Date:** Nov 1, 2030 2:30 PM (EEST)
-- **Host:** Lucas
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** May 18, 2021 3:30 PM UTC
+- **Host:** @luxas
 - **Participants:**
-    - Lucas, @luxas
+    - Lucas Käldström, @luxas
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
+    - <please add yourself here>
 - **Agenda:**
 
-1. Walk through organizational structure `45min`
+1. Welcome and introductions round-table `10min`
 	> [name=Lucas]
-2. RFC discussions/improvements `45min`
-3. Revisit onboarding v1 `20min`
+1. History, context and long-term plans for Racklet as a project `20min`
+    > [name=Lucas, Dennis]
+1. Shorter-term working areas, relevant RFCs, and next steps `15min`
+    > [name=Lucas, Dennis, Verneri]
+1. <add your own agenda topic here>  `XXmin`
 :::
 
 ## Notes:
-<!-- Other important details discussed during the meeting can be entered here. -->
 
-### :closed_book: Tasks
---
-==Importance== (1 - 5) / Name / **Estimate** (1, 2, 3, 5, 8, 13)
-#### Development Team:
-- [ ] ==5== Email invite
-  - [x] ==4== Email registration page **5**
-  - [ ] ==5== Email invitees **3**
-- [ ] ==4== Setup e2e test in production **2**
-
-#### Design Team:
-- [ ] ==4== Interview users **8**
-- [ ] ==5== Build roll-up display content **5**
-- [ ] ==5== Help user discover new features **5**
-
-### Other
-
-Lorem ipsum
+To be filled in during the meeting
