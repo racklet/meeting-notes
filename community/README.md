@@ -4,17 +4,164 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# June 22, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** June 15, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
+# June 15, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** June 15, 2021 3:30 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Lucas Käldström, @luxas
+    - Daniel Maslowski, @cyrevolt
+    - Verneri Hirvonen, @chiplet
+- **Agenda:**
+    1. Recap of the week
+    1. Racklet hardware support
+    1. RFC-0002 functionally ready
+    1. Work on KiCad tooling in Rust
+    1. OLinuXino/other boards updates
+    1. LFX update
+:::
+
+## Notes
+
+- Recap of the week
+    - Need for handling component shortage
+    - Writing more documentation, repository and organization management
+    - Lucas did the ODSC presentation last Weds, went well
+    - Draw.io integration is now working (good enough)
+    - Writing tooling for KiCad and electronics orders
+        - Need to get the first order for the prototype out this week
+- Racklet hardware support/how to deal with different boards
+    - ROCKPro64 (RK3399) for upstream coreboot experiments
+    - TF-A assumed to be (mostly) available across the board
+    - coreboot, U-Boot, RPi firmware etc. -> fragmentation
+    - Use the u-root/[GoTEE](https://github.com/f-secure-foundry/GoTEE/wiki) trusted environment as the lowest common denominator
+    - ROCK64 (non-Pro, RK3328) coreboot/U-Boot support?
+        - U-Boot [has it](https://u-boot.readthedocs.io/en/latest/board/rockchip/rockchip.html)
+        - coreboot [doesn't as of now](https://github.com/coreboot/coreboot/tree/master/src/soc/rockchip)
+- RFC-0002 functionally ready
+    - https://hackmd.io/HYXkw0gMTSia7-Da14GLpQ
+    - Requires additional graphics to clarify the layers and holistic picture
+    - Recommended reading page (links to good references)
+- Work on KiCad tooling in Rust
+    - https://github.com/racklet/electronics-prototyping/pulls
+    - "Declarative electronics"?
+    - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md
+    - BOM creation is error-prone and tedious, could that be automated?
+    - KiCad uses S-EX for schematics
+        - Extract component data to YAML
+        - Query a distributor (e.g. DigiKey) using that data
+        - Output an easy-to-understand Markdown document
+    - Help users/developers unfamiliar with electronics
+    - Speccing out components is very manual:
+        - Traditionally: read a datasheet, compute a bunch of equations to figure out compnent values by hand
+        - With the KiCad evaluator (ICCC): define expressions declaratively using the datasheet, the Rust binary will compute everything for you straight in your KiCad file
+        - Pipe the results into the YAML parser etc.
+    - KiCad doesn't really have APIs to process schematics nicely...
+    - The Amp Hour episodes on component libraries and management thereof
+        - https://theamphour.com/543-cassette-decks-have-browsers/
+        - https://theamphour.com/542-component-management-with-jan-rychter/
+- OLinuXino/other boards updates
+    - Tracking notes and development at https://github.com/orangecms/arm-cpu/tree/main/olinuxino-a64
+    - Signed up to the U-Boot mailing list, sent an issue report regarding build issues with the OLinuXino-A64, pending approval
+        - Their GitLab does not allow public sign-up
+    - Some U-Boot PRs on GitHub, which doesn't accept PRs...
+    - Bought other boards:
+        - [Khadas VIM1, Amlogic S905X](https://www.khadas.com/vim1)
+        - [ROCK64, RK3328]( https://www.pine64.org/devices/single-board-computers/rock64/)
+    - Looking at different platforms
+        - Rockchip, Amlogic, Allwinner, Broadcom, STM32MP15x, i.MX?
+        - Ron Minnich is working on GoTEE on i.MX6ULL
+    - Figuring out which platform works best for Racklet
+- LFX update
+    - Three core (full-time) contributors this summer: Dennis, Lucas, Verneri
+    - LFX meeting last week wasn't possible, so scheduled for this week
+    - Right now working on what needs to be done in the short term, next week we might have already established some more long-term goals as well
+
 # June 8, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** June 8, 2021 3:30 PM UTC
-- **Host:** 
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Lucas Käldström, @luxas
+    - Daniel Maslowski, @cyrevolt
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
-
-1. LFX Update
+    1. Recap of the week
+    1. ODSC talk tomorrow (Lucas)
+    1. PCB design update
+    1. OLinuXino-A64 update
+    1. LFX Update
+    1. RFC-0002 work
 :::
+
+## Notes
+
+- Recap of the week
+    - Lucas & Dennis done with school :)
+    - Lucas working on the ODSC talk
+    - RFC-0001 updates: https://github.com/racklet/racklet/pull/22, https://github.com/racklet/racklet/pull/31
+    - Found a way to make a HackMD team so that any Racklet team member can sync
+    - RFC-0002 work: https://github.com/racklet/racklet/pull/20
+    - Daniel played with the OLinuXino-A64
+- ODSC (Open Data Science Conference) talk tomorrow
+    - Lucas is about to [present at ODSC](https://odsc.com/speakers/exploring-modern-and-secure-operations-of-kubernetes-clusters-on-the-edge/)
+    - [Link to slides](https://docs.google.com/presentation/d/1LIUEafHDGfKcCRMLo_6pHx4YDQ5RkmG8ufNrdZnq6bM/edit#slide=id.gdf274658c2_0_66)
+- Architecture design
+    - When talking about "GPIO pinout compatible", does it also support powering from GPIO?
+    - We'll convert the preliminary architecture designs we had in Google Draw to draw.io/diagrams.net soon
+    - Walkthrough of the architecture design a bit
+- PCB design update
+    - Verneri did a demo of the current state of the PCB schematics
+    - Backplane prototype implemented (power only for now)
+    - Backplane spaced using 1U for now, it fits well
+    - PCB design is targeted at the HAT specification: https://github.com/raspberrypi/hats
+    - Might be able to make "shims" in between for boards that don't implement the HAT standard
+- OLinuXino-A64 update
+    - Got TF-A working on it. Built u-boot for it. Managed to get to SPL working? Couldn't get SPI working in U-Boot after SPL, however.
+    - Kconfig doesn't give guarantees for successful compilation
+    - Will see if the upstream SPI support working, now fails compilation. There is a fork that is old and might work, but that is not optimal.
+    - Live demo (interrupted by Phoenix/AMD quirks)
+    - On-chip ROM init code (BL1 at EL3) -> u-boot SPL (BL2 at EL1) -> TF-A armstub (BL31 at EL3)
+        - -> OP-TEE (or Rust/Go alternative) (BL32 at EL1)
+        - -> "Raw" binary executable loaded to 0x0: u-boot "proper" (BL33 at EL2) -> Linux kernel (EL1)
+    - https://wiki.st.com/stm32mpu/wiki/TF-A_overview#Architecture
+    - If Linux is Bl33 directly, does it go up to EL1 by itself?
+    - TPL is just SPL being divided into two parts due to space constraints on some powerpc platform. Not very relevant for us.
+    - https://wiki.amarulasolutions.com/bsp/sunxi/a64/a64-oli.html
+    - https://trustedfirmware-a.readthedocs.io/en/latest/plat/allwinner.html
+    - https://trustedfirmware-a.readthedocs.io/en/latest/plat/index.html
+    - Coreboot cache-as-ram: https://www.coreboot.org/images/6/6c/LBCar.pdf
+    - https://qr.ae/pGYlxc
+    - https://source.denx.de/u-boot/u-boot/-/blob/master/board/sunxi/README.sunxi64
+    - https://www.denx.de/wiki/pub/U-Boot/MiniSummitELCE2013/tpl-presentation.pdf
+    - https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
+    - https://github.com/ARM-software/u-boot/blob/master/doc/README.TPL
+    - https://community.arm.com/developer/research/b/articles/posts/running-trusted-firmware-a-on-gem5
+    - https://wiki.st.com/stm32mpu/wiki/STM32MPU_Embedded_Software_architecture_overview
+    - https://stackoverflow.com/a/31252989 (what is what, terminology of stages from different views)
+- LFX Update
+    - The 4 "founders" Lucas, Dennis, Verneri and Jaakko will start this project this summer using the LFX program, and then following summers we'll see what the status is. The plan is to then involve many other people through LFX if possible next summer instead.
+    - Motivated by that at the moment there is no clear "project" an external mentee could work on
+    - Meeting with LFX mentors every Thursday
+- RFC-0002 work
+    - RFC-0001 improvements, ability to link to invididual values and user goals
+    - RFC-0002 (component requirements) is taking shape, moving on to RFC-0004 (electical stuff) after that
 
 # June 1, 2021 3:30 PM UTC
 
@@ -27,12 +174,11 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Lucas Käldström, @luxas
     - Daniel Maslowski, @cyrevolt
 - **Agenda:**
-
-1. Recap of the week
-1. LinuxBoot, u-root and kexec talk
-1. Details of the BMC
-1. RP2040 for the BMC
-1. New developments around the Pi boot flow
+    1. Recap of the week
+    1. LinuxBoot, u-root and kexec talk
+    1. Details of the BMC
+    1. RP2040 for the BMC
+    1. New developments around the Pi boot flow
 :::
 
 ## Notes
@@ -94,18 +240,17 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Jerry, @badgateway666
     - Daniel Maslowski, @cyrevolt
 - **Agenda:**
-
-1. Recap of the week
-1. Software stack setup – things to be aware of
-    > [name=CyReVolt]
-1. Raspberry Pi booting/SD card emulation (technical)
-    > [name=Dennis]
-1. Electronics Update
-    > [name=Verneri]
-1. PoE update (PoE+ hat from Pi Foundation)
-    > [name=Dennis]
-1. Racklet proposal submitted to KubeCon NA 2021
-    > [name=Dennis]
+    1. Recap of the week
+    1. Software stack setup – things to be aware of
+        > [name=CyReVolt]
+    1. Raspberry Pi booting/SD card emulation (technical)
+        > [name=Dennis]
+    1. Electronics Update
+        > [name=Verneri]
+    1. PoE update (PoE+ hat from Pi Foundation)
+        > [name=Dennis]
+    1. Racklet proposal submitted to KubeCon NA 2021
+        > [name=Dennis]
 :::
 
 ## Notes
@@ -190,14 +335,12 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Daniel Maslowski, @cyrevolt
     - Aditya Singh, @Ad
 - **Agenda:**
-
-1. Welcome and introductions round-table `10min`
-    > [name=Lucas]
-1. History, context and long-term plans for Racklet as a project `20min`
-    > [name=Lucas, Dennis]
-1. ~~Shorter-term working areas, relevant RFCs, and next steps `15min`~~
-    > [name=Lucas, Dennis, Verneri]
-1. ...Add your own agenda topic here...  `XXmin`
+    1. Welcome and introductions round-table `10min`
+        > [name=Lucas]
+    1. History, context and long-term plans for Racklet as a project `20min`
+        > [name=Lucas, Dennis]
+    1. ~~Shorter-term working areas, relevant RFCs, and next steps `15min`~~
+        > [name=Lucas, Dennis, Verneri]
 :::
 
 ## Notes
