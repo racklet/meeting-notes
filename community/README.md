@@ -4,15 +4,66 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# June 22, 2021 3:30 PM UTC
+# June 29, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
-- **Date:** June 15, 2021 3:30 PM UTC
+- **Date:** June 29, 2021 3:30 PM UTC
 - **Host:**
 - **Participants:**
 - **Agenda:**
 :::
+
+# June 22, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** June 22, 2021 3:30 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
+- **Agenda:**
+    1. Recap of the week
+    1. Khadas VIM1 board
+    1. Learning/developing in Rust
+    1. Short LFX update
+    1. U-Boot Falcon Mode
+:::
+
+## Notes
+
+- Recap of the week
+    - It's warm in Finland, 30-35 degrees
+        - Germany is cooling down
+    - The team has mostly been working on the electronics tooling in Rust
+- [Khadas VIM1](https://www.khadas.com/vim1) board
+    - It has arrived :)
+    - Browsing the [docs](https://docs.khadas.com/vim1)
+    - Advertised for cluster use, but specs don't quite align
+        - Not a lot of RAM
+        - 100 Mbps ethernet
+        - WiFi and GPU a bit unnecessary
+    - There are quite some [other Amlogic SoCs](https://www.amlogic.com/Product/Stencil.html)
+        - [Wikipedia](https://en.wikipedia.org/wiki/Amlogic) has a bit better formatted list
+    - Test if kexec and TF-A work when time allows
+        - Michael Stapelberg is [using it successfully on a router](https://twitter.com/zekjur/status/1406864269917003778)
+- Learning/developing in Rust
+    - twelho: Finally getting the hang of ownership and lifetimes
+        - Still searching for the "idiomatic way" to do different things
+        - Also still discovering new fancy language features
+- Short LFX update
+    - Synced with mentors last week (for the first time)
+        - Everything is looking good, work continues
+        - Did a little showcase of what we have right now and a rough plan for this and next week
+- U-Boot [Falcon Mode](https://source.denx.de/u-boot/u-boot/-/blob/master/doc/README.falcon)
+    - Got a [reply on U-Boot mailing list](https://lists.denx.de/pipermail/u-boot/2021-June/452036.html)
+        - ARM64 boards not really designed for Linux in flash
+        - But we have this graphic on LinuxBoot.org saying you can run Linux from U-Boot SPL
+        - Should be technically possible through Falcon Mode, which just loads anything from SPL directly
+        - Not yet implemented for Allwinner SoCs
+            - No precise list of SoCs that are "Falcon aware"
+        - Starting experiments
 
 # June 15, 2021 3:30 PM UTC
 
