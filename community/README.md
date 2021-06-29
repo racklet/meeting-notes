@@ -4,15 +4,58 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 6, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** July 6, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
 # June 29, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** June 29, 2021 3:30 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Lucas Käldström, @luxas
+    - Daniel Maslowski, @cyrevolt
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
+    1. Recap of the week
+    1. Racklet physical prototypes
+    1. MaaXBoard, Nehza
+    1. RFC-0002 final draft
+    1. KiCad Rust tooling almost ready to roll
 :::
+
+## Notes
+
+- Recap of the week
+    - Midsummer week, a bit of a relaxation week for everyone
+    - twelho: working on fixing the 3D printer and learning FreeCAD
+- Racklet physical prototypes
+    - HAT need to be longer to accommodate the 10 cm SSD
+        - From around 6.5 cm to roughly 9.5~10cm
+    - Backplane needs cooling holes for the fans to pull air through
+    - Will do some rough CAD sketches of the rack this week to check fit and dimensions
+    - Prototype order in when these changes have been implemented
+- [MaaXBoard](https://www.avnet.com/wps/portal/us/products/new-product-introductions/npi/avnet-maaxboard/), [Nezha](https://www.indiegogo.com/projects/nezha-your-first-64bit-risc-v-linux-sbc-for-iot#/)
+    - MaaXBoard SoC: [i.MX 8MQ](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-8-processors/i-mx-8m-family-armcortex-a53-cortex-m4-audio-voice-video:i.MX8M), 1.5 GHz Quad Arm Cortex-A53; Cortex-M4F, 2GB DDR4 SDRAM
+    - Nezha SoC: [Allwinner D1](https://d1.docs.allwinnertech.com/d1_dev_en/), 1GHz RISC-V (XuanTie C906), DDR3 1GB/2GB
+- RFC-0002 final draft
+    - Racklet concepts explained: https://hackmd.io/HYXkw0gMTSia7-Da14GLpQ#Guide-level-explanation
+    - Hope to get merged this week
+- KiCad Rust tooling almost ready to roll
+    - [CUElang](https://cuelang.org/) support coming
+    - Two more things needed:
+        - Saving to a Eeschema (KiCad schematic) file
+        - "Global" variable support from component
+    - "Tracking" issue: https://github.com/racklet/electronics-prototyping/pull/14
 
 # June 22, 2021 3:30 PM UTC
 
