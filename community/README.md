@@ -4,15 +4,77 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 13, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** July 13, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+    1. Recap of the week
+:::
+
 # July 6, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** July 6, 2021 3:30 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Lucas Käldström, @luxas
+    - Daniel Maslowski, @cyrevolt
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
+    1. Recap of the week
+    1. YAML parsing is hard
+    1. Unified tracing/logging platform
+    1. Plans for the next weeks
+    1. Go-based in-browser back-ends for web UIs (WASM)
+    1. Modeling the rack with FreeCAD
+    1. KiCad Rust tooling close to ready
+    1. PCB design updates
 :::
+
+## Notes
+
+- Recap of the week
+    - Daniel: [Nezha](https://www.indiegogo.com/projects/nezha-your-first-64bit-risc-v-linux-sbc-for-iot#/) [board](https://bbs.huaweicloud.com/blogs/280384) [ordered/shipped](https://www.aliexpress.com/item/1005002668194142.html)
+    - twelho: 3D printer kind of running now
+    - Cheap bulk injection molding for Racklet racks in the future?
+- YAML parsing is hard
+    - No parser implementation is really spec-compliant (no matter if it's in Go or Rust)
+    - Frame readers/writers in libgitops will help with this in Racklet
+- Unified tracing/logging platform
+    - Traditionally logging not consistent
+    - Logs not machine-readable/friendly
+    - Durations of logged events are missing (e.g. how long did parsing take)
+    - [OpenTelemetry](https://opentelemetry.io/) aims to solve this
+        - Core elements are [traces](https://opentelemetry.io/docs/concepts/data-sources/)
+        - Visualization easy with [Jaeger](https://www.jaegertracing.io/)
+        - [OpenTracing](https://opentracing.io/) enables reporting spans to Jaeger in a standardized and language independent way
+- Plans for the next weeks
+    - Get the CUE support for the KiCad tooling integrated
+    - Initial CAD design of the rack to get the correct PCB measurements
+    - Initial BMC firmware implementation (on STM32)
+    - Start looking at automation for building the bootstrap environment firmware (for Raspberry Pis)
+- Go-based in-browser back-ends for web UIs (WASM)
+    - [webpack loader](https://github.com/orangecms/webpack-golang-wasm-async-loader)
+    - example: [fmap](https://hostile.education/fmap) (adapted from [Fiano](https://github.com/linuxboot/fiano/tree/master/cmds/fmap))
+- Modeling the rack with FreeCAD
+    - [Topological Naming Problem](https://wiki.freecadweb.org/Topological_naming_problem)
+    - [Assembly3](https://wiki.freecadweb.org/Assembly3_Workbench) vs. [Assembly4](https://wiki.freecadweb.org/Assembly4_Workbench)
+    - Basic model targets good enough precision for figuring out the PCB sizes
+- KiCad Rust tooling close to ready
+    - Almost ready, one more feature needed for the evaluator (globals)
+    - CUE support work-in-progress, will be merged soon
+    - Bugs in libraries, need to fix field escaping in [kicad_parse_gen](https://github.com/productize/kicad-parse-gen/tree/kicad5)
+- PCB design updates
+    - Backplane ventilation holes added
+        - Still missing USB hub, space is a bit constrained
+    - USB MUX needed to switch between backplane/Pi boot USB on the BMC
+        - Alternatively try to fetch a microcontroller with dual USB peripherals, but those are kind of expensive
 
 # June 29, 2021 3:30 PM UTC
 
