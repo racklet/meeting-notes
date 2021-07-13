@@ -4,16 +4,68 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 20, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** July 20, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
 # July 13, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** July 13, 2021 3:30 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
+    - Lucas Käldström, @luxas
 - **Agenda:**
     1. Recap of the week
+    1. SBC mainline support
+    1. FreeCAD adventures
+    1. Update from Lucas
 :::
+
+## Notes
+
+- Recap of the week
+    - Daniel:
+        - Received Rock64
+        - Golang WebAssembly experiments are already working with UTK
+    - More exploration into the functionality FreeCAD
+- SBC mainline support
+    - Allwinner and potentially other SoC vendors don't have a great track record
+        - Mainlining requires community reverse engineering
+        - See [SBCs in 2021: The State of Play](https://www.youtube.com/watch?v=RcvMxC81r_g)
+    - Limited resources to ensure Racklet compatibility of different boards
+        - Focus on having a smaller subset working reliably instead of trying to maintain a subpar level of support for the widest variety possible
+- FreeCAD adventures
+    - Rack is getting assembled using the Assembly 4 workbench
+        - Simpler than Assembly 3
+        - Most importantly comes as a one-click install from the addon workbenches installer and doesn't require the external SolveSpace solver like Assembly 3
+        - Assembly 4 is actually very versatile, and well enough for our needs
+    - Figured out how to fuse objects across FreeCAD App::Link
+        - Can now e.g. separate the tray and rails and fuse them together
+        - Unblocks work on modeling the rest of the rack
+    - Sidenote: Tried out FEM (finite element modeling) in FreeCAD
+        - Works quite well, but still a bit of a learning curve and lack of tutorials
+- Update from Lucas
+    - Better YAML encode/decode work
+        - No good "user interface" yet
+        - "Rust revolution" of serializing/parsing due
+        - Current methods don't adapt well to the cloud native landscape
+    - UNIX pipe-style YAML/JSON processing pipeline
+        - Enables e.g. easy defaulting
+        - Automatic conversions and upgrades of objects
+        - Flattening of nested lists
+    - Framing stuff: https://github.com/weaveworks/libgitops/pull/48
+    - Tracing included for free
+    - People shouldn't be YAML engineers, most of the YAML should be declarative and automated
 
 # July 6, 2021 3:30 PM UTC
 
