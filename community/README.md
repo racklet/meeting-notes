@@ -4,15 +4,89 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 27, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** July 27, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
 # July 20, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** July 20, 2021 3:30 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Lucas Käldström, @luxas
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
+    1. Recap of the week
+    1. High-level goals for July and August
+    1. Backplane MCU: ATMega vs STM32?
 :::
+
+## Notes
+
+- Recap of the week
+    - twelho:
+        - More FreeCAD practice
+        - Fixing up the KiCad evaluator now that Verneri is trying to use it
+        - Found a special branch of FreeCAD (nicknamed LinkStage3) that fixes topological naming problem: https://github.com/realthunder/FreeCAD_assembly3/releases
+            - Relevant issue for Flatpak packaging: https://github.com/realthunder/FreeCAD_assembly3/issues/671
+            - LinkStage3 flatpak: https://github.com/astralaster/org.freecadweb.FreeCAD
+            - Having used this for a bit I can say it is awesome
+                - Enables really intuitive use of the Part Design workbench
+                - Comes with a bunch of quality of life improvements
+            - **But**: I won't use this for racklet, since it's not "official", a bit unknown and is pretty demanding to compile from source (6h with 12 cores)
+                - These features are expected to land upstream though in the next couple of revisions of FreeCAD, so we'll stay tuned for that
+    - chiplet:
+        - USB hub schematic design with 4 downstream ports is mostly done
+        - 3D printer is now also in usable condition for racklet prototyping
+- High-level goals for July and August
+    - twelho:
+        - Get a basic rack modeled in FreeCAD
+        - Finish the KiCad tooling to be usable for the backplane/BMC
+        - Get the BMC firmware up so it can boot a compute unit
+    - chiplet:
+        - USB HUB on backplane + BMC prototype ready
+        - Backplane header to USB port adapter (for debugging)
+        - Port over the layer architecture and other graphics to DrawIO (diagrams.net) and use the CI tooling
+    - Order all electronics prototypes
+    - Bootloader environment MVP for the compute ready
+    - Build automation / CI for the bootloader environment
+    - Finish (at least) one more RFC
+- Backplane MCU: ATMega vs STM32?
+    - Pricing:
+        - Firmware development is the most time consuming part of a microcontroller design
+        - STM32 microcontrollers seem to be out of stock everywhere
+            - STM32F103 is Cortex-M3
+            - ATSAMD21G pretty much in the same situation, but only Cortex-M0+
+            - [RP2040 Rust support](https://crates.io/search?q=rp2040) still questionable
+            - NXP [i.MX RT MCUs](https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus:IMX-RT-SERIES) could techincall also be an option: https://crates.io/keywords/imxrt
+        - One option is to buy Chinese development boards and transplant the chips into the prototype boards
+            - Even the boards have gone up in price
+            - Bulk orders from China seem to be in stock (e.g. from [alibaba.com](https://www.alibaba.com/product-detail/STM32F103C8T6-ARM-STM32-LQFP48-Microcontroller-STM32F103_62343619437.html?spm=a2700.galleryofferlist.normal_offer.d_title.7ea3565dIFT5mq))
+- Or even an FPGA?
+    - FPGAs seem to be much better stocked and low end ones are [reasonably priced]
+    - It's possible to piece together Register Transfer Level (RTL) description for purpose build SoC for the BMC
+    - Open toolchains ([yosys]) and gateware already exist
+        - USB -- [LUNA]()
+        - RISC-V Cores -- [picorv32], [rocket], ...
+        - Cryptographic accelerators?
+- [OpenTitan](https://opentitan.org/) open silicon root of trust
+    - [GitHub](https://github.com/lowRISC/opentitan)
+
+[reasonably priced]: https://www.digikey.fi/products/en/integrated-circuits-ics/embedded-fpgas-field-programmable-gate-array/696?k=ice40&k=&pkeyword=ice40&sv=0&pv7=2&pv7=17&sf=0&FV=-8%7C696&quantity=&ColumnSort=1000011&page=1&stock=1&nstock=1&pageSize=25
+[yosys]: http://www.clifford.at/yosys/
+[LUNA]: https://github.com/greatscottgadgets/luna
+[picorv32]: https://github.com/cliffordwolf/picorv32
+[rocket]: https://github.com/chipsalliance/rocket-chip
+
 
 # July 13, 2021 3:30 PM UTC
 
@@ -24,6 +98,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Dennis Marttinen, @twelho
     - Daniel Maslowski, @cyrevolt
     - Lucas Käldström, @luxas
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
     1. Recap of the week
     1. SBC mainline support
