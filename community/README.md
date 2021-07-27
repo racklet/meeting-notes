@@ -4,15 +4,72 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 3, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** August 3, 2021 3:30 PM UTC
+- **Host:** 
+- **Participants:**
+- **Agenda:**
+:::
+
 # July 27, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** July 27, 2021 3:30 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
+    - Lucas Käldström, @luxas
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
+    1. Recap of the week
+    1. PCB update
+    1. Similar / related projects
+    1. libgitops framing update
+    1. KiCad evaluator update
 :::
+
+## Notes
+
+- Recap of the week
+    - Finishing the all originally intended features of the KiCad evaluator
+    - More CAD modeling work
+    - libgitops and framing toolkit advances
+    - PCB work
+- PCB update
+    - New USB hub chip with 8 ports
+    - Potential problem: running out of power on the backplane DC-DC step-down
+    - BD9E chip current limit: 3A (with over-current protection at 5.2A)
+    - Power consumers:
+        - BMC chips
+        - USB hub chip
+        - Fans
+        - Backplane microcontroller / RMC controller
+        - Network switch
+    - 3A can technically be exceeded with everything running at full power simultaneously, but very unlikely scenario
+    - We'll go with the BD9E for the prototype to check if it's enough, and do some changes if it's not
+- Similar / related projects
+    - https://github.com/xboot/xconch ([translated](https://translate.google.com/translate?hl=en&sl=zh-CN&u=https://github.com/xboot/xconch&prev=search&pto=aue))
+        - Goal (as far as could be inferred): Design a standardized casing and connector for SBCs
+        - Pretty comprehensive documentation of the work done, but repo seems to be stagnant right now
+- libgitops framing update
+    - Parsing/framing system now matches and even exceeds the features and robustness of k8s parsers etc.
+    - YAML/JSON have a lot of nuances and implementation details, need to handle parsing bugs/vulnerabilities as well
+    - YAML to JSON -> large values will overflow on 32-bit platforms
+    - Strict parsing by default, not doing this will allow for a lot of user errors (typos, indentation)
+    - Storage system builds on top of framing/parsing for interacting with git using a high-level interface
+        - Implement support for semantic diffs for e.g. propagating specific staging changes to production
+    - Full [OpenTelemetry](https://opentelemetry.io/) support in libgitops
+- KiCad evaluator update
+    - All intended features now implemented, model for globals implemented in [#25](https://github.com/racklet/electronics-prototyping/pull/25)
+    - Pretty printing for value fields still coming as a late addition
+    - KiCad hierarchical schematics can actually form a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) with diamond inheritance
+        - The kicad_rs pipeline has been made with a tree structure in mind, but does work with this model as well now (with some unnecessary recomputation)
+        - Issue for converting the internal representation to a DAG [here](https://github.com/racklet/electronics-prototyping/issues/26)
 
 # July 20, 2021 3:30 PM UTC
 
@@ -56,8 +113,10 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
         - USB HUB on backplane + BMC prototype ready
         - Backplane header to USB port adapter (for debugging)
         - Port over the layer architecture and other graphics to DrawIO (diagrams.net) and use the CI tooling
+    - luxas:
+        - Bootloader environment MVP for the compute ready
+        - YAML/JSON framing and content reading framework MVP
     - Order all electronics prototypes
-    - Bootloader environment MVP for the compute ready
     - Build automation / CI for the bootloader environment
     - Finish (at least) one more RFC
 - Backplane MCU: ATMega vs STM32?
