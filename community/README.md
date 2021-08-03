@@ -4,15 +4,52 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 10, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** August 10, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
 # August 3, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** August 3, 2021 3:30 PM UTC
-- **Host:** 
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
 - **Agenda:**
+    1. Recap of the week
+    1. Embedded Rust + RTIC and USB
+    1. Nehza debugging adventures
+    1. KubeCon NA update
 :::
+
+## Notes
+
+- Recap of the week
+    - Last week: Embedded Rust USB experiments using ATSAMD51G (ItsyBitsy M4)
+    - Lucas working on pitching and documenting libgitops
+    - Nehza OpenOCD doesn't work
+- Embedded Rust + RTIC and USB
+    - [RTIC](https://rtic.rs/) is amazing, got interrupts and timers working
+    - Next up working on getting USB CDC-ACM multi-serial and mass storage support working
+        - Multiple instances of a USB class should technically be possible: https://github.com/r2axz/bluepill-serial-monster
+        - The embedded Rust [USB stack](https://docs.rs/usb-device/0.2.8/usb_device/) is still a bit non-standard and at least preliminary tests couldn't get multi-class devices to work out of the box
+    - All USB components we need techincally already implemented in an UF2 bootloader for STM32: https://github.com/cs2dsb/stm32-usb.rs
+- Nehza debugging adventures
+    - Chip documentation (memory mappings, etc.) proprietary and confidential :(
+    - Memory dumps suggest it's running some modified u-boot with EFI support
+    - Figuring out the right GDB and OpenOCD is confusing, apparently the ELF variant targets bare metal?
+- KubeCon NA update
+    - Our Racklet talk didn't sadly get accepted for KubeCon NA 2021
+        - Overwhelming amount of submissions, only a third got in
+    - Lucas still has another CFP queued for presenting on libgitops (one of Racklet's core components) in the colocated Cloud Native Conference event
 
 # July 27, 2021 3:30 PM UTC
 
@@ -40,6 +77,9 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - More CAD modeling work
     - libgitops and framing toolkit advances
     - PCB work
+    - Nezha board arrived
+        -  debugging with [JTAG on SD card pins](https://linux-sunxi.org/JTAG)
+        - working on NAND support for [xfel](https://github.com/orangecms/xfel)
 - PCB update
     - New USB hub chip with 8 ports
     - Potential problem: running out of power on the backplane DC-DC step-down
