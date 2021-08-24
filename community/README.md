@@ -4,14 +4,55 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# August 10, 2021 3:30 PM UTC
+# August 24, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
-- **Date:** August 10, 2021 3:30 PM UTC
-- **Host:**
+- **Date:** August 17, 2021 3:30 PM UTC
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
+    - Lucas Käldström, @luxas
 - **Agenda:**
+    1. Recap of the week
+    1. Tracing and telemetry
+    1. Embedded Rust BMC work updates
+:::
+
+## Notes
+
+- Recap of the week
+    - Lucas has real plumbers on their way to his house; so as a nice segway Daniel pointed out we could submit a talk to the Linux Plumbers Conference :D
+    - We want to start writing some posts on the Racklet blog as the LFX term comes to an end
+    - Daniel is working on Fiedka, it'll be interesting to see its visualizations (maybe we can also poke at the Raspberry Pi bootrom binary?)
+- Tracing and telemetry
+    - Lucas made some contributions to OpenTelemetry:
+        - https://github.com/open-telemetry/opentelemetry-go/pull/2195
+        - https://github.com/open-telemetry/opentelemetry-go/pull/2196
+    - libgitops has eventually settled on using the builder pattern
+    - Option pattern is kind of hard to extend or override
+    - Go [contexts](https://pkg.go.dev/context) should be heavily used
+- Embedded Rust BMC work updates
+    - Two weeks of research into the state of the art embedded Rust development and debugging workflow has led to Racklet using [`probe-rs`](https://probe.rs/) and [`probe-run`](https://github.com/knurling-rs/probe-run) from the [knurling-rs](https://knurling.ferrous-systems.com/) project
+    - `probe-rs` probe support is still a bit work-in-progress, using [dap42](https://github.com/devanlai/dap42) on an ST-LINK clone seems to be the best option and has worked reliably
+        - There were many hardware hurdles in the way though, e.g. the ItsyBitsy M4 has an incorrect resistor which partially breaks SWD communication... blog post coming soon :D
+    - We're switching to the latest alpha of [RTIC](https://rtic.rs/dev) since it's syntactically much nicer to work with
+        - Some challenges with the embedded Rust USB stack lifetimes but otherwise it seems to be working
+    - PRs in [bmc-experiments](https://github.com/racklet/bmc-experiments):
+        - [In-depth README describing how to get started with the development workflow (and some pitfalls)](https://github.com/racklet/bmc-experiments/pull/3)
+        - [`probe-rs` switchover configuration for the repository and examples](https://github.com/racklet/bmc-experiments/pull/4)
+
+# August 17, 2021 3:30 PM UTC
+
+:::info
+**No meeting**
+:::
+
+# August 10, 2021 3:30 PM UTC
+
+:::info
+**No meeting**
 :::
 
 # August 3, 2021 3:30 PM UTC
