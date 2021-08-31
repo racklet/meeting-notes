@@ -4,11 +4,63 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# September 7, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** September 7, 2021 3:30 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
+# August 31, 2021 3:30 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** August 31, 2021 3:30 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
+- **Agenda:**
+    1. Recap of the week
+    1. Nezha update
+    1. Adafruit HW bug & Logic level analyzers
+    1. LFX mentorship ends -> Racklet work/meetings continue
+:::
+
+## Notes
+
+- Recap of the week
+    - Daniel is now a maintainer of https://github.com/9elements/tpmtool/
+        - Related tooling:
+            - https://github.com/google/go-attestation
+            - https://github.com/Foxboron/go-uefi
+    - Fiedka (standalone) is now running on desktop
+    - Announcement blog post close to ready
+    - USB stack now working on RTIC 0.6-alpha
+    - [fwts](https://wiki.ubuntu.com/FirmwareTestSuite) for testing ACPI/UEFI compatibility
+    - Raw tables are in `/sys/firmware/acpi/tables/`
+    - x86 support for Racklet: there are x86 (Intel) SBCs with coreboot support, e.g. the [UP Squared](https://doc.coreboot.org/mainboard/up/squared/index.html)
+- Nezha update
+    - Work on fiddling with porting to oreboot from references and docs -> can now reset clock
+- Adafruit HW bug & Logic level analyzers
+    - The ItsyBitsy M4 has an incorrect SWDCLK pullup resistor causing trouble, see [here](https://github.com/racklet/bmc-experiments#psa-unstable-swd-debugging-in-both-openocd-and-probe-rs) for more details
+    - We might want to get a logic analyzer for easier debugging of these kinds of issues:
+        - Apparently cheap but good one: https://www.amazon.de/-/en/Saleae-Analyzer-8Channel-saleae-support/dp/B00DPCDEV2
+        - Standard open source software for driving them: https://sigrok.org/
+- LFX mentorship ends -> Racklet work/meetings continue
+    - Mentorship officially ends today (August 31st)
+    - Work on Racklet will continue (alongside studies of the core developers)
+    - The current weekday/time works for the core team and Daniel, but I remember hearing about some other people's preferences to move it half an hour earlier
+        - Next week's meeting will be at the same time for now until we have more information about people's schedules
+
 # August 24, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
-- **Date:** August 17, 2021 3:30 PM UTC
+- **Date:** August 24, 2021 3:30 PM UTC
 - **Host:** @twelho
 - **Participants:**
     - Dennis Marttinen, @twelho
