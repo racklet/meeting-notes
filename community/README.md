@@ -2,17 +2,68 @@
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw/badge)](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw)
 
+# Note: Meeting day/time has been updated! Starting from week 37 the community meeting will be on Mondays at 3 PM UTC (already on September 13th)!
+
 [TOC]
+
+# September 13, 2021 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** September 13, 2021 3:00 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+    1. Recap of the week
+    1. Learning USB by porting a DFU bootloader to a 3D printer motherboard
+:::
 
 # September 7, 2021 3:30 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** September 7, 2021 3:30 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @cyrevolt
+    - Lucas Käldström, @luxas
 - **Agenda:**
+    1. Recap of the week
+    1. Upstreaming YAML work
+    1. Changing the Racklet rack form factor to a 10 inch rack?
 :::
+
+## Notes
+
+- Recap of the week
+    - Oxide is hosting a weekly [Twitter Spaces event](https://github.com/oxidecomputer/twitter-spaces) every Friday
+        - For Finland this is sadly in the middle of the night (at 3 AM)
+    - Marvin Drees from 9elements is working on [u-bmc](https://github.com/u-root/u-bmc), it might be relevant again as an modern OpenBMC alternative based on u-root
+    - Announcement blog post coming up hopefully today
+    - Lucas is taking a week off, expect a new blog post from him next week
+- Upstreaming YAML work
+    - Lucas will start working on upstreaming https://github.com/luxas/deklarative, which will take quite a bit of time
+        - He's also writing a thesis about declarative schemas alongside this
+- Changing the Racklet rack form factor to a 10 inch rack?
+    - twelho: it occurred to me that the "half rack" exists, more precisely it's the [10 inch rack](https://en.wikipedia.org/wiki/19-inch_rack#10-inch_rack) compared to the standard 19 inch width
+    - The 10 inch rack standard has the same "rack unit" height as the 19 inch variant and the current plans for the custom Racklet rack
+    - ![10 inch rack dimensions](https://upload.wikimedia.org/wikipedia/commons/8/84/19_inch_vs_10_inch_rack_dimensions.svg)
+    - Benefits:
+        - Racklet tray designs could be printed using the most common 22x22 cm build volume present on most printers (e.g. Ender-3) and fit perfectly inside the rack
+        - Raspberry Pi (or other computer) trays, HDD mounts, Ethernet switches, power strips, UPS devices and everything else following the standard can be mounted in the rack easily
+        - Very high compute density can be achieved using a narrower variant of Ivan Kuleshov's design while preserving single-Pi hot-swappability:
+            - ![Raspberry Pi Server Mark III](https://uplab.pro/wp-content/uploads/2020/12/UPTIME-Raspberry-Pi-Platform-pi18nossd-v1.0-1024x681.jpg)
+        - Small rack designs can be [had quite affordably](https://www.bcedirect.co.uk/products/10-inch-rack-mount-8u-soho-wall-cabinet) or DIYed
+            - ![10 inch rack example](https://cdn.shopify.com/s/files/1/2271/6867/products/8usohocabinetinside_1000x1000_crop_center@2x.png?v=1613077756)
+        - Two 10 inch tray modules can potentially be slid into a 19 inch rack side-by-side allowing easier scalability
+        - Avoiding the XKCD Standards scenario by not inventing a new "Racklet rack" standard
+    - Drawbacks:
+        - Larger size than the custom solution (at least four times the footprint), but still carryable
+        - Backplane and BMC design needs to adapt
+        - If opting to make a 1U Raspberry Pi tray, all Pis on that tray will be a single availability zone (not a problem for Ivan's design)
+    - Neutral:
+        - According to this [Reddit thread](https://www.reddit.com/r/homelab/comments/7lbvq2/noobie_question_time_the_10_rack/) four years ago these were still quite unknown, so they're a somewhat recent invention
 
 # August 31, 2021 3:30 PM UTC
 
