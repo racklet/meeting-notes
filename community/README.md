@@ -2,20 +2,87 @@
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw/badge)](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw)
 
-## Note: Meeting day/time has been updated! Starting from week 37 the community meeting will be on Mondays at 3 PM UTC (already on September 13th)!
+## Note: Meeting day/time has been updated! Starting from week 37 the community meeting will be on Mondays at 3 PM UTC!
 
-## Another note: Meetings will be bi-weekly starting September 13 (i.e. next one on September 27) as core team continues university studies
+## Another note: Meetings will be bi-weekly starting September 13 as core team continues university studies
 
 [TOC]
+
+# October 25, 2021 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** October 25, 2021 3:00 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
+# October 11, 2021 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** October 11, 2021 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @cyrevolt
+    - Verneri Hirvonen, @chiplet
+- **Agenda:**
+    1. Biweekly recap
+    1. U-Boot UEFI
+    1. Physical dimensions of the "10 inch" rack format
+    1. BMC-RMC communication (gRPC over USB)
+    1. RMC considerations
+:::
+
+## Notes
+
+- Biweekly recap
+    - Marvin: TUF seems reasonable for the BMC, looking into it
+    - Dennis: received a 10" audio rack tray, have ordered [a 6U 10" rack](https://www.thomann.de/gb/flyht_pro_stage_rack_95_6u_double_door.htm) (no idea when this is going to arrive)
+    - Daniel: Fiedka website is now live, looked into UEFI on U-Boot
+- U-Boot UEFI
+    - Someone said UEFI is going to be dropped from U-Boot? (unconfirmed rumors)
+    - UEFI interface is needed for ACPI on ARM
+    - U-Boot supports TPMs (at least somewhat, provided you have working SPI)
+        - Is this support wired up for UEFI as well?
+    - For Racklet's case we don't necessarily need UEFI, but are the boards which need to pull it in due to ACPI?
+    - ASpeed BMCs used to use U-Boot in u-bmc, but nowadays minimal custom bootloader
+    - TF-A can be used to directly jump to the kernel and launch LinuxBoot
+- Physical dimensions of the "10 inch" rack format
+    - In the audio space this is called the 9.5 inch rack, and there are some dimension differences in comparison to the 10 inch "IT" rack spec
+        - The IT rack measures 10 inches from ear to ear, while the audio rack is designed to fit between rails spaced 9.5 inches apart
+        - The above means that the audio rack is roughly 10.7 inches wide when measured from ear to ear
+        - This difference in dimensions will need to be taken into account when designing rack-mounted trays for Racklet, it might be best to standardize around the audio standard and provide adapters for the slightly narrower IT standard
+        - The height of the rack modules, i.e. the rack unit, seems to thankfully be the same (based on [this 1U tray I ordered](https://www.thomann.de/fi/flyht_pro_rack_tray_1u_95.htm))
+- BMC-RMC communication (gRPC over USB)
+    - If we go for this route, Cloudflare's [quiche](https://github.com/cloudflare/quiche) would likely be the base library
+    - There's a [QUIC working group](https://github.com/quicwg)
+    - [related architecture and layering discussion from ASP.NET Core](https://github.com/dotnet/aspnetcore/issues/4772#issue-390516235) who would treat USB (or serial etc) as a transport
+    - A more "standard" approach would maybe be to expose the BMC as an USB ethernet adapter, would this require writing a Linux driver or does a generic USB ethernet driver already exist upstream?
+- RMC considerations
+    - If we go with the 10 inch form factor, the "tray" that hosts many SBCs and slides into the rack could have its own RMC SBC that all BMCs plug into
+    - The RMC could host all boot partition firmware in secure, authenticated memory, and through the USB Ethernet emulation the BMCs could "network mount" them
+    - ARM dynamic root of trust? There's a [TPMConf talk about D-RTM on ARM](https://linuxplumbersconf.org/event/11/contributions/1122/attachments/881/1689/Dynamic%20Root%20of%20Trust%28D-RTM%29%20on%20non-x86%20architectures%20like%20ARM%20and%20POWER9.pdf).
+    - [NanoPi NEO Core2](https://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO_Core2) might be a good RMC option, 3x USB and gigabit ethernet, barebones
+        - https://datasheet.lcsc.com/lcsc/1810010421_Realtek-Semicon-RTL8211E-VB-CG_C90735.pdf
+        - Should have upstream support according to [Armbian](https://www.armbian.com/nanopi-neo-core-2-lts/)
+        - Challenge: The [H5 is allegedly out of production](https://forum.armbian.com/topic/13758-allwinner-h5-phased-out/) and this board can't be purchased anywhere anymore
+    - There's also the H3-based alternative [NEO Core](https://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO_Core)
+        - 100 Mbit/s ethernet, but pin compatible
+    - Preferably the form factor should be quite LTS since the backplane would be designed around it. It's no good if we need to keep releasing new hardware to compensate for obscure SBC form factors going out of production.
+    - Some alternative SBCs:
+        - [Lichee Pi Zero](https://licheepizero.us/)
+        - [ROCK Pi S](https://wiki.radxa.com/RockpiS)
+        - [Orange Pi One Plus](http://www.orangepi.org/OrangePiOneplus/)
+        - Potentially DIY Custom SBC? Accessibility becomes an issue.
 
 # September 27, 2021 3:00 PM UTC
 
 :::info
-- **Location:** https://meet.jit.si/racklet-weekly
-- **Date:** September 27, 2021 3:00 PM UTC
-- **Host:**
-- **Participants:**
-- **Agenda:**
+**No meeting**
 :::
 
 # September 13, 2021 3:00 PM UTC
