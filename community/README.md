@@ -8,15 +8,105 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# November 8, 2021 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** November 8, 2021 3:00 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
 # October 25, 2021 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** October 25, 2021 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen @chiplet
+    - Daniel Maslowski, @cyrevolt
 - **Agenda:**
+    1. Biweekly recap
+    1. More thoughts about the BMC/RMC
+    1. Nezha board update
+    1. kicad-rs automatic component lookup and BOM generation
 :::
+
+## Notes
+- Biweekly recap
+    - RMC/BMC relationship, can we offload most of the BMC work to the RMC?
+    - 2.5" and 3.5" hard drive mounts for the 9.5 or 10 inch rack
+    - Custom RMC based on TI Sitara controller with real-time capabilities? Useful for u-bmc, would work for Racklet as well
+        - Long term goal, all parts would be readily available but still more pricey than off-the-shelf parts
+        - Ordering an evaluation board (TMDS64GPEVM) seems to be hard...
+    - More community engagment around the Nehza D1 RISC-V board
+- More thoughts about the BMC/RMC
+    - If the RMC is more capable, most of the BMC's tasks could be offloaded to the RMC instead making the BMC firmware much more simple
+        - Potentially allows us to downgrade the BMC µC, making it cheaper en masse
+    - Off-the-shelf vs own design
+        - Own design will be more expensive and take much more time to finalize but be tailored for the project
+        - Off-the-shelf should be easily available and ideally not boot using blobs
+    - Custom RMC based on the TI Sitara AM64x
+        - The old 32-bit Sitaras are still being used by the OCP in their power controllers
+        - Keep design simple
+            - AM64X based small SBC with USB, Ethernet and serial only
+            - Sitara CPUs are supported in mainline Linux
+            - Boots blobless (apart from what runs in the Cortex-R5F?)
+        - Solidrun devs: shouldn't be harder than any other custom design
+            - They already got a SoM in the pipeline to be sold "soon"
+            - Documentation is public even when you don't own it
+    - u-bmc instead of OpenBMC as the RMC? It's not fully featured yet, so might be better to stick to the latter for now.
+        - u-bmc planned to be usable for most tasks by ~Q3 2022
+        - Porting OpenBMC can be a painful task, try finding a already supported board
+- Nezha board update
+    - Weekly community call on Wednesdays for now (8pm UTC at https://meet.jit.si/nezha-community)
+        - smaeul who ported BSP patches for mainline Linux/U-Boot etc participated
+    - The (RISC-V) cores of the Nehza D1 board are now open source!?
+        - [T-head open-sourced](https://github.com/T-head-Semi) their
+            - RISC-V cores, including C906 (on D1/Nezha), C910, and others
+            - GCC toolchain with extensions
+            - Yocto project
+        - The C910 core is more powerful, but might be a bit expensive
+        - Sipeed are also releasing [a compute module thing named Lichee-RV](https://twitter.com/SipeedIO/status/1443486484112183298) based on the D1
+        - [RVB-ICE (C910)](https://www.t-head.cn/product/c910?lang=en) board has been on [presale](https://pt.aliexpress.com/item/1005003395978459.html)
+    - Custom code compiled for the D1 is kind of working
+        - Daniel has GPIO and UART working [based on bigmagic123's code](https://github.com/orangecms/d1-nezha-baremeta)
+        - not yet in Rust / oreboot though objdumps look quite close already
+    - Nezha UEFI boot flow also includes GRUB for some reason
+    - U-Boot UEFI docs and reasoning is reasonable
+        - easier to read than Tianocore/EDK2 docs
+- kicad-rs automatic component lookup and BOM generation
+    - At the end of the KiCad evaluation/parsing/classifying pipeline we get a categorized list of components in a schematic, using that information automatic lookup and BOM construction is possible
+    - APIs
+        - Digikey
+            - OAuth 2.0 authorization flow aimed towards third party apps
+                - example for integration in [Daniel's Coal Mines teaching project](https://github.com/coalmines/coalmines-api/blob/master/src/lib/auth.js)
+            - Difficult to automate
+                - Need to register a third-party application
+                - Need to also authorize personal account to use the application
+                - Hard to do in e.g. GitHub CI, needs a lot of secrets
+            - Rate limited to 1000 requests/day and 120 requests/minute.
+        - Octopart
+            - API token
+            - Many limitations
+            - Quite a bit pricier
+            - Doesn't scale to automation
+        - Findchips?
+            - No API
+            - Provides supply chain "risk" scores
+        - LCSC?
+            - Component supplier for JLCPCB
+                - Could enable easy ordering of assembled PCBs
+            - Some sort of API exists
+                - https://github.com/yaqwsx/jlcparts
+                - https://yaqwsx.github.io/jlcparts/#/
+                - https://github.com/cs2dsb/lcsc-scrape.rs
+    - Using official API vs. scraping
+        - No real need to authenticate if only looking for parts
 
 # October 11, 2021 3:00 PM UTC
 
