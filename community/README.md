@@ -2,21 +2,121 @@
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw/badge)](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw)
 
-## Note: Meeting day/time has been updated! Starting from week 37 the community meeting will be on Mondays at 3 PM UTC!
-
-## Another note: Meetings will be bi-weekly starting September 13 as core team continues university studies
-
 [TOC]
+
+# November 22, 2021 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** November 22, 2021 3:00 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
 
 # November 8, 2021 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** November 8, 2021 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen @chiplet
+    - Daniel Maslowski, @cyrevolt
 - **Agenda:**
+    1. Biweekly recap
+    1. Major design update: shield, backplane, RMC
 :::
+
+## Notes
+- Biweekly recap
+    - There is a complete list of components provided by the LCSC assembly services available (as a CSV)
+        - Could be quite easily integrated into kicad-rs
+        - Extend the current kicad-rs YAML format so it can be used for any BOM, not just LCSC
+    - u-bmc being prepared for OSFC
+    - Better architecture for booting an actually trusted image on the RMC
+        - Signature verification updated (ec-based)
+        - Incorporate TrustZone?
+    - TI devboard update: ETA late November/early December
+    - u-bmc for any ARM/ARM64 device, only kernel/device tree required
+        - This should run TrustZone etc.
+        - Updates using go-tuf
+        - BMCs have limited storage, A/B partitioning may be a challenge
+        - Control (fans, GPIOs etc.) via GRPC
+        - Ethernet or IP over USB?
+        - Stick formfactor like USB Armory II possible
+    - Nehza update:
+        - UART support, payload execution in oreboot main
+        - Reset button working :)
+    - RISC-V on the horizon
+        - Sunxi is going to release something new?
+        - [MangoPi](https://www.hackster.io/news/mangopi-mq1-is-an-ultra-compact-soon-to-be-open-source-allwinner-d1-risc-v-dev-board-eb5388783a0e) (in [Chinese](https://mangopi.org/mangopi_mq)) are going to release a new board based on D1s, probably C906 core
+        - [Sipeed LicheeRV, based on D1/C906, compute module style thing](https://twitter.com/SipeedIO/status/1456864395573673985) at $20?
+        - C910 core with more power - [Android phone next year](https://twitter.com/SipeedIO/status/1457529282134089734)
+    - Fiedka will also be presented at OSFC
+    - Talk on TPMs this year
+    - Remote attestation agent (re)written in Rust: https://github.com/keylime/rust-keylime
+    - twelho: Been rethinking the three major issues/blockers:
+        - RMC SBC form factor, availability, etc.
+        - Backplane PCB to mount the RMC SBC, what kind of USB/Ethernet support should be present?
+        - Cost (and component count) of the shields to mount on top of each compute node
+- Major design update: shield, backplane, RMC
+    - RMC SBC form factor
+        - Bringing back an "old" idea:
+            - Backplane is a simple USB hub / power distribution board
+            - One compute node acts as the RMC
+                - Attractive opetion since there are so many compute nodes
+        - USB B port for upstream connection from RMC
+            - Compatible with any existing SBC
+    - Compute shield power delivery hat
+        - Cost is an important factor
+        - 5V DCDC converter for local step down
+            - redundancy
+            - lower transmission losses
+            - complications
+                - How to deal with variable input voltages?
+                - Cannot support 12V SBCs
+    - Using an ATX power supply
+        - from around 50€ range
+        - Voltage rails (3.3V, 5V, 12V, -12V, 5V standby)
+            - 3.3V and 5V have a shared power budget
+                - Current capability: 15A to 25A
+            - 12V output can be used for 12V SBCs
+                - 100s of watts of power
+            - Pros
+                - No need for custom DCDC converters
+                - 5V standby (always on)
+                    - typically between 2-3A (can go up to 5A)
+                    - Can be used for powering RMC
+                    - Short green wire to ground to turn on PSU
+                    - Can be used to power a 5V eth switch (for always on network connectivity)
+                - 12V line can be used for 12V SBCs/eth switches
+                - Tray-level redundancy:
+                    - One tray (set of 10 compute units with RMC) has one direct path to power
+                    - In case of PSU failure only that set is lost
+                    - Individual trays can be plugged into UPS devices
+                - Can directly provide power to SATA hard drives
+            - Cons
+                - Cheat PSUs don't have power factor correction
+                    - Large load on 12V line will rise 3.3V and 5V lines
+                - RMC needs to run from 5V to have it always on
+                - Lower power control granularity
+        - Backplane looks like a fancy motherboard
+            - compatible with standardized ATX connector
+            - No (custom) SBCs, the backplane is only for power/USB
+    - Required changes
+        - Update compute hat - backplane connector
+            - Add lines for 3.3V, 12V
+        - RMC Linux Multi-function device
+            - Mass device + ethernet
+        - BMC choices?
+            - STM32
+            - STM32 with serial to uart
+            - FPGA (with STM32)
+    - General consensus positive, moving on with this design
+        - Better documentation will come with the repo/org refactor
 
 # October 25, 2021 3:00 PM UTC
 
@@ -94,7 +194,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
             - API token
             - Many limitations
             - Quite a bit pricier
-            - Doesn't scale to automation
+            - 20k/month limit doesn't scale to automation
         - Findchips?
             - No API
             - Provides supply chain "risk" scores
