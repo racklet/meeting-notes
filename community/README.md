@@ -1,24 +1,110 @@
 # Racklet Community Meeting Notes
 
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw/badge)](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw)
 
 [TOC]
 
-# November 22, 2021 3:00 PM UTC
+# December 6, 2021 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
-- **Date:** November 22, 2021 3:00 PM UTC
+- **Date:** December 6, 2021 4:00 PM UTC
 - **Host:**
 - **Participants:**
 - **Agenda:**
 :::
 
-# November 8, 2021 3:00 PM UTC
+# November 22, 2021 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
-- **Date:** November 8, 2021 3:00 PM UTC
+- **Date:** November 22, 2021 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen @chiplet
+    - Daniel Maslowski, @cyrevolt
+    - Lucas Käldström, @luxas
+- **Agenda:**
+    1. Biweekly recap
+    1. Thoughts about USB on the BMC, SD(IO) emulation back?
+    1. Nezha / D1 update (RustSBI etc)
+    1. Improve repo/org structure
+:::
+
+## Notes
+- Biweekly recap
+    - The meeting time has inadvertently shifted to 4 PM UTC due to daylight savings in Finland, should we keep this time or move it back by one hour?
+    - TI AM64x dev board on the way
+        - Might even arrive in a week
+        - Direct/alternative RMC, Racklet interface compatibility
+        - The only docs that cannot be accessed without NDA is secureboot
+            - Even design guides and silicon guides are open
+        - Supports something called fast serial interface
+            - Needs kernel modules, might be able to talk to a Pi
+            - Protocol made by TI, sort of proprietary but well documented
+                - Emulation via e.g. an FPGA
+        - The guides explain how to design USB-C with power management etc.
+- Thoughts about USB on the BMC, SD(IO) emulation back?
+    - All "low-end" MCUs only have one USB controller, but they all have CAN
+        - Replace the USB hubs in the backplane with a CAN network?
+            - This would free up the USB interface of each BMC for communication with the compute unit
+        - CAN networks might require complicated termination and impedance matching etc.
+        - CAN is a flat routing protocol, but that doesn't matter in our usecase
+        - The hardware-software interface of CAN controller is tricky to work with (based on experience)
+    - Using CAN doesn't fix the issue that some SBCs simply won't boot off of anything other than SD(IO)
+        - E.g. the [Odroid C4](https://www.hardkernel.com/shop/odroid-c4/) will only boot U-Boot off of SD or EMMC
+        - SD emulation (SDIO not SPI) is required for (at least) half of the SBCs on the market, including earlier Raspberry Pi
+        - All SBCs that support USB booting should also support SD booting, so if SD emulation would be implemented, the USB upstream could be dedicated to the backplane
+    - SPI flash probably has strict time requirements
+        - https://trmm.net/SPI_flash
+        - This means we likely don't have time to fetch memory blocks from the RMC over USB in time
+        - BMCs must have their own local SPI flash
+            - 16 MiB is the most common amount, and should fit our u-root boot environment
+            - 32 MiB would enable A/B partitioning, but not strictly necessary (corrupt/invalid firmware in the flash doesn't brick the compute unit, just delays its bootup as the BMC needs to re-flash it)
+        - Three options to handle write protection:
+            - Do a "MitM" using the BMC MCU and drop write requests, is this fast enough?
+            - Do a "MitM" using an FPGA, how cost effective is this?
+                - https://trmm.net/Spispy/
+            - Write protect the flash and and it over to the MCU in its entirety
+                - https://github.com/felixheld/qspimux#how-to-setup-the-hardware
+        - ASpeed chips support hardware SPI write protection
+        - Most controllers allow downgrading Quad-SPI to regular SPI
+            - This should hopefully be true for SBC-integrated bootloaders as well
+- Nezha / D1 update (RustSBI etc)
+    - Linux for sunxi/D1 is being pushed to mainline (Samuel Holland)
+        - clock https://lkml.org/lkml/2021/11/18/1320
+        - watchdog https://lkml.org/lkml/2021/7/25/303
+        - media https://lkml.org/lkml/2021/11/18/1268
+        - etc etc; browse LKML :)
+    - oreboot -> RustSBI -> payload somewhat works
+        - https://riscv.org/wp-content/uploads/2017/05/riscv-privileged-v1.10.pdf
+        - RustSBI is a library, and you implement it per platform (as of now)
+        - https://github.com/orangecms/rustsbi-nezha/tree/rustsbi-nezha
+        - transitions from M-mode to S-mode and sets up trap handlers
+        - will see if we pull the implementation into oreboot directly
+        - trap handlers work :)
+    - oreboot -> xv6 is fine, stays in M-mode
+    - Linux for D1 does not support M-mode, so we use RustSBI
+        - oreboot -> RustSBI -> Linux errors in `head.S` (`InstructionPageFault`)
+        - https://github.com/orangecms/linux/tree/riscv/d1-wip
+        - more work needed around memory setup :)
+        - https://blog.stephenmarz.com/2021/02/01/wrong-about-sfence/ not helping, but nice read
+- Improve repo/org structure
+    - Move from RFC-based structure to self-documenting code and releases via tagging
+        - Each component (hardware, electronics, firmware, etc.) should reside in its own repo and tag its own "releases"
+            - Documentation is version controlled with Git, and follows the tags, the content of the relevant RFCs is moved into the right repos
+        - The racklet/racklet main repo pulls all components in as submodules and tags full releases of Racklet, e.g. Racklet 0.1.0 contains hardware 0.1.2, electronics 0.2.5 etc.
+            - The content of the main overview RFC is moved here
+
+# November 8, 2021 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** November 8, 2021 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
     - Dennis Marttinen, @twelho
@@ -115,6 +201,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
             - STM32
             - STM32 with serial to uart
             - FPGA (with STM32)
+            - Two STM32s connected together via high-speed UART?
     - General consensus positive, moving on with this design
         - Better documentation will come with the repo/org refactor
 
