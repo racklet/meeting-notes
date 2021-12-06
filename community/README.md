@@ -6,15 +6,83 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# December 20, 2021 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-weekly
+- **Date:** December 20, 2021 4:00 PM UTC
+- **Host:**
+- **Participants:**
+- **Agenda:**
+:::
+
 # December 6, 2021 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** December 6, 2021 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen, @chiplet
 - **Agenda:**
+    1. Biweekly recap
+    1. SD emulation
+    1. RP2040 Rust progress, PIO
 :::
+
+## Notes
+- Biweekly recap
+    - TI AM64x dev board arrived
+        - Quite large, exposes all interfaces of the biggest chip variant
+        - Multiple CAN interfaces, intergrated JTAG emulator
+        - No testing yet
+        - 250€ ($300) directly from TI, but TI won't sell it
+        - ~12€ for the (top end) SoC
+    - twelho: Ordered a logic analyzer, might write a thesis about the SD emulation
+    - Oxide introduced [Hubris](https://github.com/oxidecomputer/hubris) and [Humility](https://github.com/oxidecomputer/humility) at OSFC 2021
+        - Other options: [Tock OS](https://www.tockos.org/), [RTIC](https://rtic.rs/dev/book/en/)
+- u-bmc
+    - Marvin presented at OSFC
+    - Basic Raspberry Pi port
+    - Git cleanup
+    - Support for the TI AM64x dev board on the horizon
+        - Blobless boot
+            - One u-boot on the RT cores
+            - Another u-boot on the main cores
+        - Everything documented
+- SD Emulation
+    - Requirements
+        - serial clock
+            - up to 400kHz clock during init
+            - up to 25MHz clock after init
+        - adjustable max delay before response (in clock cycles)
+            - it's possible to read data from a slower medium, but the response needs to generated within the 25MHz clock
+    - Using a microcontroller
+        - Infeasible with low end microcontrollers
+            - Driving memory mapped IO is too slow, no time for control flow even with interrupts
+        - Raspberry Pi Pico Programmable IO (PIO) could work
+    - Using an FPGA
+        - Meeting timing requirements for 25MHz is trivial
+        - Open source SD emulation core(s) already exist:
+            - https://github.com/fusesoc/sd_device
+            - https://github.com/enjoy-digital/litesdcard
+        - TODO:
+            - Proof of concept with an FPGA dev board
+                - e.g. with [TinyFPGA_BX]
+                    - 16 kB of BRAM
+                    - 750 kB of user flash area
+                - Need a small boot payload for this
+- RP2040 Rust progress, PIO
+    - RP2040 Rust support has finally become actually usable in [rp-hal](https://github.com/rp-rs/rp-hal)
+    - PIO (Programmable I/O) is also supported: https://github.com/rp-rs/pio-rs
+    - The PIO can run at the speed of the main cores (133 MHz, can be overclocked)
+        - This is fast enough to "oversample" the SD signal, and external triggering of the PIO using the SD clock signal should also be possible
+        - The idea is to "capture" an entire SD command/packet using the FPGA-like PIO, and then DMA the result into memory for the main processor running the state machine
+            - This might be feasible due to the drastic reduction in (costly) interrupts to the main CPU compared to it being directly "clocked" by the SD clock.
+
+[TinyFPGA_BX]: https://tinyfpga.com/
 
 # November 22, 2021 4:00 PM UTC
 
@@ -25,7 +93,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Participants:**
     - Dennis Marttinen, @twelho
     - Marvin Drees, @MDr164
-    - Verneri Hirvonen @chiplet
+    - Verneri Hirvonen, @chiplet
     - Daniel Maslowski, @cyrevolt
     - Lucas Käldström, @luxas
 - **Agenda:**
@@ -109,7 +177,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Participants:**
     - Dennis Marttinen, @twelho
     - Marvin Drees, @MDr164
-    - Verneri Hirvonen @chiplet
+    - Verneri Hirvonen, @chiplet
     - Daniel Maslowski, @cyrevolt
 - **Agenda:**
     1. Biweekly recap
@@ -214,7 +282,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Participants:**
     - Dennis Marttinen, @twelho
     - Marvin Drees, @MDr164
-    - Verneri Hirvonen @chiplet
+    - Verneri Hirvonen, @chiplet
     - Daniel Maslowski, @cyrevolt
 - **Agenda:**
     1. Biweekly recap
