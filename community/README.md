@@ -1,6 +1,6 @@
-# Racklet Community Meeting Notes
+# Racklet Community Meeting Notes 2021
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting for 2021. Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw/badge)](https://hackmd.io/P7WKiyZSTpCeyfpj3Lm2Fw)
 
@@ -11,10 +11,58 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 :::info
 - **Location:** https://meet.jit.si/racklet-weekly
 - **Date:** December 20, 2021 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @cyrevolt
 - **Agenda:**
+    1. Biweekly recap
+    1. Minimal `start.elf`
+    1. Nehza update
+    1. DSLogic Plus
 :::
+
+## Notes
+
+- Biweekly recap
+    - Nezha boots Linux and `kexec`s another Linux kernel now! \o/
+    - Marvin has a new [hackable keyboard](https://kprepublic.com/products/bm60-rgb-60-gh60-hot-swappable-pcb-programmed-qmk-firmware-type-c)
+    - twelho:
+        - I got the DreamSourceLab DSLogic Plus logic analyzer!
+        - Going to do my Bachelor's thesis about Racklet's SD emulation
+    - Rust binary sizes: `objcopy` is doing weird stuff, `strip` helps even with `no_std` binaries...
+    - [TamaGo](https://github.com/f-secure-foundry/tamago) on ASpeed BMCs close to working
+        - Replaces magic boot assembly
+- Minimal `start.elf`
+    - There is a cut down `start.elf` version: `start_cd.elf`
+    - The cut down size is ~780 KiB instead of ~4 MiB
+    - Should be much easier to work with when emulating
+    - Has reduced graphics functionality, but shouldn't matter for Racklet
+    - https://github.com/raspberrypi/firmware/blob/master/boot/start_cd.elf
+    - https://www.raspberrypi.com/documentation/computers/configuration.html#boot-folder-contents
+- TI AM64x dev board update
+    - Contains Cortex-A53, Cortex-M4F and [Cortex-R5F](https://developer.arm.com/ip-products/processors/cortex-r/cortex-r5) cores
+    - Embedded JTAG allows debugging all of the different cores
+        - Cortex-A is normally debugged using CoreSight
+    - The board is quite large due to all the integrated debugging tools, the actual chip is roughly the same size as the Pi SoC
+- Nezha update
+    - RustSBI set up; key feature is delegating traps, but _not_ illegal instructions
+    - Linux 5.15.5 with patches not yet in mainline; FPU _must_ be configured
+    - network (ethernet), MMC, GPIO all work; USB disabled for now
+    - WIP: move code from RustSBI to oreboot directly/reduce it (initially already working)
+    - talk ["Hacking on RISC-V and Operating Systems"](https://pretalx.c3voc.de/rc3-2021-r3s/me/submissions/FTPACX/) at rC3 (German, probably with translation, slides will be in English)
+    - smaller Lichee RV board almost working as well, needs Device Tree adjustments https://linux-sunxi.org/Category:D1_Boards
+- DSLogic Plus
+    - Searched for the cheapest [sigrok-supported](https://sigrok.org/wiki/Supported_hardware#Logic_analyzers) logic analyzer that goes past 100 MHz
+    - The [DSLogic Plus](https://www.dreamsourcelab.com/shop/logic-analyzer/dslogic-plus/)
+        - Available on AliExpress for ~100 €
+        - Goes to 400 Mhz (supposedly, needs better probes to do that though)
+        - 16 channels
+        - 3 channel 100 MHz streaming capture (over USB 2.0)
+        - 256 Mbit memory for capture-to-RAM
+    - Plugged it in and installed firmware from Arch AUR, PulseView picked it up right away and recognized all speeds/channels/triggers etc.
+    - Starting a capture works (blinking LED), but haven't gotten around to wiring up anything to analyze yet
 
 # December 6, 2021 4:00 PM UTC
 
