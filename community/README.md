@@ -6,10 +6,82 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# January 31, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** January 31, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
+# January 17, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** January 17, 2022 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho 
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen, @chiplet
+    - Daniel Maslowski, @orangecms
+    - Michael Engel
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Michael Engel joined, welcome! :wave:
+- More research into how to implement the SD protocol with PIO
+- Marvin: Started working with the EOS S3 eFPGA and refreshed my VHDL/Verilog knowledge
+- Marvin: Used the same custom tooling to provision a fleet of servers (system-transparency) for u-bmc (aka progress in tooling)
+- Marvin: Continued working on baremetal Golang for ASpeed (finally got a NDA with ASpeed as well)
+- Daniel: WIP porting D1 SPL0 to Rust :crab:
+
+### Refactoring the repositories
+
+- Cleaning up unneeded forks and other cruft in the [Racklet GH organization](https://github.com/racklet/)
+- Preparing to move to separate tagged repositories for hardware, electronics, firmware etc.
+    - All of these will be joined in tagged releases under the main repo
+- ETA for refactor completion is this week
+
+### Progress with SD emulation
+
+- SD_Device needs some changes to support synthesis for ICE40
+    - Initially designed for Xilinx FPGAs
+    - Original code has Xilinx primitive instantiations e.g. for IO buffers
+    - ICE40 doesn't support asynchronous resets
+- Figured out bidirectional pins
+    - SB_IO is a bit different than IOBUF (seems like output enable is inverted)
+    - Inference works well on yosys
+- Can already see valid command/response traffic on logic analyzer
+- There are some timing violations on internal paths (40MHz instead of 50MHz)
+- Shows up as a block device on linux!
+    - ... but reads fail with an IO error
+
+### Nezha News
+
+- support for LinuxBoot with RustSBI now in upstream `main`
+- can boot from SD card using the stock SPL/Boot0, though it makes some changes keeping Linux from coming up - reworking thusly
+    - https://github.com/smaeul/sun20i_d1_spl
+- got two RV Docks from Sipeed and the 86 Panel
+    - https://linux-sunxi.org/Sipeed_Lichee_RV
+
+### Misc
+
+- KiCad 6 was released, looks very nice!
+    - A lot of papercuts were fixed
+    - We need to update the [`kicad-rs`](https://github.com/racklet/kicad-rs) tooling now
+- Daniel: got a TV box based on the S905X4 - dev board now, UART is accessible :)
+- Daniel: ordered a [MakerCase v2](https://www.conrad.de/de/p/joy-it-makercase-v2-sbc-gehaeuse-passend-fuer-entwicklungskits-raspberry-pi-acrylglas-klar-1720608.html) (multi-SBC stacking thingy) (variants for 2 and 8 boards exist, looks like they can be combined arbitrarily)
+    - ![MakerCase V2](https://asset.conrad.com/media10/isa/160267/c1/-/de/1720608_AB_00_FB/joy-it-makercase-v2-sbc-gehaeuse-passend-fuer-entwicklungskits-raspberry-pi-acrylglas-klar.jpg?x=500&y=500&format=jpg&ex=500&ey=500&align=center)
+
 # January 3, 2022 4:00 PM UTC
 
 :::info
-- **Location:** https://meet.jit.si/racklet-weekly
+- **Location:** https://meet.jit.si/racklet-community
 - **Date:** January 3, 2022 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
