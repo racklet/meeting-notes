@@ -6,14 +6,55 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 14, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** February 14, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # January 31, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** January 31, 2022 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Michael Engel
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Still updating/cleaning up the GH organization
+    - Planning on making a new release of https://github.com/racklet/render-drawio-action today
+    - Still more repos to clean up
+    - Unsolved issue: keeping template descendants up to date with upstream updates
+    - Figured out that .gitignore can't be a symlink
+- Marvin: Worked more on Kubernetes on ARM64
+    - Mixed arch cluster experiments (x86 and ARM)
+- D1 DRAM code is being ported
+    - Paul is doing initial work: https://gitlab.com/pnru/boot0
+    - Daniel is documenting and extracting register names https://gitlab.com/cyrevolt/boot0/-/tree/doc
+- Daniel: Started looking into Rockchip
+    - not yet as promising in terms of firmware customization
+    - see https://github.com/oreboot/oreboot/issues/533
+
+### Probing the SD interface with the RP2040
+
+- twelho: Wired up the Raspberry Pi Pico to the SD slot of a RPi 3
+    - Wrote some Rust code for the RP2040, [rp-rs](https://github.com/rp-rs/rp-hal) is very nice and quite feature complete
+    - The PIO state machines are programmable with [pio-rs](https://github.com/rp-rs/pio-rs)
+    - Got the core up to 125 MHz (within spec, not overclocked) and captured the SD clock signal
+        - RP2040 is fast enough :100:
+        - There's about 35 ns of latency in a wait-set loop
+        - Going through the SM I/O mapping is about 10 ns slower
 
 # January 17, 2022 4:00 PM UTC
 
@@ -22,7 +63,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** January 17, 2022 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
-    - Dennis Marttinen, @twelho 
+    - Dennis Marttinen, @twelho
     - Marvin Drees, @MDr164
     - Verneri Hirvonen, @chiplet
     - Daniel Maslowski, @orangecms
