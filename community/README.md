@@ -6,14 +6,41 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 28, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** February 28, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # February 14, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** February 14, 2022 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- vPub v4 is coming up
+    - https://vpub.dasharo.com/
+    - The new repo structure will be in place before that
+    - Little presentation on Racklet :)
+- Repository discussion
+    - Using separate .gitignore and .gitattributes per repository
+    - Licensing: Apache 2.0 vs MPL 2.0 vs others?
+        - Ask @stacktrust at vPub
+- twelho: Received the ODROID-C4 SBCs! Will take them for a spin tomorrow and see how they perform and what the boot flow looks like
+- orangecms: D1 DRAM init C implementation is done and working now, translating to Rust is sort of started
 
 # January 31, 2022 4:00 PM UTC
 
