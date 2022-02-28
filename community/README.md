@@ -6,14 +6,63 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# March 14, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** March 14, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # February 28, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** February 28, 2022 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Marvin Drees, @MDr164
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- ODROID-C4 runs a U-Boot fork form 2015...
+    - https://wiki.odroid.com/odroid-c4/software/building_u-boot
+    - https://github.com/hardkernel/u-boot/tree/odroidg12-v2015.01
+    - Might try to upstream this at some point
+        - Oreboot support?
+        - 26k commit diff is painful https://github.com/hardkernel/linux
+- Dennis: Will contact Rich regarding MPL-2.0 relicensing this week
+    - Repo refactor starts after that
+- Daniel working a bit more on LinuxBoot, cpu and Fiedka at the moment
+- Marvin working a bit more on u-bmc
+- Marvin also got hold on two RP2040s to play around with
+
+### Pi "netboot" (SD card remote flash)
+
+- [Official beta feature](https://www.raspberrypi.com/news/network-install-beta-test-your-help-required/)
+- Can we abuse it to load our own tools?
+- Seems to be embedded into the RPi 4 EEPROM
+    - Loads the imager from RPi servers using HTTPS (which TLS version?)
+    - Puts the imager into RAM and executes it (without additional validation or authorization)
+    - The imager downloads Raspbian and puts it on the SD card
+- Can the imager source URL be changed?
+- Can the HTTPS certificate store be changed?
+
+### u-bmc migration
+
+- BSD-3 licensed
+- Move out of u-root org to new home: https://github.com/u-bmc
+    - Split out the monorepo
+    - Code spring cleaning/rewrite
+    - Granular CI
+    - Will use https://github.com/bufbuild/buf to provide protobuf files then
+    - Thorough documentation coming
 
 # February 14, 2022 4:00 PM UTC
 
@@ -39,6 +88,9 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Using separate .gitignore and .gitattributes per repository
     - Licensing: Apache 2.0 vs MPL 2.0 vs others?
         - Ask @stacktrust at vPub
+        - https://gist.github.com/nicolasdao/a7adda51f2f185e8d2700e1573d8a633
+        - https://www.kernel.org/doc/html/latest/process/license-rules.html
+        - https://users.rust-lang.org/t/licensing-mit-apache-2-vs-mpl-2-0/46250
 - twelho: Received the ODROID-C4 SBCs! Will take them for a spin tomorrow and see how they perform and what the boot flow looks like
 - orangecms: D1 DRAM init C implementation is done and working now, translating to Rust is sort of started
 
