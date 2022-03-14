@@ -6,14 +6,62 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# March 28, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** March 28, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+
+
 # March 14, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** March 14, 2022 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Marvin Drees, @MDr164
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis:
+    - Contacted Rich wrt. relicensing, do want to hear his feedback
+    - RP2040 software SD probing quite reliable, moving on to data capture and state machine implementation next
+- Verneri is having signal integrity issues with the FPGA SD emulation
+    - Will make a new adapter and probing boards for more reliable results
+- Marvin: TinyGo project for RP2040
+    - Need to emulate some devices: PWM, I2C, SM/PMBus
+    - E.g. fan emulation
+    - TinyGo RP2040 support: PWM and I2C works, PIO support seems to also be in [place](https://github.com/kenbell/tinygo-rp2040-pio-example/blob/main/main.go)
+- Daniel: Gave a talk on driver development via `cpu` at CLT
+    - https://github.com/u-root/cpu
+    - https://metaspora.org/drivers-from-outer-space.pdf
+    - https://chemnitzer.linux-tage.de/2022/de/programm/beitrag/226
+    - we're working on a second implementation in Rust :)
+    - `cpu` is getting some more fixes in addition
+      - e.g. so you can `echo hello | cpu remote tee /foo/bar`
+      - an improvement over the original!
+    - and port to FreeBSD is also WIP; maybe Redox will be next then
+
+### Raspberry Pi 4 EEPROM Write Protection
+
+- It's possible to officially enable write protection for all EEPROMs (bootloader and USB firmware): https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#eeprom-write-protect
+    - Requires the hardware write protect pin to be pulled low, this is achieved using TP5 on the bottom of the board, which is quite easy to solder to
+    - Newer Pi 4 models have the USB firmware embedded in the VLI controller, but should still be write protectable
+- There's a debug bootloader one can flash to the EEPROM to debug the VideoCore over UART, it outputs a lot of information
 
 # February 28, 2022 4:00 PM UTC
 
