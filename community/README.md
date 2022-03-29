@@ -1,25 +1,69 @@
 # Racklet Community Meeting Notes 2022
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/GNrvcfXqSUaHeehBgfzTAg/badge)](https://hackmd.io/GNrvcfXqSUaHeehBgfzTAg)
 
 [TOC]
 
-# March 28, 2022 4:00 PM UTC
+# April 11, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** March 28, 2022 4:00 PM UTC
+- **Date:** April 11, 2022 3:00 PM UTC
 - **Host:**
 - **Participants:**
+:::
+
+# March 28, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** March 28, 2022 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
 
 ## Agenda/Notes
 
 ### Biweekly recap
 
+- Dennis: Finally received the 10" rack casing I ordered half a year ago, yay!
+    - Already mesured a bunch of dimensions, looks like solid choice
+- Daniel:
+    - Got a WizNet W5500 controller working on the Lichee RV Dock
+        - [added DTS to Linux fork](https://github.com/orangecms/linux/commit/c180cf125a825fd3d03b048640403d2c4e968134)
+    - oreboot work: [RustSBI author contributing to move to using features over many crates and clean up structure and tooling](https://github.com/oreboot/oreboot/pull/553)
+    - New [Fiedka release v1.3.4](https://github.com/fiedka/fiedka/releases/tag/v1.3.4)
+        - CBFS (coreboot filesystem) support
+        - Support for DXE removal and BdsDxe replacement (e.g. inserting LinuxBoot)
+        - nicer layout with a feedback section and outline (currently for AMD only)
+        - someone already used it to deploy LinuxBoot on real hardware
+- Marvin:
+    - u-bmc log rotation and TOML
+- Verneri:
+    - Vacationing and computer upgrading
+    - Probing the SD signal to see the signal quality
+    - Received a ULX3S, will continue SD emulation with that
 
+### The Flyht 10 inch Rack Casing
+
+- Dennis: I finally received the [Flyht Pro Stage Rack 9,5" 6U Double Door](https://www.thomann.de/fi/flyht_pro_stage_rack_95_6u_double_door.htm) after half a year of shortage delays
+- 6U as tall as they go at least in this series but it should be enough
+- The price, dimensions, and robustness are quite well suited for use as a Racklet rack
+- Here's a picture of what it looks like: ![The Flyht Pro Stage Rack 9,5" 6U Double Door](https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/429743/13275761_800.jpg)
+- The 10 inch for factor dimensions are finally clear:
+    - The rack unit is **1.75 inches** (the same as for 19 inch racks)
+    - 9.5 inches is the **maximum device width** that will fit in the rack
+    - 10 inches is the distance between the **mounting screws/holes**
+        - While the 19 inch rack width includes the ears and vertical rails, 10 inch rack equipment is actually wider than 10 inches
+- This rack has detachable doors on the front and back, they are approx. 6 cm deep and symmetrical (with the exception of the handle)
+- The main body is approx. 25 cm deep and has 2 cm inset vertical rails on the front and back: ![Doors open](https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/429743/13275791_800.jpg)
+    - Usable depth for equipment is specified as 20.8 cm
 
 # March 14, 2022 4:00 PM UTC
 
