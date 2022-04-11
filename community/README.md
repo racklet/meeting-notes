@@ -6,14 +6,47 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# April 25, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** April 25, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # April 11, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** April 11, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis: School work keeping me busy, but should be able to proceed with the SD card emulation and repository refactor next week
+- Marvin: Received a bunch of Pi Picos
+
+### RISC-V / SBC News
+
+- New boards will follow soon
+    - [MangoPi](https://mangopi.cc/) ([GitHub](https://github.com/mangopi-sbc/MQ-Pro)) ([review](https://www.cnx-software.com/2022/04/09/mangopi-mq-pro-a-20-risc-v-alternative-to-raspberry-pi-zero-w/)), clone of the RPi Zero 2 W, but with D1 and USB-C
+    - Sipeed with a new chip, maybe shipping with oreboot already
+    - D1 HDMI now works on 5.18 RC, smaeul's mainline WIP branch
+        - https://github.com/smaeul/linux/tree/riscv/d1-wip
+        - Daniel is trying to get it to work again with oreboot :grimacing: 
+            - https://github.com/orangecms/linux/tree/5.18-riscv-debug
+
+### oreboot
+
+We're getting some structure, closer to other projects, with a new module/crate structure and Cargo workspace setup.
 
 # March 28, 2022 3:00 PM UTC
 
