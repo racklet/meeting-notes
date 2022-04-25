@@ -6,14 +6,70 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# May 9, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** May 9, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # April 25, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** April 25, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis: Final course work still preventing larger work on Racklet, but managed to do some more SD card emulation tests and discoveries for my BSc thesis
+- Daniel: Got more Lichee RV (D1) boards, added SPI flash chips, went further with Rust embedded book, PAC and HAL, interrupts, and ESP32 (not only for exercise)
+- Marvin:
+    - Continued work on RPi Pico hardware sim in u-bmc org (repo will be called u-sim)
+    - Work on u-bmc itself continued. Base architecture redesign finished. Hardware target will first be all regular Raspberry Pis after ASPeed SoCs and Nuvoton will be (re)added.
+
+### SD card emulation discoveries
+
+- The Raspberry Pi bootloader does **not** clock the SD bus at the maximum speed of 25 MHz
+    - Pi 3B+ clocks: 128 kHz enumeration, 10 MHz operation
+    - Pi 4 clocks: 200 kHz enumeration, **13.33 MHz** operation
+- With the simple wait-set loop in PIO assembly on the RP2040 10 MHz is barely sustainable, but 13.33 MHz is simply too fast (at least at the stock core clock of 125 MHz)
+    - I really need an oscilloscope to inspect the analog signal quality/integrity, might be an impedance issue
+- Next steps for exploration:
+    - Overclocking (pretty trivial, but the signal degradation might be too significant)
+    - Faster polling: would it be possible to unconditionally sample on each cycle without waiting?
+
+### Nezha News
+
+- Work on D1 init is kicked off now
+    - https://github.com/luojia65/test-d1-flash-bare/
+    - https://github.com/luojia65/xuantie
+    - https://github.com/luojia65/D1-D1s-ROM-reverse
+- Secure environments for RISC-V / RustSBI
+    - Hypervisor: https://github.com/luojia65/zihai
+    - Enclave for S and M mode is planned
+- HDMI / Linux 5.18 working :)
+    - gist updated https://gist.github.com/orangecms/df0d3c15f9e32b5c708c021c4be8857b
+- Another Lichee RV carrier board
+    - https://github.com/riktw/jeadock
+
+### oreboot
+
+- Now based on a Cargo workspace layout
+    - Increased build speed, ca 40%
+- Intention to rework towards PAC and HAL structure
+    - PAC: yay!
+    - HAL: nay? Some issues with memory management, gotta check
 
 # April 11, 2022 3:00 PM UTC
 
