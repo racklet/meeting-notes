@@ -6,14 +6,61 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# May 23, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** May 23, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # May 9, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** May 9, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis:
+    - Received an apartment on-campus and moving has taken a lot of time, no progress on Racklet stuff yet
+    - Starting my summer job tomorrow, Kubernetes stuff :)
+- Marvin:
+    - Moving as well, so equally less time to continue hacking
+    - Continued a bit work on u-bmcs main operator process
+- Daniel:
+    - Got a [MangoPi MQ-Pro](https://mangopi.cc/mangopi_mqpro)
+    - We're removing FSP stuff from oreboot
+    - D1 will soon be the first and only fully open oreboot + Linux SoC
+    - ESP32 input turned out to be an upstream issue, errata were applied to the HAL, works fine now :)
+
+### Verneri's PMOD probing board
+
+- PMOD [page](https://digilent.com/reference/pmod/start) and [specification](https://digilent.com/reference/_media/reference/pmod/pmod-interface-specification-1_3_1.pdf)
+- https://github.com/chiplet/pmod-probe
+- In his own words: "SD card to PMOD adapter for FPGA emulation"
+- Goals:
+    - Better signal integrity
+    - Cleaner probe wiring for logic analyzers etc.
+- Existing solutions from e.g. [Digilent](https://digilent.com/shop/pmod-tph2-12-pin-test-point-header/) don't have enough ground connections for logic analyzer inputs
+
+### Nezha News
+
+We can boot from SPI flash \o/
+- GPIOs work
+- Serial works; we can print "Rust :crab:"
+- DRAM init is WIP
+- Reading from flash to RAM is also WIP
 
 # April 25, 2022 3:00 PM UTC
 
