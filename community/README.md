@@ -6,14 +6,66 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# June 6, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** June 6, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # May 23, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** May 23, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Verneri
+  - Managed to find a PMOD port on ULX3S that has clock capable input on same pin as on Zybo Z7-10
+  - Ordered test boards, should arrive in about a week
+    - PMOD logic analyzer breakout
+    - microSD to PMOD adapter
+- Dennis
+    - Rich answered after many months to my question about licensing, we're now discussing future outlooks and use cases to determine the proper license for the repo refactor
+    - Found time to dig deeper into SD emulation, figured out where the latency comes from
+- Marvin
+    - Got Seeed Grove HATs for Raspberry Pi test fixture
+    - Still busy with moving but continued on ubmc work on the Pi (spoilers ahead: Made a CFP for the next OSFC about it)
+- Daniel
+    - Got a VisionFive from RISC-V Foundation eventually
+    - Got even more D1 boards \o/
+        - https://github.com/riktw/jeadock
+        - https://www.analoglamb.com/product/dev-lnx0004-allwinner-d1-risc-v64-development-board-dongshan-neza-stu/
+    - D1 DRAM init slooowly progressing :snail: 
+
+### SD emulation updates
+
+- Tried different PIO programs to cut down on the ~5 clock cycle latency
+    - This didn't help, manual JMPs are just as slow as the WAIT instruction
+    - (There also is no one-instruction move from an input to an output)
+- Schmitt triggers and slew control don't do anything for PIO controlled pins
+- Overclocking adventures
+    - Overclocking to 250 MHz works out of the box by adjusting clock dividers, but any faster will cause panics and flash read errors
+        - Core voltage needs to be bumped and flash clock divider upped from 2 to 4
+- **Latency is directly correlated with clock speed**
+    - This means that the signal quality is likely sufficiently good and there is no major impedance mismatch etc.
+    - The source of the latency is the *APB Bridge* between the I/O and PIO, which does buffering to prioritize bandwidth over latency. From Chapter *2.1.3. APB Bridge* in the RP2040 Datasheet:
+        - APB bus accesses take two cycles minimum (setup phase and access phase)
+        - The bridge adds an additional cycle to read accesses, as the bus request and response are registered
+        - The bridge adds two additional cycles to write accesses, as the APB setup phase can not begin until the AHB-Lite write data is valid
+- The latency can be compensated for by storing and looking up the sampled values 5 cycles ago
+- Now that the PIO approach is proven possible, I'll move onto implementing the actual SD state machine and functionality
 
 # May 9, 2022 3:00 PM UTC
 
