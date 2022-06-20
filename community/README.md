@@ -6,14 +6,95 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# June 20, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** June 20, 2022 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis
+    - Discovering new K8s distros for Racklet
+        - Originally intended to use k3s + k3OS for "immutability" and declarative configuration/upgrades
+        - Now discovered [Talos Linux](https://www.talos.dev/), which basically does everything that k3OS does, but better
+- Daniel
+    - Got [boot from (NOR) flash + DRAM init + load from flash to RAM](https://github.com/orangecms/test-d1-flash-bare/tree/dram-rerere) all set on D1
+    - See an [awesome demo](https://asciinema.org/a/502138) :tada: 
+    - https://github.com/oreboot/oreboot/pull/583 documents the boot flow
+    - https://github.com/oreboot/oreboot/pull/585 by Luo Jia introduces a build system for a full image
+    - Distinguishing feature: First firmware with emoji on serial :crab: 
+    - Booting into LinuxBoot with u-root fine so far, but hitting space limit
+    - WIP decompression in oreboot; kernel+initramfs can be shrunk from ~16MB to ~6MB
+    - Will be at [**Embedded World**](https://www.embedded-world.de/en) :wave:
+- Verneri
+    - PMOD boards arrived
+        - Probing board works very well
+        - Heisenbug!
+            - SD traffic works reliably *only* while being probed
+            - Hypothesis: the driver has very fast rise times, and the probe loading limits the rise time.
+            - TODO: Make a SD to PMOD breakout with series resistors to experiment with rise times
+    - SD emulation
+        - Got the project vault SD card to SPI flash configuration working on the [Zybo Z7-10](https://digilent.com/reference/programmable-logic/zybo-z7/start)
+        - Reads from SD card work fine over a USB adapter with test data
+            - However, with real data (FAT partition table) the host flips out, resets and locks up the design :thinking_face:
+- Marvin
+    - Finished u-bmc bootloader for RPi
+    - Advanced further on the u-bmc project in general
+    - Handed in a CFP for this years OCP Global Summit
+    - Started on a RISC-V design for a RMC card (larger scale than Racklet RMC but likely similar functionality minus SD emulation etc.)
+
+### Talos Linux
+
+- Racklet needs a lightweight primary K8s operating system to run on the nodes
+- Talos Linux delivers:
+    - amd64 and aarch64 support
+    - Full immutability
+    - Runs from RAM
+    - Support for node-attached disks using Rook (Cephfs)
+    - **[WireGuard](https://www.wireguard.com/) VPN between nodes** with automatic setup
+    - (Relatively) [low system requirements](https://www.talos.dev/v1.0/introduction/system-requirements/)
+    - Easy [kernel](https://www.talos.dev/v1.0/advanced/customizing-the-kernel/) and [rootfs](https://www.talos.dev/v1.0/advanced/customizing-the-root-filesystem/) customization using containerized builds
+    - `talosctl` to easily provision and upgrade clusters
+    - Full mTLS GRPC between the cluster and `talosctl`
+    - Separate kernel + `vmlinuz` builds
+    - No `systemd`, `OpenRC` or anything else, just a lightweight Golang-based init
+- This checks a lot of the boxes for the security, ease of use and customizability of Racklet
+
 # June 6, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** June 6, 2022 3:00 PM UTC
-- **Host:**
-- **Participants:**
+- **Host:** N/A
+- **Participants:** N/A
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Marvin
+    - Assembled RPi test fixture (3B+ connect to Pico via Grove cables)
+    - Switched over from protoc and gRPC to [Connect](https://connect.build) and [Buf](https://buf.build)
+        - Connect reduced dependencies and is easier to use than gRPC directly (gRPC compatibility given)
+        - Downside: Only Go support as of now (TS/JS planned)
+    - Continued advancing code-base in preparation of next Fridays Hackathon
+- Verneri
+    - Received SD to PMOD and Pmod probe PCBs
+    - Did some more experimentation with the Pi 4 SD interface
+        - Looks like boot sequence frequency also depends on Pi 4 bootloader firmware version
+        - bootloader version `507b2360 2022/04/26` clocks SD card at:
+            - 160kHz enumeration, **33.33 MHz** operation independent of the value of `TRAN_SPEED` in the CSD register. :(
 
 # May 23, 2022 3:00 PM UTC
 
