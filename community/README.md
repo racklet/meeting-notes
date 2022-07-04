@@ -6,6 +6,58 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 18, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** July 18, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
+# July 4, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** July 4, 2022 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Pine64 [launches in the EU](https://pine64eu.com/)! :tada:
+    - Prices are a bit high though, we'll see how this develops
+- Marvin
+    - Installed a Talos Cluster in Hetzner
+        - Ephemeral encryption seems broken...
+    - Researched different ways to publish BMC interfaces via gRPC
+        - [Protobuf Structs](https://developers.google.com/protocol-buffers/docs/reference/csharp/class/google/protobuf/well-known-types/struct)
+        - [Protobuf Generics](https://developers.google.com/protocol-buffers/docs/reference/csharp/class/google/protobuf/well-known-types/any)
+    - Got new BMC cards with AST2400, AST2600 and AST2150 in addition to the AST2500
+- Daniel
+    - WIP oreboot build system changes for full port build with all stages
+    - Based on Luo Jia's work, already got [bt0+main for sunxi/nezha](https://github.com/oreboot/oreboot/pull/590)
+    - Got so many D1 boards now, lost track of what I already shared
+    - 4 [D1 board pages in the wiki](https://linux-sunxi.org/Category:D1_Boards) now (ClockworkPi CM tbd)
+    - People from the [Anachro community](https://anachro.computer/) are planning a D1 hack week in Berlin July 25-31
+    - Embedded World was fun \o/
+    - First Rust :crab: code running on the JH7100 / VisionFive
+- Dennis
+    - Bugfixing and improving Talos at work, PRs coming soon!
+        - Implemented DHCP hostname registration
+        - Fixed setting `talos.platform` via `extraKernelArgs`
+    - Worked on a new tool last week for resetting Epson printers, will be published this week
+    - [Raspberry Pi Pico W](https://www.raspberrypi.com/news/raspberry-pi-pico-w-your-6-iot-platform/) released, might be interesting with its WiFi+BT+BLE capabilities
+        - ESP32 rival with essentially a much better software ecosystem
+    - Pico (RP2040) as a logic analyzer: https://hackaday.com/2022/03/02/need-a-logic-analyzer-use-your-pico/
+        - Need to research the code to see how synchronization and data streaming is implemented
+
 # June 20, 2022 3:00 PM UTC
 
 :::info
