@@ -6,14 +6,58 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 1, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** August 1, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # July 18, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** July 18, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis:
+    - Still working on DHCP fixes for Talos Linux, but it's finally getting there in [PR #5897](https://github.com/siderolabs/talos/pull/5897)
+        - Depends on some fixes to the underlying DHCP library
+        - Different DHCP server implementations are quite quirky, coming up with a generic solution for bidirectional hostname passing was not easy
+    - That de-facto DHCP library used by Go projects is not the most elegant to work with, see lengthy discussion with the maintainer in [PR #469](https://github.com/insomniacslk/dhcp/pull/469)
+        - There are a bunch of PRs just lying around
+        - Will need to submit another one still that implements easy access to DHCPINFORM
+    - Other misc. things: Fixed a 1541 floppy disk drive over the weekend, it had a broken 6502 CPU :D Wrote some debug tooling:
+        - https://github.com/twelho/sram-tester
+        - https://github.com/twelho/rom-tester
+    - [Kestrel SoftBMC](https://gitlab.raptorengineering.com/kestrel-collaboration/kestrel-litex/litex-boards/-/tree/master)
+- Marvin:
+    - Successfully installed a Talos Cluster with last time discussed fixes
+    - Got hold of even more BMC cards (including AST2600) to try software on
+    - Continued general development on u-bmc
+        - Currently making more things more configurable (e.g. no `sh` mode like Talos has)
+        - Integrated Generics and Structs into the RPC API in the [schema repo](https://github.com/u-bmc/schema/blob/988dc77fe18541e8eca79364cedc0147d32c8f8b/bmcapis/management/v1alpha1/management.proto)
+        - OpenTelemetry on hold until their metrics interface is out of alpha (for now the full OpenMetrics implementation works)
+- Daniel
+    - Got memory mapping to work on the [JH7100](https://starfivetech.com/en/site/soc) (VisionFive) \o/
+        - [Documented setup for booting via mask ROM from SRAM + continue via flash up into U-Boot](https://github.com/oreboot/oreboot/pull/587)
+        - Hoping that we can reuse code for the upcoming JH7110 (not many details public yet, marketing calls it a "quad core upgrade" compare to JH7100)
+    - Started [u-apps for platform exploration](https://github.com/platform-system-interface/u-apps) based on [Bubble Tea 🧋](https://github.com/charmbracelet/bubbletea)
+        - Drafts: `msrexplore` for x86 MSRs, `teaboot` as a fancier boot menu
+        - TBD: `csrexplore` and ARM counterparts
+    - Getting [Wi-Fi to work with the D1](https://github.com/lwfinger/rtl8723ds) (MangoPi and Lichee RV Dock), will attend a D1 hack week next week
 
 # July 4, 2022 3:00 PM UTC
 
@@ -37,8 +81,8 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Installed a Talos Cluster in Hetzner
         - Ephemeral encryption seems broken...
     - Researched different ways to publish BMC interfaces via gRPC
-        - [Protobuf Structs](https://developers.google.com/protocol-buffers/docs/reference/csharp/class/google/protobuf/well-known-types/struct)
-        - [Protobuf Generics](https://developers.google.com/protocol-buffers/docs/reference/csharp/class/google/protobuf/well-known-types/any)
+        - [Protobuf Structs](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct)
+        - [Protobuf Generics](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Any)
     - Got new BMC cards with AST2400, AST2600 and AST2150 in addition to the AST2500
 - Daniel
     - WIP oreboot build system changes for full port build with all stages
