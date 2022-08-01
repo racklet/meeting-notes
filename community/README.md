@@ -6,14 +6,53 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 15, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** August 15, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # August 1, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** August 1, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis:
+    - More work on fixing Talos Linux, DHCP servers are weird
+        - RFC 2131 is kind of ambiguous wrt. how options transfer during renewals
+        - Got the implementation working with both dnsmasq and the Windows DHCP server finally
+    - Testing out the cloud-init [nocloud support](https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html)
+        - Works quite well with hypervisor platforms like Proxmox, hopefully something like this "standard" could also be used to transfer node-specific metadata to Racklet compute nodes without needing to bake an image per node
+    - Otherwise been really busy, haven't gotten around to working on the SD emulation more
+- Daniel:
+    - D1 ups and downs
+        - Figured out how to enable cache, now it's fast
+        - Page load faults are popping up, but consistently with the same kernel components
+        - Other errors show up, might be related, but things got complex
+        - Can't get the extended MMU attributes (`MXSTATUS` bit `MAEE`) to work, has been an issue for a long while
+            - Debugging... lots of printf/`sbi_console_putchar` -_-
+    - Prototyping [SBoM features in Fiedka](https://github.com/fiedka/fiedka/issues/60)
+        - CoSWID does _not_ allow for verification, only lists claims
+            - Missing references to sources and locations in image
+        - SBC / Racklet firmware should have something, too!
+        - Want to push [AFI / Auditable Firmware Implementation](https://github.com/platform-system-interface/psi-spec/issues/4)
+    - [Pine64 update](https://www.pine64.org/2022/07/28/july-update-a-pinecil-evolved/) released
+        - JH7110 confirmed, will be larger form factor, like Quartz64 model-A
+        - Board name will be Star64
 
 # July 18, 2022 3:00 PM UTC
 
