@@ -6,14 +6,57 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 29, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** August 29, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # August 15, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** August 15, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Dennis:
+    - Still working on the DHCP hostname support in Talos Linux
+        - Lots of pinging finally got the FB/Meta engineers going...
+        - More changes requested week after week, but hopefully I'm closing in on the finish line
+    - Summer job now finished so will start to allocate a bit more time to working on Racklet and SD emulation
+        - Explained Racklet to some more curious people and they really liked it and want to stay updated :)
+    - Planning a Rust MOOC (Massive Open Online Course) in my university - the embedded side will also be represented, but still early stages
+- Daniel:
+    - Squashed the [underlying bug in rust-embedded/riscv that haunted us for a year](https://github.com/rust-embedded/riscv/pull/107)
+    - Now the D1 is super fast, with caching and ISA extensions working
+        - Got it to offer ethernet over USB gadget mode, running `cpud`
+        - You now have a `cpu` in your USB port! \o/
+        - Useful for Racklet?
+    - Drafting a [`boardcfg`](https://github.com/platform-system-interface/u-apps/issues/2) command for DTB config on a LinuxBoot system
+- Marvin:
+    - Buf released [Connect-Web](https://buf.build/blog/connect-web-protobuf-grpc-in-the-browser)
+    - u-bmc schema already integrated support for connect-web
+    - Continued working with Talos and started adding more SBC support (NanoPi R4S)
+    - u-bmc cluster management (e.g. Racklet) still WIP, advancements are made
+    - TUF support with A/B UBIFS scheme being worked on for u-bmc
+    - Raspberry Pi support continues advancing, likely working by the end of the week
+- Verneri:
+    - Moving to a new apartment
+        - Electronics stuff is already in boxes so FPGA stuff is on hold for some time.
+    - Also contributing to the Rust MOOC
 
 # August 1, 2022 3:00 PM UTC
 
@@ -53,6 +96,14 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - [Pine64 update](https://www.pine64.org/2022/07/28/july-update-a-pinecil-evolved/) released
         - JH7110 confirmed, will be larger form factor, like Quartz64 model-A
         - Board name will be Star64
+- Marvin (PTO):
+    - buf released [buf studio](https://buf.build/blog/buf-studio)
+    - Continued with u-bmc development
+        - gRPC schema taking shape
+        - initial testing on qemu and raspberry pi
+        - preparing design for multi node management (e.g. for Racklet)
+        - extend configuration management with etcd support
+        
 
 # July 18, 2022 3:00 PM UTC
 
