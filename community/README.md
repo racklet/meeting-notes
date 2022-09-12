@@ -6,14 +6,64 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# August 29, 2022 3:00 PM UTC
+# September 26, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** August 29, 2022 3:00 PM UTC
+- **Date:** September 26, 2022 3:00 PM UTC
 - **Host:**
 - **Participants:**
 :::
+
+# September 12, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** September 12, 2022 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen, @chiplet
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Marvin:
+    - Talos PRs are merged and are scheduled for 1.3.0
+    - A lot of u-BMC worked happened
+        - CI and build system now based on [Dagger](https://dagger.io)
+        - Pico firmware boots and works to some degree, still needs more interface implementations
+        - WebUI [repo](https://github.com/u-bmc/ink) made public as there isn't much work I could do in private
+        - Renovate running on all repos to stay up-to-date
+        - schema repo got a new API for firmware flashing
+        - go-tuf got new releases :)
+        - other OSFC preps for next week
+- Dennis:
+    - Updated https://github.com/siderolabs/talos/pull/5897
+        - Located and fixed the final DHCP update failure, INFORM requests were not received due to incorrect filtering
+        - The first [DHCP PR](https://github.com/insomniacslk/dhcp/pull/469) was merged! :tada:
+        - The [second one](https://github.com/insomniacslk/dhcp/pull/470) will still need to be split out into multiple smaller PRs... 
+
+# August 29, 2022 3:00 PM UTC
+
+:::info
+No meeting
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Marvin:
+    - Ported Talos to the NanoPi R4S: [pkgs](https://github.com/siderolabs/pkgs/pull/554) and [Talos](https://github.com/siderolabs/talos/pull/6111)
+    - Continued working on hardware simulator
+        - recent TinyGo 0.25 added the missing the RP2040 USB stack (needed for communication between UI and simulator MCU)
+        - simulator UI made with [Bubbletea](https://github.com/charmbracelet/bubbletea/) and [Lipgloss](https://github.com/charmbracelet/lipgloss/)
+    - Continued modelling u-bmc webui with multiple machine management in mind (e.g. Racklet)
+    - Continued with u-bmc build system improvements and automation
 
 # August 15, 2022 3:00 PM UTC
 
