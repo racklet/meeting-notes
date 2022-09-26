@@ -6,14 +6,65 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# October 10, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** October 10, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # September 26, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** September 26, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Daniel
+    - Will get started with FPGA things now, too (iCE40)
+        - 2x [OrangeCrab board](https://1bitsquared.com/products/orangecrab), one of each size variant, big one can be RV64
+        - 1x [Tillitis Key](https://tillitis.se/) - not sure yet what to do
+    - oreboot has been overhauled completely, with only sunxi/nezha remaining
+        - VisionFive 1 is being reworked, can already boot through first stage
+        - [VisionFive 1 is missing docs](https://groups.google.com/a/riscv.org/g/devboard-community/c/utStFu8Q3A0)
+        - SiFive made a tool for [generating SVD from DTS](https://github.com/sifive/cmsis-svd-generator/issues/16)
+        - https://metaspora.org/oreboot-status-2022.pdf
+    - Getting back to Fiedka
+        - https://metaspora.org/firmware-sbom-annotations-audits.pdf
+        - [Runtime Behavior Analysis](https://github.com/fiedka/fiedka/issues/73)
+    - [Platform System Interface / Auditable Firmware Implementation](https://github.com/platform-system-interface/psi-spec/issues/4)
+    - Solaris on ARM and RISC-V:
+        - https://github.com/n-hys/illumos-gate/wiki
+        - https://www.twitch.tv/toasterson
+- Dennis:
+    - A lot of school work
+    - Still working on the DHCP PRs
+
+### Decoupling Device Trees from the kernel
+
+- UEFI+ACPI enables board-agnostic images
+- But so does DT as it is possible for the firmware to provide the DT to the kernel
+    - Supported by e.g. kexec as well as U-Boot
+        - **Lack of awareness** that this can be done
+    - However, no vendor currently does this as the firmware is also shipped on the same SD card as the kernel + OS
+        - This could be rectified by shipping the firmware as part of the board in e.g. a SPI flash
+        - Lack of interest in supporting this approach without persistent on-board memory
+    - For Racklet we would like to have the per-SBC BMCs provide the board-specific firmware so all boards are in an identical state when loading the kernel, this means that the board-specific DT is also provided by the firmware
+    - Issue: the Racklet project would need to maintain an ARM version of something like [XanMod kernel](https://xanmod.org/) or [Liquorix kernel](https://liquorix.net/) which carries all of the non-upstreamed patches for various boards and enables enough drivers so the kernel can be generic
+        - Maybe it would be possible to pool efforts into co-maintaining such a kernel with distros that could benefit from it as well?
+    - **TODO:** Look into how versioning of DTs is implemented in Linux - can you boot a modern kernel even if the firmware provides a DT that is slightly out of date? Has the decoupled DT model ever been validated?
+        - It seems that backwards compatibility is currently just a verbal contract: ["the kernel implementation must still recognize the old binding until old devicetrees have been obsoleted and no longer exist"](https://elinux.org/Device_Tree_Linux#forward_and_backward_dts_compatibility)
+- DT version confusion: spec is at [v0.3](https://www.devicetree.org/), but files state 1.0?
 
 # September 12, 2022 3:00 PM UTC
 
