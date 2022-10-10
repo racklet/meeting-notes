@@ -6,14 +6,57 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# October 24, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** October 24, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # October 10, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** October 10, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+- Dennis
+    - Split the [INFORM PR](https://github.com/insomniacslk/dhcp/pull/470) into small fragments, and got all of them finally merged :tada: 
+        - The INFORM PR itself remains however, so I'll need to ping the maintainers once more
+        - After this I can finally merge the [Talos PR](https://github.com/siderolabs/talos/pull/5897)
+    - Published a new [talos-bootstrap](https://github.com/twelho/talos-bootstrap) tool for bootstrapping provisioned Talos Linux clusters
+        - Feature and fix contributions welcome
+        - Currently written in Python, but will rewrite in Go at some point if this gains enough traction
+            - Avoid needing to `exec` binaries in favor of vendoring the tools directly
+- Daniel
+    - Got a bunch of [CH347](https://www.tindie.com/products/johnnywu/ch347-development-board/) boards (multiple UART, SPI, I2C, JTAG)
+    - Switched to working more on UEFI things
+        - [UEFI PI in Rust](https://github.com/orangecms/uefi-pi-rs)
+        - [UEFI apps in Rust](https://github.com/orangecms/uefi-rs)
+        - Goal: An environment for explo(it|or)ing UEFI binaries
+            - Similar to [Qiling](https://qiling.io/) (Renode, Unicorn wrapper)
+- Marvin (absent):
+    - Working on releasing current u-bmc state into the wild
+        - general cleanups
+        - buildsystem simplifications
+        - validation of new code on hardware
+    - Was contacted by ARM to help with SBMR spec and get u-bmc listed as reference next to OpenBMC
+    - Received access to more hardware for porting
+        - Asus Z10PA-D8 with schematics
+        - OCP Leopard (original machine u-bmc had been developed on)
+        - HPE DL360-PoC (modified HPE server with unfused GXP SoC)
+    - Multi machine (cluster) managed continues advancing
+        - clients will be able to address servers similar as kubectl can access a cluster
+    - Experimental Linux Unikernel patches released (enticing for u-bmc):
+        - Would allow single binary/process to be linked into Linux kernelspace
+        - Article: https://www.phoronix.com/news/Linux-Unikernel-RFC
+        - Repo: https://github.com/unikernelLinux/ukl
 
 # September 26, 2022 3:00 PM UTC
 
