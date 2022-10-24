@@ -6,14 +6,91 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# November 7, 2022 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** November 7, 2022 3:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # October 24, 2022 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** October 24, 2022 3:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Daniel
+    - Attended the [RISC-V dev board program meeting](https://groups.google.com/a/riscv.org/g/devboards-program)
+    - Put the [ClockworkPi D1 module in a Waveshare PoE board](https://linux-sunxi.org/ClockworkPi_R01#Waveshare_Compute_Module_PoE_Board) meant for RPi CM3 :tada:
+        - Started a [board variant with a driver for SD cards in oreboot](https://github.com/orangecms/oreboot/tree/clockworkpi-r01)
+    - Started working on [SBoM utilities](https://github.com/platform-system-interface/sbom) in Rust (basics) and Go (turns out, [already done by 9eSec!](https://github.com/9elements/goswid/))
+    - Found that [Sipearl opened an office in Duisburg, right in my neighbor town](https://sipearl.com/en/sipearl-duisburg)
+        - They are part of [EPI (European Processor Initiative)](https://www.european-processor-initiative.eu/project/consortium/)
+        - They do [RISC-V](https://sipearl.com/en), Linux and UEFI things
+- Dennis
+    - The [final dhcp PR](https://github.com/insomniacslk/dhcp/pull/470) has stalled a bit, hopefully I get a response within this month so I can get the Talos PR finally merged...
+    - Next period just started at uni, quite busy with assignments atm.
+    - Read a bit about [Open Firmware](https://en.wikipedia.org/wiki/Open_Firmware)
+        - https://wiki.laptop.org/go/Open_Firmware
+- Marvin
+    - Busy with project deadlines, almost no u-bmc/racklet work
+    - Started a bit reversing the HPE GXP (HPEs new BMC SoC) pre u-boot [bootblock](https://github.com/HewlettPackard/gxp-bootblock)
+- Verneri
+    - Lab setup is now complete
+    - Procrastinated on coursework by looking into backplane signaling
+        - USB Full-Speed has quite slow frequency and rise times so sending data through standard pin headers shouldn't be a problem. (Computer motherboards already for front panel USB).
+    - Looking to order components for the next prototype quite soon.
+- Compute adapter notes
+    - standardized Pi BMC hat with interfaces exposed to connectors
+
+### Documenting supported SBCs
+
+- New repo to track board specs:
+    - [racklet-boards](https://github.com/racklet/racklet-boards)
+    - board metadata in a [toml](https://toml.io/en/v1.0.0) file:
+        - `sbc/<vendor>/<model>/physical.toml`:
+
+```toml
+[dimensions]
+# Dimensions are measured wrt. the primary side, which is defined as the side
+# where the Ethernet port is located. If there are multiple ethernet ports,
+# pick the (first) one that makes the width the smallest. The dimensions are
+# determined by holding the board in one's hand and looking at the board from
+# the primary side.
+
+# The width and depth represent the size of the PCB without any connectors,
+# while the height represents the total height from the bottom of the PCB to
+# the tallest point of the tallest connector (e.g. the lip on the USB connector
+# on the Pi 4).
+
+# Example dimensions for a Raspberry Pi 4 Model B
+# https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf
+width = 56 # The topmost dimension in the above document (millimeters)
+height = 18 # Measured by hand, includes USB connector lip (millimeters)
+depth = 85 # The rightmost dimension in the above document (millimeters)
+
+[power]
+connector = "usb-c" # Power connector type (lowercase string)
+voltage = 5 # Input voltage (volts)
+current = 2 # Maximum current draw excluding all peripherals (amps)
+
+[hardware]
+threads = 4 # Amount of logical threads (positive integer)
+memory = [ 1024, 2048, 4096, 8192 ] # Available RAM configurations (mebibytes)
+```
 
 # October 10, 2022 3:00 PM UTC
 
