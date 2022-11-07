@@ -1,19 +1,57 @@
 # Racklet Community Meeting Notes 2022
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/GNrvcfXqSUaHeehBgfzTAg/badge)](https://hackmd.io/GNrvcfXqSUaHeehBgfzTAg)
 
 [TOC]
 
-# November 7, 2022 3:00 PM UTC
+# November 21, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** November 7, 2022 3:00 PM UTC
+- **Date:** November 21, 2022 4:00 PM UTC
 - **Host:**
 - **Participants:**
 :::
+
+# November 7, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** November 7, 2022 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+:::
+
+## Agenda/Notes
+
+### Biweekly recap
+
+- Daniel
+    - Attended another RISC-V dev board program meeting
+        - Communicated that the program is missing the gap between hardware and distros, i.e., firmware and kernel development / patches / upstreaming is rather neglected
+    - Got the JH7100 (VisionFive 1) first stage done and multi-stage setup prepared
+    - D1 SD card support in oreboot is WIP
+        - might get tackled end of November/start of December
+    - Sipeed announced more boards
+        - Kendryte SoC based on quite capable [T-Head C920 core](https://www.ithome.com/0/650/986.htm) (December)
+        - [Campaign for BL808](https://www.indiegogo.com/projects/sipeed-maix-new-experience-to-risc-v-aiot-tinyml#/) AIoT boards
+            - Bouffalo Lab [published the PAC](https://github.com/bouffalolab/bl808-pac) already
+    - Found a [RISC-V core generator thingy](https://chromite.readthedocs.io/en/latest/overview.html)
+- Dennis
+    - [racklet-boards](https://github.com/racklet/racklet-boards) is now set up thanks to Verneri!
+        - We will aggregate key physical and firmware/software details of various SBC boards in this repo from different sources
+        - **Note:** not all of the boards that are in this repository will be automatically supported by Racklet, right now it is just for gathering information about typical dimensions etc. to ensure current and future board compatibility
+    - Thinking about the physical design again as we'll need to accomodate larger SBCs as well now that boards like the [VisionFive 2](https://www.starfivetech.com/en/site/boards) and [Rock 5](https://linuxgizmos.com/rock-5-sbc-features-octa-core-rk3588-16gb-ram-and-triple-displays/) have fully abandoned the Raspberry Pi form factor (but still keep the header!) in favour of Pico ITX
+        - The final design will probably keep the vertical SBC slots in a tray, but the height of the tray might be 3U instead of 2U depending on what we want to make fit
+- Marvin
+    - Received the hardware to work on for more BMC platforms other than ASpeed
+    - Ffinished the design of the operators PID1/supervisor functionality, allowing easier integration of arbitrary (non-go) programms included on the BMC side of things.
+        - This might be helpful for example to provide a service that distributes the emulated SD images to the racklet nodes.
+        - The supervisor interface supports cgroups(v2) and namespaces.
 
 # October 24, 2022 3:00 PM UTC
 
