@@ -6,14 +6,41 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# December 5, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** December 5, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # November 21, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** November 21, 2022 4:00 PM UTC
-- **Host:**
+- **Date:** November 7, 2022 4:00 PM UTC
+- **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
 :::
+
+## Agenda/Notes
+
+### Biweekly Recap
+
+- Daniel
+    - [FOSDEM Devrooms are up](https://fosdem.org/2023/schedule/)
+        - CfPs open for [Firmware, BMC and Bootloaders](https://fosdem.org/2023/schedule/track/open_source_firmware_bmc_and_bootloader/) and [RISC-V](https://fosdem.org/2023/schedule/track/risc_v/)
+    - Started drafting [psi-spec](https://github.com/platform-system-interface/psi-spec) eventually
+        - Rough [outline](https://github.com/platform-system-interface/psi-spec/issues/12) noted down, will present on it at [Fire Shonks :fire: :shark:](https://events.haecksen.org/fireshonks/) if accepted
+    - Conducted case study on rewriting [JH7100 DRAM init](https://github.com/starfive-tech/JH7100_ddrinit) in Rust :crab:
+        - About 5000 magic values written to magic registers
+- Marvin
+    - Continued BMC work, target to release this year still active
+    - Initial BMC work on GXP SoC started
 
 # November 7, 2022 4:00 PM UTC
 
@@ -28,7 +55,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 ## Agenda/Notes
 
-### Biweekly recap
+### Biweekly Recap
 
 - Daniel
     - Attended another RISC-V dev board program meeting
@@ -49,9 +76,11 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
         - The final design will probably keep the vertical SBC slots in a tray, but the height of the tray might be 3U instead of 2U depending on what we want to make fit
 - Marvin
     - Received the hardware to work on for more BMC platforms other than ASpeed
-    - Ffinished the design of the operators PID1/supervisor functionality, allowing easier integration of arbitrary (non-go) programms included on the BMC side of things.
+    - Finished the design of the operators PID1/supervisor functionality, allowing easier integration of arbitrary (non-go) programms included on the BMC side of things.
         - This might be helpful for example to provide a service that distributes the emulated SD images to the racklet nodes.
         - The supervisor interface supports cgroups(v2) and namespaces.
+
+We drafted something: https://github.com/orangecms/racklet-rack-sketch
 
 # October 24, 2022 3:00 PM UTC
 
