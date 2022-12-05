@@ -6,14 +6,45 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# December 19, 2022 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** December 19, 2022 4:00 PM UTC
+- **Host:**
+- **Participants:**
+:::
+
 # December 5, 2022 4:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** December 5, 2022 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+## Agenda/Notes
+
+### Biweekly Recap
+
+- Daniel
+    - VisionFive / JH7100
+        - Rewrote the vendor's [DRAM init code in Rust](https://github.com/oreboot/oreboot/pull/606) - it works :crab:
+        - Found a (double) [bug in vendor DRAM code](https://github.com/starfive-tech/JH7100_ddrinit/issues/14)
+    - Got two BL808 boards, will get more
+    - Got some [Rust code running on the WCH CH32V307](https://github.com/orangecms/ch32v307-rust)
+        - Talked about that [at Backspace](https://metaspora.org/microcontrollers-and-rust-wch.pdf)
+- Dennis
+    - Modern, powerful Rockchip boards such as the [Orange Pi 5](https://www.cnx-software.com/2022/11/11/orange-pi-5-most-affordable-rockchip-rk3588s-sbc/) support M.2 NVMe and thus PCIe
+    - Found some interesting M.2 PCIe to SATA adapter "cards":
+        - [2 port version](https://www.aliexpress.com/item/1005003353219891.html)
+        - [6 port version](https://www.aliexpress.com/item/1005004543725000.html)
+    - These SATA adapters could be used instead of USB for more reliable storage in Racklet systems, e.g. the JMicron USB adapters are quite flakey (UAS unreliable, SMART doesn't work out-of-the-box), and one would need to find ASM1153E-based solutions etc. which are quite rare
+        - However, USB is much more versatile and we might now have space for SATA connectors sticking out of the back of SBCs
+        - And chips like the ASM1153E can be [purchased standalone](https://www.aliexpress.com/wholesale?catId=0&origin=y&SearchText=asm1153e) if we feel comfortable enough in designing our own HDD backplane
 
 # November 21, 2022 4:00 PM UTC
 
