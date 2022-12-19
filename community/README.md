@@ -11,9 +11,27 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 :::info
 - **Location:** https://meet.jit.si/racklet-community
 - **Date:** December 19, 2022 4:00 PM UTC
-- **Host:**
+- **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+## Agenda/Notes
+
+### Biweekly Recap
+
+- Daniel
+    - VisionFive / JH7100
+        - Got cacheable DRAM to work (missed a function from vendor code)
+    - [Fiedka v1.4.0 released](https://github.com/fiedka/fiedka/releases/tag/v1.4.0)
+    - Will be giving two talks at the end-of-the-year event
+        - One comparing oreboot on two platforms
+        - One on platform and system interfaces, mentioning Racklet :)
+- Dennis
+    - Discussion: Using DeviceTree as a single source of truth for creating SoC/board hardware descriptions?
+        - DeviceTree supports custom metadata with custom nodes, but try to find an existing one for your data first
+        - DeviceTrees are parsed by multiple components, e.g. U-Boot and Linux, which might parse/interpret differently
 
 # December 5, 2022 4:00 PM UTC
 
