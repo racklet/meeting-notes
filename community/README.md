@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# January 30, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** January 30, 2023 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # January 16, 2023 4:00 PM UTC
 
 :::info
@@ -13,7 +22,35 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** January 16, 2023 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Did some community discovery:
+    - Browsing through the history of the [#arm64](kubernetes.slack.com/messages/arm64) channel on the Kubernetes Slack – lots of relevant content for running the Kubernetes ecosystem on Racklet
+    - https://www.reddit.com/r/picluster/
+- Watched the first recording of Daniel's series on the VisionFive
+    - It's a really great resource for beginners and more experienced people as well
+    - Highly recommend following along either live or checking out the [playlist](https://www.youtube.com/playlist?list=PLenOHeTI_A9PSGshDnEc4dYK-GSnCshk6)
+
+## Racklet Rack Design Update
+
+- Dennis: thought a bit more about the physical rack after last week's mention of the Antmicro cluster and came up with a solid design:
+    - **2U chassis**: 7 compute modules with 2.5" SSDs/HDDs behind SBCs of the Raspberry Pi form factor
+    - **3U chassis**: 7 compute modules with 3.5 HDDs behind SBCs with a port-side width of at most 12 cm (Nano-ITX, although the maximum allowable depth must be double-checked)
+    - Both chassis dedicate the rightmost compute unit for chassis management and RMC tasks
+    - 14 compute nodes in total, which fits very well with a 16-port Ethernet switch (basically the largest size available for the 10" form factor)
+        - Final two ports can be used for chaining/debugging and for providing a WAN connection
+        - Single-chassis setups can also be served by a commodity 8-port switch
+    - 6 nodes per tray dedicated to the workload
+        - Ideal for e.g. Kubernetes HA: 3+3 master/worker split
+    - Fully loaded reference configuration of (from the top) 3U chassis, network switch and 2U chassis fits into the nominal 6U rack size
+        - 2U chassis and network switch shallow enough to fit the power supplies (probably a reduced size, e.g. SFX) behind them
+    - Minimal configuration with one 2U chassis and a 8-port network switch can fit into just 3 rack units
 
 # January 2, 2023 4:00 PM UTC
 
