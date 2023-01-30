@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 13, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** February 13, 2023 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # January 30, 2023 4:00 PM UTC
 
 :::info
@@ -13,7 +22,79 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** January 30, 2023 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Sipeed may offer a 64-core board with a few DRAM slots
+    - https://twitter.com/SipeedIO/status/1620011587720589312
+    - It likely comes with LinuxBoot by default
+    - https://github.com/sophgo/bootloader-riscv/tree/master/u-root
+    - SoC etc would technically be small enough for a Racklet fit
+- People doing interesting stuff on RISC-V
+    - http://oberon.wikidot.com/project-oberon-v an Oberon port
+- Factored out the log library in oreboot
+    - Took a few iterations, now based on a Mutex
+    - https://github.com/oreboot/oreboot/pull/670 was the last PR so far
+    - Works on D1 and BL808 (both C906 core), not yet on JH7100 (U74 something core, seems to hang on atomics)
+    - SBI to follow, would be factored out from D1
+
+### Dennis
+
+- Thought about and evaluated options for distributed storage – is it actually feasible enough for Racklet, or should we abandon the idea and just go with a JBOD solution?
+    - Seems to be feasible, though no current solution is really suitable
+    - Ceph (through [Rook](https://rook.io/)) is too heavy
+    - Longhorn uses outdated iSCSI (i.e. won't work in Talos) and is quite inefficient with storage (has nice snapshots though)
+        - Nice dashboard
+        - Work ongoing to migrate to NVMEoF (great for Racklet), but still [some ways out](https://github.com/longhorn/longhorn/issues/3202)
+    - OpenEBS Jiva also uses iSCSI, but is at least somewhat supported by Talos, performance is another question entirely
+    - OpenEBS Mayastor (NVMEoF) is *very* early alpha software, missing crucial reliability and scalability features
+- We can however implement our own storage stack based on the modern, but already battle-tested [JuiceFS](https://juicefs.com/en/), details [below](#Thoughts-on-Distributed-Storage)
+- Following the (slow-ish) RK3588 u-boot enablement:
+    - There's now an [AUR repo](https://aur.archlinux.org/packages/rk3588-uboot-git)
+    - Some work potentially heading upstream [here](https://github.com/rockchip-linux/u-boot)
+
+### Marvin
+
+- Quite some work went into the BMC stack again
+    - Likely first real showcase during [OCP regional summit](https://www.opencompute.org/summit/regional-summit) (19-20 April, 2023)
+    - Boards now integrated into test-rack
+    - WebUI for cluster management still WIP
+    - Complete source release planned in March (*hard deadline for OCP, so this time for real*)
+    - Found a much easier way for A/B scheme after not being satisfied with Androids A/B
+    - Potentially adding optional OpenAPI/Swagger support as it can be generated from protobufs
+- Raspberry Pi [Compute Blades](https://www.jeffgeerling.com/blog/2023/hyperscale-your-homelab-compute-blade-arrives) entered Kickstarter :)
+    - https://computeblade.com/
+- Sidenote: We (9e) are now ARM SystemReady [partners](https://www.arm.com/architecture/system-architectures/systemready-certification-program/partners), so expect some more ARM work
+
+### Verneri
+
+- Reorganized electronics-prototyping repo a bit.
+- Thinking about designing a racklet dev board (for sw prototyping / bringup). What interfaces do we need?
+    - RP2040
+    - USB
+    - ...
+- Modular (inspired by https://oxide.computer/podcasts/oxide-and-friends/1173990)
+    - rackletlet? :D
+
+## Thoughts on Distributed Storage
+
+- Dennis: thought about composing a distributed, high-performance storage solution that is both modern and lightweight enough for Racklet
+    - [JuiceFS](https://juicefs.com/en/) CSI driver backed by [KeyDB](https://docs.keydb.dev/) running in [Active Replication ("Active Active")](https://docs.keydb.dev/docs/active-rep) and [FLASH](https://docs.keydb.dev/docs/flash/) mode (leveraging [RocksDB](https://rocksdb.org/)) for both metadata and objects
+    - This should be full HA and tolerate e.g. spontaneous node removal
+        - "Active Active" mode has split brain prevention
+    - JuiceFS offers amazing flexibility if we want to back the storage of a Racklet cluster externally
+    - Resource consumption should be *much* lower than Ceph
+    - Performance should be noticeably higher than Ceph/Longhorn/Jiva
+        - **TODO:** to be benchmarked, right now this setup is purely theoretical
+        - Most of the performance of Mayastor without all of its reliability downsides and lack of features
+    - Notably all components of this stack are actively tested and verified to work on ARM
 
 # January 16, 2023 4:00 PM UTC
 
