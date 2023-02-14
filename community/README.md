@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 27, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** February 27, 2023 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # February 13, 2023 4:00 PM UTC
 
 :::info
@@ -13,7 +22,48 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** February 13, 2023 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Been to FOSDEM, still recovering a bit - interesting talks
+    - [Hardware-backed attestation in TLS](https://fosdem.org/2023/schedule/event/security_hw_backed_attestation/) (Cloud and IoT POV, with Parsec+Veraison)
+    - [Rust based Shim-Firmware for confidential container
+](https://fosdem.org/2023/schedule/event/cc_online_rust/) (Intel)
+    - [Open Source Confidential Computing with RISC-V](https://fosdem.org/2023/schedule/event/cc_riscv/)
+      (Salus hypervisor by Rivos)
+- Did more dev streams
+    - [oreboot on BL808, second video](https://www.youtube.com/playlist?list=PLenOHeTI_A9MwA0HlNogiJVvU5RtsDSz9)
+    - [LinuxBoot, Fiano and Fiedka playlist with 2 videos already](https://www.youtube.com/playlist?list=PLenOHeTI_A9OolDEoreItEjylw5do4XxH)
+        - Fiedka tutorial for various firmware images and injecting LinuxBoot
+        - Fiano PR review for parsing Intel microcode updates
+- Worked on oreboot docs
+    - Rewrote the [README](https://github.com/oreboot/oreboot/#oreboot-readme) (sorry, it's been outdated for too long)
+    - TODO: build Rust docs for the boards, deploy them to GitHub pages
+
+### Dennis
+
+- Finishing up school work, haven't had time to look into SD emulation further yet
+- Dug into the details of various RK3588(S) SBCs
+    - Will probably acquire a [ROCK 5 Model B](https://wiki.radxa.com/Rock5/5b) 16 GB
+        - Exclusively uses USB-C PD for power input, but later figure out that you can actually [power it over 5V through GPIO](https://forum.radxa.com/t/powering-rock-5b/10759/5), which is great news for Racklet
+            - Small PD inconsistency results in some PD adapters not being compatible: https://wiki.radxa.com/Rock5/5b/power_supply
+        - Full PCIe 3.0 x 4 on the bottom for NVMe
+        - 2.5 Gbit ethernet is an additional bonus for future-proofing
+        - "Stock" heatsink quite tall, but mounting pattern seems simple enough so that we can make/acquire [a lower-profile one](https://shop.allnetchina.cn/products/rock5-b-acrylic-protector?variant=39877626429542)
+    - The [Orange Pi 5](https://www.cnx-software.com/2022/11/11/orange-pi-5-most-affordable-rockchip-rk3588s-sbc/) has the cut-down RK3588S SoC, quite large footprint and questionable long-term support
+    - The [Khadas Edge2](https://www.khadas.com/edge2) lacks connectors and is very expensive for some reason
+    - The [NanoPi R6S](https://www.cnx-software.com/2022/10/28/nanopi-r6s-rockchip-rk3588s-router-mini-pc-dual-2-5gbe-gbe-hdmi-2-1/) has 3 gigabit or above Ethernet ports, might work well for routing purposes
+- Off-topic: VisionFive 2 seems to also be [available](https://shop.allnetchina.cn/collections/top-new-arrivals/products/starfive-visionfive-2-quad-core-risc-v-dev-board) now
+
+### Verneri
+
+- Busy with studies
 
 # January 30, 2023 4:00 PM UTC
 
