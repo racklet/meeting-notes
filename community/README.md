@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# March 13, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** March 13, 2023 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # February 27, 2023 4:00 PM UTC
 
 :::info
@@ -13,7 +22,74 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** February 27, 2023 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Got a VisionFive 2 (yea...)
+    - Forked/improved [XMODEM Rust library](https://github.com/nycresistor/xmodem.rs/pull/1) and made a [Rust CLI tool](https://github.com/orangecms/vf2-loader) replacing the [C tool](https://github.com/xypron/JH71xx-tools) that [Heinrich had to fix up](https://github.com/starfive-tech/Tools/issues/3)
+    - Someone [rewrote the tool adding the necessary header to a firmware image based on my reversing](https://github.com/starfive-tech/Tools/issues/1), picked up by StarFive again
+    - Docs are not really there yet, just [some HTML draft, confusing and missing lots of necessary information](https://doc-en.rvspace.org/JH7110/TRM/JH7110_TRM/gpio_oen_list.html)
+    - Folks [use Linux patches for reference](https://zyedidia.github.io/blog/posts/2-baremetal-visionfive/) or U-Boot (me)
+    - [Draft PR](https://github.com/oreboot/oreboot/pull/686) for oreboot
+        - Got a blinky and UART out to work, but things are flaky
+        - Clocks ... please don't ask
+    - Maybe [JTAG](https://github.com/starfive-tech/VisionFive2/blob/JH7110_VisionFive2_devel/bsp/env/freedom-u500-unleashed/openocd.cfg)?
+- Drafted oreboot for Allwinner H616 (Arm64)
+    - MangoPi MQ-Quad board
+    - Supports both `aarch32` and `aarch64`, starting in `aarch32`
+- Forked and fix up Rust [library](https://github.com/orangecms/aw-fel-rs) and [CLI](https://github.com/orangecms/aw-fel-cli) for Allwinner FEL
+    - Reading from and writing to memory works fine
+    - Can run payload from SRAM
+    - Can dump mask ROM
+- Rockchip tools
+    - There is [rkflashtool](https://github.com/linux-rockchip/rkflashtool)
+        - Community made, protocol not yet fully reversed
+        - See also [the Radxa wiki](https://wiki.radxa.com/Rock/flash_the_image) (other pages have other notes...)
+    - There is [rkdeveloptool](https://github.com/rockchip-linux/rkdeveloptool)
+        - Proprietary vendor tool
+        - Notes scattered around several places
+        - [Rockchip wiki](https://opensource.rock-chips.com/wiki_Rkdeveloptool)
+        - [Radxa wiki](https://wiki.radxa.com/Rockpi4/install/rockchip-flash-tools)
+        - [96 Boards](https://www.96boards.org/documentation/consumer/rock/installation/linux-mac-rkdeveloptool.md.html)
+    - xboot also made a [Rockchip CLI](https://github.com/xboot/xrock)
+- RustWasm in Fiedka drafted
+    - Using / contributing to [System76/Romulan firmware parser library](https://github.com/orangecms/romulan)
+    - Working fine, together with transform and rendering in UI already
+        - Might present on that at EuroRust, waiting for CfP
+
+### Dennis
+
+- Working on finalizing the [DHCP rework in Talos](https://github.com/siderolabs/talos/pull/5897)
+    - Will try once more to re-spin [the DHCP library PR](https://github.com/insomniacslk/dhcp/pull/470) to get the maintainer's attention
+
+### Verneri
+
+- Started designing the "hatlet" board.
+    - [electronics-prototyping: hatlet](https://github.com/racklet/electronics-prototyping/tree/hatlet)
+- Current plan:
+    - Modular RP2040 dev board with:
+        - Peripherals exposed over PMOD headers:
+            - SPI
+            - 2x I2C
+            - UART
+            - GPIO / PIO (at least 6 pins)
+            - Anything else?
+        - Interchangeable Host/Device interface board for USB
+            - Expose USB with to "PMOD"-like connector
+            - Make separate boards with:
+                - USB type A (RP2040 as host)
+                - USB type C (RP2040 as device)
+                - USB hub board with corresponding headers
+
+## Misc.
+
+- [EuroRust](https://eurorust.eu) 🇪🇺:crab: will be held in Brussels and online, October 12-13
 
 # February 13, 2023 4:00 PM UTC
 
