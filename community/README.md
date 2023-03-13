@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# March 27, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** March 27, 2023 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # March 13, 2023 4:00 PM UTC
 
 :::info
@@ -13,7 +22,51 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** March 13, 2023 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Just returned back from Chemnitzer Linux-Tage
+    - Had an [interesting talk](https://chemnitzer.linux-tage.de/2023/de/programm/beitrag/133) on [Clevis](https://github.com/latchset/clevis), a tool for key exchange/establishment for booting with encrypted drives
+- oreboot now has a decent log crate that works well on 4 SoCs
+    - Allwinner D1
+    - Bouffalo Lab BL808
+    - StarFive JH7100
+    - StarFive JH7110
+- JH7110 / VisionFive 2 making progress
+    - Preliminary version of the manual is now [available as a PDF](https://doc-en.rvspace.org/JH7110/PDF/JH7110_TRM_StarFive_Preliminary.pdf)
+    - Got better understanding now thanks to U-Boot sources and manual
+    - VF1+2 [stack up nicely](https://twitter.com/OrangeCMS/status/1633552096606691340/photo/1)
+- Will be at Embedded World on Wednesday
+    - Plus [PCB Arts](pcb-arts.com) after party
+- T-Head hosted [a conference](https://twitter.com/SipeedIO/status/1631121626178936835)
+- ByteDance hosted a [Cloud Firmware event](https://www.phoronix.com/news/Bytedance-CloudFW-Open-Source)
+    - [Christian Walter from 9eSec spoke there](https://twitter.com/OrangeCMS/status/1632952760952823808)
+    - Lenovo [presented their efforts wit coreboot+LinuxBoot](https://www.phoronix.com/news/Lenovo-LinuxBoot-ByteDance)
+- Sipeed are releasing [more FPGA boards](https://twitter.com/SipeedIO/status/1635229233491615753)
+    - Tang Nano 20K with LiteX support
+
+### Dennis
+
+- VisionFive2 [PMU](https://www.kernel.org/doc/html/v5.7/riscv/pmu.html) (*Performance Measurement* Unit) support [upstream](https://www.phoronix.com/news/SoC-Drivers-Linux-6.3)
+- Work on the [arch-diagrams](https://github.com/racklet/racklet/tree/arch-diagrams) branch of the main repo (to be migrated to a better place soon-ish)
+- Revising the [interface diagrams](https://github.com/racklet/racklet/tree/arch-diagrams/docs/diagrams) to check for physical fitment and requirements
+    - Fitting the power supply behind the SBCs and disks is going to be a challenge
+    - 16-port 10 inch rack network switches come in various depths
+        - Good option: [ZyXEL GS1100-16](https://www.zyxel.com/global/en/products/switch/8-16-24-port-gbe-unmanaged-switch-gs1100-series)
+        - Most of these are directly AC powered, but that still works for us
+
+### Verneri
+
+- Implemented the first revision (0.1.0) of [hatlet](https://github.com/racklet/electronics-prototyping/tree/hatlet/kicad-projects/hatlet)
+    - Hatlet is the prototyping platform of the SBC HAT board acting as the BMC
+    - Otherwise finalized, but we need to design the backplane connector now
+    - Also in the repo: `socket-to-c` (0.1.0), which is a dongle to connect emulate the backplane interface with a PC for development purposes, power measurements, etc.
 
 # February 27, 2023 4:00 PM UTC
 
