@@ -1,19 +1,73 @@
 # Racklet Community Meeting Notes 2023
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/1esalu2VQcSqy_dShd0o7A/badge)](https://hackmd.io/1esalu2VQcSqy_dShd0o7A)
 
 [TOC]
 
-# March 27, 2023 4:00 PM UTC
+# (Potentially) April 10, 2023 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** March 27, 2023 4:00 PM UTC
+- **Date:** April 10, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
 :::
+
+# March 27, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** March 27, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Got `cpu` and LinuxBoot working on the VisionFive 2 (JH7110 SoC)
+    - Based on U-Boot
+    - Created defconfigs for devel and upstream branches from StarFive
+        - https://github.com/orangecms/linux/tree/vf2-devel
+        - https://github.com/orangecms/linux/tree/vf2-upstream
+    - Ported `kexec` patches back to the 5.15.0 based devel kernel
+        - https://github.com/orangecms/linux/tree/vf2-devel-kexec
+        - That one supports the PCIe controller, so we can boot from NVMe
+        - https://twitter.com/OrangeCMS/status/1640083580888948738
+    - Did live streams on the effort, to be published soon :tm:
+- Went to Embedded World :steam_locomotive: 
+    - Got RISC-V :socks: and stickers :stuck_out_tongue:
+    - Talked to Antmicro folks regarding ECP5 DC-SCM for u-bmc and ARVSOM for oreboot
+        - ECP5 DC-SCM boards were only made for internal use
+        - ARVSOM not really produced
+        - Keeping in touch via email :email: 
+    - ASUS Tinker V board based on a Renesas SoC with an Andes core
+        - Held one in my hands, chose not to run away with it
+- Sipeed announced selling LM4A / Lichee Pi 4A (T-Head TH1520 SoC) in two weeks
+    - https://twitter.com/SipeedIO/status/1640345193592365059
+- [OSFC 2023](https://www.osfc.io/) will be in the US :us: October 10-12
+
+### Verneri
+- Defined backplane connector [pinout](https://github.com/racklet/electronics-prototyping/issues/35) with Dennis.
+    - Added corresponding symbols and footprints to [racklet-kicad-lib](https://github.com/racklet/racklet-kicad-lib)
+- Finished and ordered version `0.1.0` of `hatlet` and `hatlet-dongle`
+    - PCBs are done already, waiting for PCB assembly and shipping now
+    - TODO: merge to `main` and add manufacturing outputs as tags/releases
+
+### Dennis
+
+- My final PRs for the golang DHCP library have finally been [merged](https://github.com/insomniacslk/dhcp/pulls?q=is%3Apr+author%3Atwelho) :tada:
+    - The [Talos Linux DHCP rework](https://github.com/siderolabs/talos/pull/5897) is now finally unblocked, will finish it up early this week to get it merged for Talos 1.4.0
+- Work on the Racklet HAT prototyping hardware (`hatlet`) with Verneri, initial order submitted
+- Thought about HA using load balancers for Racklet: we can actually add an [EdgeRouter X](https://eu.store.ui.com/collections/operator-edgemax-routers/products/edgerouter-x) to enable BGP-based "hardware" load-balancing and HA
+    - This is nowadays directly [supported](https://docs.cilium.io/en/v1.13/network/bgp-control-plane/) in Cilium, which should make it very straight-forward
+- [Going to KubeCon + CloudNativeCon EU 2023](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/), April 18-21 :cloud:
 
 # March 13, 2023 4:00 PM UTC
 
