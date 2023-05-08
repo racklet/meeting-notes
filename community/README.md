@@ -6,6 +6,75 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# May 22, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** May 22, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
+## Biweekly Recap
+
+# May 8, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** May 8, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
+    - Veeti Poutsalo
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Spent lots of days and nights on the JH7110 / VisionFive 2
+    - Very familiar with U-Boot now, still having trouble grasping early init
+    - Something is still fishy :fishing_pole_and_fish: in the DRAM init -_-
+    - Also got quite some more understanding of DRAM controllers, especially OpenEdges [Orbit](https://www.openedges.com/memorycontroller), the one used in the JH7100 and JH7110 SoCs
+    - If you want to dive deep into DRAM controllers, go check out [Onur Mutlu's work](https://people.inf.ethz.ch/omutlu/) (professor at ETH Zürich)
+- Ordered a [LicheePi 4A](https://sipeed.com/licheepi4a/) (TH1520 SoC)
+
+### Dennis
+
+- Getting started with the `hatlet` hardware, lots of soldering
+    - "Reviving" the old SD emulator hardware, as there's one oversight that we can't easily do with the new hardware until another PCB is designed
+        - We're missing a PMOD board to plug in an existing SD card for probing existing communication
+    - "Blink sketch" already working
+- Update from Verneri:
+    - Banana plugs fit on `hatlet-dongle`, power supply yet untested
+- Research on USB hubs
+    - Turns out that USB (2.0) hubs are pretty simple devices, all messages from the host are unconditionally replicated to all devices in the chain, and it's the reponsibility of the individual devices to discard messages not addressed to them
+    - However, upon the host's request, messages from a particular device towards the host get a private channel that is not replicated to other devices
+    - Implications for Racklet: any private configuration, secret keys etc. from the host (RMC) towards a particular device (BMC) must be encrypted to avoid sniffing on the backplane USB bus. The simplest way to do this is to simply request a symmetric key from the BMC and encrypt all traffic from the RMC to the BMC with that.
+
+### Marvin
+
+- A **lot** work went into u-bmc
+    - Missed the release due to "urgent" customer requests
+    - Release rescheduled to just a few days from now (mainly docs)
+    - Actual customer interest now due to showcase at OCP summit
+    - Undergoing initial preparations for SLSA and OpenSSF certifications
+    - Need 100% Redfish compatibility for OCP acceptance so working on Redfish gRPC gateway (initial work done by Ed Tanous but incomplete)
+- Started work on OpenBMC multi-node rework
+- Started work on coreboot rework on RISC-V SoCs (collab with coworker for his thesis)
+    - Might be interesting for customized cluster booting with LinuxBoot payload
+
+## Other Discussions
+
+- Discussions and insights about [openSIL](https://www.phoronix.com/news/AMD-openSIL-Replace-AGESA)
+    - All code running on the x86 cores will be open source (eventually)
+    - PSP and its server equivalent, i.e., the ARM core, will still be closed for the forseeable future
+        - However, has no network stack
+        - Only needed for DRAM init and TPM on client platforms, can be disabled
+        - Additionally handles RAS, SEV/SMM on servers, and thus can't be fully disabled
+
 # April 24, 2023 3:00 PM UTC
 
 :::info
