@@ -6,13 +6,57 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# (Potentially) April 10, 2023 3:00 PM UTC
+# April 24, 2023 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** April 10, 2023 3:00 PM UTC
+- **Date:** April 24, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
+    - Ron Minnich, @rminnich
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Hi from Canada
+- Almost got JH7110 DRAM working, searching for awesome bugs
+
+### Dennis
+
+- Just came back from KubeCon EU 2023 in Amsterdam, lots of updates from the cloud-native ecosystem. In summary:
+    - eBPF-based networking and observability is taking off
+        - [Cilium](https://cilium.io/) is doing much of the heavy lifting right now
+            - Gaining a lot of new features
+            - High performance and low overhead, especially relevant for the limited computing potential of Racklet
+            - Upcoming service mesh implementation
+            - Wireguard for securing inter-node traffic
+        - Various other observability tools based on eBPF (syscalls etc.)
+    - A lot of talk around on-prem (with server hardware)
+    - Some Raspberry Pi / SBC clusters from Canonical on the show floor:
+        - ![canonical-clusters](https://i.imgur.com/GhOOug0.jpg)
+        - ![canonical-rpi-cu](https://i.imgur.com/XWjom95.jpg)
+        - The top one is an old Raspberry Pi -style cluster design that Canonical did some custom orders for from a third-party casing manufacturer, while the bottom one is essentially a one-off that runs NUC-style compute units with i5 CPUs
+        - The top one on the other hand showcases the use of SSDs with USB-to-SATA adapters, a very similar setup will be deployed for the 2U compute units in Racklet (with the SSD being behind instead of next to the SBCs)
+            - The board on top is the Raspberry Pi PoE HAT, this will be replaced with the BMC hat in Racklet (which also provides better power delivery)
+        - The bottom cluster setup is very close to the planned Racklet 3U chassis in terms of physical form factor, seeing this in person really helped visualize the scale of the end result
+    - The talk by SpectroCloud and Tevel on autonomous fruit picking on the edge touched upon relevant hardware and platform security topics
+        - Immutable, TPM-verified OS
+        - Using the TPM to encrypt container images
+        - As they're working on an Intel platform:
+            - Workload isolation with memory enclaves (SGX)
+            - Dynamic assessment of device during runtime (TXT)
+            - We might want something similar on ARM/RISC-V for Racklet?
+        - It's a fun presentation, highly recommend checking out the [slides](https://static.sched.com/hosted_files/colocatedeventseu2023/1f/SpectroCloud-Tevel-Fruit-Picking-Robots-Powered-by-K8s.pdf) and [recording](https://youtu.be/PB8TdTGmvKA)
+
+# April 10, 2023 3:00 PM UTC
+
+:::info
+No meeting
 :::
 
 # March 27, 2023 3:00 PM UTC
@@ -54,6 +98,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - [OSFC 2023](https://www.osfc.io/) will be in the US :us: October 10-12
 
 ### Verneri
+
 - Defined backplane connector [pinout](https://github.com/racklet/electronics-prototyping/issues/35) with Dennis.
     - Added corresponding symbols and footprints to [racklet-kicad-lib](https://github.com/racklet/racklet-kicad-lib)
 - Finished and ordered version `0.1.0` of `hatlet` and `hatlet-dongle`
