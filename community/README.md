@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# June 5, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** June 5, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # May 22, 2023 3:00 PM UTC
 
 :::info
@@ -13,9 +22,30 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** May 22, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Verneri Hirvonen, @chiplet
 :::
 
 ## Biweekly Recap
+
+### Daniel
+
+- Got the JH7110 to initialize DRAM at last, confused base addresses again
+    - Both VisionFive 1 + 2 merged in oreboot main now
+    - Next up is RustSBI
+- Got the Lichee Pi 4A \o/
+    - No SoC manual just yet
+    - [Code](https://github.com/sipeed/LicheePi4A/tree/pre-view/external/revyos) is available, including DRAM init and Linux
+- Milk-V are releasing a [JH7110 board in the RPi form factor](https://twitter.com/MilkV_Official/status/1660565131586322432)
+
+### Dennis
+
+- Got the SD card emulator development setup up and running again
+    - Some issues with Sigrok/PulseView in Flatpak, expect to resolve soon
+- Updated the [interface diagrams](https://github.com/racklet/racklet/tree/arch-diagrams/docs/diagrams)
+    - Shrink the tray width from 32 mm to 30 mm and move everything to the right to accommodate the ATX 24-pin connector ([39-28-1243](https://www.molex.com/en-us/products/part-detail/39281243)) on the backplane (on the top) and to provide space for front-facing USB headers, buttons, LEDs etc.
+    - Will set up OnShape and do some 3D sketching next
 
 # May 8, 2023 3:00 PM UTC
 
