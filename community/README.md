@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# June 19, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** June 19, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # June 5, 2023 3:00 PM UTC
 
 :::info
@@ -13,7 +22,46 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** June 5, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
+    - Marvin Drees, @MDr164
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- JH71{0,1}0 merged into oreboot main 🥳
+    - [VisionFive 2](https://github.com/oreboot/oreboot/pull/686)
+    - [VisionFive 1](https://github.com/oreboot/oreboot/pull/606) from RISC-V dev board program
+    - Both can share a lot of code for DRAM init, an open TODO
+- Reworking SBI from sunxi/nezha for reuse
+    - https://github.com/oreboot/oreboot/pull/693
+- Gave a [talk on bootloaders in RISC-V International Tech Session](https://sites.google.com/riscv.org/riscv-technical-sessions/home#h.hc2jd4kzivkt)
+    - Missed mentioning Racklet, sorry! -_-
+- JH7110 based [Milk-V Mars](https://milkv.io/mars) is now official
+    - M.2 E-key slot for PCIe
+    - 1x gigabit ethernet
+    - SPI flash
+- India is also going to release RISC-V [SoCs and SBCs](https://gitlab.com/shaktiproject) based on the [Shakti](https://shakti.org.in/) series
+- The [RISE (RISC-V Software Ecosystem) project](https://riseproject.dev/) has nothing to do with the [RISE (Reconfigurable Intelligent Systems Engineering) group](https://iitm-riselab.github.io/), the [team behind Shakti](https://shakti.org.in/team.html)
+
+### Dennis
+
+- Verneri discovered [typst](https://typst.app/), a Google Docs -style LaTeX and Markdown replacement written in Rust
+    - OSS compiler, seems to be very powerful with integrated scripting etc.
+    - Source: https://github.com/typst/typst
+    - Should the (more advanced) docs for Racklet be written using this?
+- Busy last week with a malware analysis event from the university program, not much time to work on Racklet
+- Setting up Onshape and creating some initial casing/tray designs this week
+
+### Marvin
+
+- OSFC planning ongoing, venue still not 100% decided but looks like Sunnyvale might be it
+- Got involved in a 'new project' (RUST/RISC-V)
+- BMC work ongoing as per usual, might not be able to target SLSA3 but only SLSA2, need to discuss with OSSF
+    - Saw they have a tool for orgs called [allstar](https://github.com/ossf/allstar)
+    - Maybe also interesting for Racklet further down the road?
 
 # May 22, 2023 3:00 PM UTC
 
