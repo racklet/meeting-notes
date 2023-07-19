@@ -13,7 +13,30 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** June 19, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- JH7110 SBI in oreboot is getting there, veeeeeeeeery close to done
+- Decompression library in oreboot now factored out, working just fine
+
+### Dennis
+
+- Too busy to check out Onshape, will try to get to it later, currently researching stuff on the platform layer...
+- Prototyping the proposed KeyDB + JuiceFS distributed storage stack as my summer job
+    - Also working on a standardized Kubernetes testing platform, some parts of this should also be usable for Racklet
+
+## UKI loading without UEFI
+
+- UKIs are just PE files with [standardized sections](https://uapi-group.org/specifications/specs/unified_kernel_image/)
+- In our minimal u-root based boot environment we don't necessarily want any UEFI stuff, not even a loader
+    - u-root's existing loader: https://github.com/u-root/u-root/blob/main/pkg/boot/uefi/uefi.go
+- It should be possible to develop a specific UKI loader, especially since PE routines are part of the [Golang stdlib](https://pkg.go.dev/debug/pe)
+- UKIs could provide a neat, standardized way of shipping the Racklet kernel + initramfs bundles to the LinuxBoot + u-root environment
 
 # June 5, 2023 3:00 PM UTC
 
