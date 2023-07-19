@@ -6,6 +6,55 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 3, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** July 3, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Marvin Drees, @MDr164
+    - Felix Singer
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Working on the distributed filesystem concept for Racklet
+    - JuiceFS is installing easily, but there are some [issues](https://github.com/juicedata/juicefs-csi-driver/pull/680) with Talos, should however be quite simple to solve (hopefully)
+    - The original plan to use KeyDB for data/metadata storage might not be usable (yet)
+        - Active-active mode has [reliability](https://github.com/Snapchat/KeyDB/issues/679) [issues](https://github.com/Snapchat/KeyDB/issues/619)
+        - KeyDB on FLASH similarly has [issues with data loss](https://github.com/Snapchat/KeyDB/issues/678)
+        - Crashes and bugs [all](https://github.com/Snapchat/KeyDB/issues/676) [over](https://github.com/Snapchat/KeyDB/issues/674) [the](https://github.com/Snapchat/KeyDB/issues/693) [place](https://github.com/Snapchat/KeyDB/issues/694)
+    - Now looking into MinIO for data storage and TikV for metadata
+        - MinIO [can detect and repair](https://github.com/minio/minio/issues/6937) silent corruption
+        - TikV [leverages RocksDB](https://tikv.org/deep-dive/key-value-engine/rocksdb/) for persistent storage, and RocksDB [can detect and prevent corruption](https://rocksdb.org/blog/2022/07/18/per-key-value-checksum.html)
+    - Discovered [DirectPV](https://min.io/directpv), this might be useful
+        - Limitation: only supports XFS (only basic integrity protection)
+        - Shouldn't be an issue if the higher layers can deal with it
+- Some more (generic) improvements to Talos Linux
+    - https://github.com/siderolabs/talos/pull/7404
+
+### Daniel
+
+- Sloooowly getting there with SBI on JH7110/VF2
+    - [Almost through init](https://gist.github.com/orangecms/ec608a807df268a5cb3cb7231f7e4686)
+    - Will try attaching gdb over serial
+- Talked about "small computers" at Tuebix, feat. Racklet
+    - [Abstract (German)](https://www.tuebix.org/2023/programm/58-die-wirre-welt-der-kleinen-computer)
+    - [Slides (English)](https://metaspora.org/sbcs-and-socs-tuebix-2023.pdf)
+
+### Marvin
+
+- As usual busy with BMC work (open source BMC gets more traction it seems)
+    - u-bmc maybe rebranding
+    - full release 0.1.0 in the making
+    - OpenBMC spec being drafted for multi host bmc setups (racklet but larger)
+    - actually several companies now interested in both u-bmc and OpenBMC support -> more time spent on fleshing out multi host architecture for racklet
+
 # June 19, 2023 3:00 PM UTC
 
 :::info
