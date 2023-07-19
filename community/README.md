@@ -6,6 +6,48 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 17, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** July 3, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Setting up a software development platform for Racklet
+    - Idea: get going with the Kubernetes stack development for Racklet and try out different components not yet ported to ARM/RISC-V before putting in the (potentially large) porting effort
+    - Based on 5 old dual-core amd64 laptops, will be running the Talos Linux stack and the distributed storage system concept based on JuiceFS
+    - 6 * 2 TB of HDD, NVMe disks as cache
+- JuiceFS storage stack updates: substituting KeyDB with Minio and TiKV makes sense
+    - TiKV for metadata storage leverages RocksDB for persistence (in a much better way than KeyDB), which should run pretty fast off of NVMe drives
+    - MinIO supports transparent compression, DirectPV should also make the provisioning quite straightforward
+- Working on fixing a small [compatibility issue](https://github.com/juicedata/juicefs-csi-driver/pull/680) with JuiceFS and Talos
+- As part of my day job, I'm bootstrapping [testk8s-platform](https://github.com/testk8s-platform), which will be a self-contained, standardized development and testing environment with observability and metrics
+    - Based on Talos QEMU VMs running in Docker Compose
+    - Parts of this, such as the metrics and observability stack, will be directly usable by Racklet as well
+    - The experimental JuiceFS filesystem might live under this org as well so that it has a testing environment that is easy to work with
+
+### Daniel
+
+- Started hacking on an Allwinner R40 based [thin client](https://linux-sunxi.org/ShareVDI_R1)
+    - Can run code via `sunxi-fel`, a stripped down U-Boot (mainline)
+- Started hacking on Amlogic
+    - Started [`aml_boot`](https://github.com/orangecms/aml_boot), a Rust rewrite of the [loader tool](https://github.com/superna9999/pyamlboot)
+    - Khadas VIM1 (S905X)
+        - Can [blink the LED](https://mastodon.social/@CyReVolt/110709120273900894) via `aml_boot`, i.e., MMIO
+    - A [TV-Box based on S905X4](https://gist.github.com/orangecms/1c23845593a91470fb7c1895dd2cd0ee)
+        - Can run a stock AOSP kernel almost into userspace, but it's [hacked up as heck](https://mastodon.social/@CyReVolt/110726302627975958)
+- oreboot is getting further again
+    - [Library for flash layout as FDT revived](https://github.com/oreboot/oreboot/pull/697)
+    - [D1 SD card support (pending/draft)](https://github.com/oreboot/oreboot/pull/701)
+
 # July 3, 2023 3:00 PM UTC
 
 :::info
