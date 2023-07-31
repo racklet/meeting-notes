@@ -6,11 +6,55 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 14, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** August 14, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
+# July 31, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** July 31, 2023 3:00 PM UTC
+- **Host:** N/A
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Finally got Linux fully booted on VisionFive 2 / JH7110
+    - At least without SMP and without ethernet, but we get a shell
+- Unaligned memory access on RISC-V is not well worked out
+    - Privileged spec leaves it to the implementation to raise exceptions
+    - D1 / T-head can handle it in hardware, opt-out possible
+    - JH7110 / SiFive does not handle it and raises misaligned exceptions
+    - OpenSBI has a trap handler for it, meaning big performance penalty
+        - It runs in M-mode, so context switches are involved
+        - Someone in SiFive forums measured 350x impact
+    - Linux has a pending patch for handling it in S-mode
+        - They are discussing ways of probing for hardware features
+        - Some open points around device tree based declaration
+    - PRS TG folks propose an SBI method for toggling delegation
+        - Question raised how that would work with hypervisors
+    - We always delegate in oreboot so it is up to the OS
+        - Users may choose more suitable hardware per case
+        - Not every OS would want to do lots of probing etc
+    - Go 1.21 RC2 has worked out accesses to be aligned
+        - Enough for us to boot oreboot + Linux with u-root on JH7110
+        - No trap handling in M-mode nor S-mode done nor necessary
+
 # July 17, 2023 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** July 3, 2023 3:00 PM UTC
+- **Date:** July 17, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
     - Dennis Marttinen, @twelho
@@ -128,6 +172,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - u-root's existing loader: https://github.com/u-root/u-root/blob/main/pkg/boot/uefi/uefi.go
 - It should be possible to develop a specific UKI loader, especially since PE routines are part of the [Golang stdlib](https://pkg.go.dev/debug/pe)
 - UKIs could provide a neat, standardized way of shipping the Racklet kernel + initramfs bundles to the LinuxBoot + u-root environment
+    - Additionally, they incorporate TPM interaction for boot-time integrity verification
 
 # June 5, 2023 3:00 PM UTC
 
