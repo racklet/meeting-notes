@@ -6,13 +6,47 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# August 14, 2023 3:00 PM UTC
+# August 28, 2023 3:00 PM UTC
 
 :::info
 - **Location:** https://meet.jit.si/racklet-community
-- **Date:** August 14, 2023 3:00 PM UTC
+- **Date:** August 28, 2023 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Now working/studying from Norway :flag-no:
+    - Timing of the community meetings can remain unchanged
+    - Took the SD card emulation development setup with me
+- A course here provided me with a ChipWhisperer Nano and Lite
+    - The [ChipWhisperer](https://www.newae.com/chipwhisperer) is a side channel analysis and fault injection tool
+        - The lower-end models are based on common STM32 chips, higher-end models are paired with an FPGA
+    - The stack is (almost) fully open source: https://github.com/newaetech/chipwhisperer
+    - Interestingly for Racklet, these solutions need to deal with high-frequency, custom protocols and interfaces for glitching etc.
+        - I'll be studying the [schematics and docs](https://rtfm.newae.com/) more closely to check how they deal with this
+- Will continue working on Racklet in a week or two once I've gotten settled in
+
+### Daniel
+
+- JH7110 with oreboot now has ethernet working :tada: 
+    - Had to understand PMICs and add entries to the device tree
+    - Still no `kexec` though due to alignment issues, same with `insmod`
+- Got another board brought up with only U-Boot SPL doing DRAM init
+    - Then Linux with a WIP device tree, just got ethernet working
+    - That's what taught me PMICs in the first place :)
+- Got a D1s (F133-B) based product and `xfel` to init its DRAM
+
+
+# August 14, 2023 3:00 PM UTC
+
+:::info
+No meeting
 :::
 
 # July 31, 2023 3:00 PM UTC
