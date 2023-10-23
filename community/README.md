@@ -6,6 +6,33 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# September 11, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://meet.jit.si/racklet-community
+- **Date:** September 11, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- SD emulation test setup got a bit damaged in transit, need to fix that
+- Found a hacklab at the university with lots of tools and components
+    - Might attempt to make a PMOD passthrough PCB that can host a microSD card to allow me to switch entirely to the new hatlet-based setup
+- Verneri is making progress with evaluating and testing hatlet
+
+### Daniel
+
+- Sipeed announced a new probing board based on the BL808: https://twitter.com/SipeedIO/status/1550013318231838720
+    - Logic analyzer (8 ch / 160 MHz, supposedly)
+    - DAPLink for ARM
+    - CKLink for RISC-V
+
 # August 28, 2023 3:00 PM UTC
 
 :::info
@@ -28,6 +55,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - The [ChipWhisperer](https://www.newae.com/chipwhisperer) is a side channel analysis and fault injection tool
         - The lower-end models are based on common STM32 chips, higher-end models are paired with an FPGA
     - The stack is (almost) fully open source: https://github.com/newaetech/chipwhisperer
+        - Containerized the software stack to be able to deploy it quickly: https://github.com/twelho/chipwhisperer-podman
     - Interestingly for Racklet, these solutions need to deal with high-frequency, custom protocols and interfaces for glitching etc.
         - I'll be studying the [schematics and docs](https://rtfm.newae.com/) more closely to check how they deal with this
 - Will continue working on Racklet in a week or two once I've gotten settled in
@@ -67,6 +95,8 @@ No meeting
     - At least without SMP and without ethernet, but we get a shell
 - Unaligned memory access on RISC-V is not well worked out
     - Privileged spec leaves it to the implementation to raise exceptions
+    - Still an [open issue in platform spec since 5 years ago](https://github.com/riscv/riscv-platform-specs/pull/2)
+        - Only mentioned for [server platforms as of now](https://github.com/riscv/riscv-platform-specs/blob/1e93c488c78acd19572b3ae9ae3940ce12f32e23/riscv-platform-spec.adoc#4-os-a-server-platform)
     - D1 / T-head can handle it in hardware, opt-out possible
     - JH7110 / SiFive does not handle it and raises misaligned exceptions
     - OpenSBI has a trap handler for it, meaning big performance penalty
