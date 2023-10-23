@@ -6,6 +6,67 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# October 9, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
+- **Date:** October 9, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Was supposed to have a meeting with Oxide people today (together with Lucas), but it got postponed
+- Aiming to learn enough KiCad to finally design a passthrough PMOD SD card adapter - last piece of the puzzle in being able to use `hatlet` for SD emulation development
+- Met people at Nordic Semiconductor and ARM
+- Read that the C906 core doesn't handle floats correctly?
+    - https://github.com/revyos/revyos/issues/17 underflow issue
+- The [Raspberry Pi 5 was released](https://www.raspberrypi.com/news/introducing-raspberry-pi-5/)
+    - The quad-A76 CPU performance is [very impressive](https://www.phoronix.com/review/raspberry-pi-5-benchmarks/6), almost on the level of the 8-core RK3588
+    - The VideoCore VII outs on an [even stronger showing](https://www.phoronix.com/review/raspberry-pi-5-graphics/2), this might be most (actually usable) GPU performance in an SBC to date
+    - The GPU finally has a MMU, but TrustZone is still limited by the closed bootloader:
+        - ![MMU](https://hackmd.io/_uploads/B11EFdEMp.png =200x) ![TrustZone](https://hackmd.io/_uploads/HkF3FuVG6.png =200x)
+    - All bootloader code ships on on-board EEPROM, nothing is loaded externally anymore:
+        - ![Bootloader](https://hackmd.io/_uploads/rJlZ9dVfp.png =200x)
+    - Looking forward to experiment with the built-in PIO of the RP1 southbridge:
+        - ![RP1](https://hackmd.io/_uploads/B1TL5OVz6.png =200x)
+    - Other remarks:
+        - The USB and Ethernet have switched places again
+        - The 5V 5A (without limiting USB current) requirement is very challenging, especially since it's quite a rare USB-C PD profile
+        - To MIPI CSI connectors, but no hardware encoder...
+        - The single PCIe 2.0 lanes exposed to the southbridge and to the external connector are still quite slow compared to modern standards
+
+### Daniel
+
+- Did a little tour around
+    - [Kernel Recipes](https://kernel-recipes.org/en/2023/) (Paris)
+    - OS + languages group in Germany (https://www.betriebssysteme.org/aktivitaeten/treffen/2023-bamberg/)
+    - LinuxDay.at :penguin: 
+- Pushed Amlogic work forward a lot
+    - Notes on "WorldCup" protocol reversing; see https://orangecms/aml_boot
+    - Got blinky on S905D3; no direct MMIO, but via code pushed to SRAM
+- Got `insmod` working on VisionFive 2 over `cpu`, on upstream 6.6-RC4
+    - Previously errored with unaligned access, handled via Clément's patches
+        - https://lore.kernel.org/linux-riscv/20231004151405.521596-1-cleger@rivosinc.com/T/#t
+    - Remember: spec does not clearly describe unaligned access scenarios
+        - https://github.com/riscv/riscv-platform-specs/pull/2 PR is open though
+    - Had to apply one additional patch for platform timer
+    - Still need a `phy-supply` prop for GMACs in DT
+        - no idea why, extremely hard to trace
+        - even a somewhat bogus value works (e.g. phandle of I2C GPIO pins)
+        - could be related to order of probing in Linux, to be investigated
+
+# September 25, 2023 3:00 PM UTC
+
+:::info
+No meeting
+:::
+
 # September 11, 2023 3:00 PM UTC
 
 :::info
