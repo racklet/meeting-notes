@@ -1,10 +1,67 @@
 # Racklet Community Meeting Notes 2023
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on odd weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on **even** weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/1esalu2VQcSqy_dShd0o7A/badge)](https://hackmd.io/1esalu2VQcSqy_dShd0o7A)
 
 [TOC]
+
+# October 31, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
+- **Date:** October 31, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
+
+# October 23, 2023 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
+- **Date:** October 23, 2023 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- OSFC was a blast :smiley: 
+- Tool [`aml_boot`](https://github.com/orangecms/aml_boot) now in very good shape
+    - Can write to SRAM and run code
+    - Started reversing the newer [ADNL protocol](https://github.com/orangecms/aml_boot/blob/main/adnl-rev.md)
+- Played a bit with WCH MCUs ([CH582F/CH573F](https://www.wch-ic.com/products/CH583.html?))
+    - Very tiny MCUs, with USB support
+    - Flashing works nicely with [`wchisp`](https://github.com/ch32-rs/wchisp); gotta pull B22 low _when connecting via USB_ (does not work on reset, gotta power cycle, only for 5 seconds)
+    - Demo code reworked so it could run
+    - Will try Rust next (https://github.com/ch32-rs/ch58x-hal)
+
+### Dennis
+
+- Not much time to work on Racklet stuff, lot of submissions for uni right now
+- Taught myself a little bit of `async` Rust with [Tokio](https://tokio.rs/): https://github.com/twelho/nm-proxy/
+- Ordered a couple of Pi 5's with Lucas, hopefully we'll still receive them this year :)
+- Found this tiny x86_64 emulator: https://github.com/jart/blink
+- Lucas and myself were invited to a meeting with Travis Haymore from Oxide to chat about about their product/work, gathered some interesting insights:
+    - Like Racklet, one of the _sleds_ (compute unit / blade equivalent) has a special role in acting as a sort-of RMC: it has an external PCIe connection to network switch for providing SDN for the rest of the blades
+        - Two network switches and sets of blades per rack
+    - The backplane is passive, just like in Racklet
+    - Single-step-down PSU system, 54.5 V operating voltage straight to VRMs
+    - Bootstrap procedure quite manual
+    - HRoT has limitations:
+        - Signed by Oxide upon deployment
+        - HRoT key rotation is rather difficult and not automated – requires special OS-accessible software debug port, which can be disabled entirely
+    - Entire boot flow is completely custom and instrumented by Hubris – does not use (C)oreboot and created before OpenSIL
+
+## Timing of Meeting
+
+- @twelho has an overlapping event with the current meeting timeslot, so it was decided to move this biweekly meeting to **Tuesday**
+- In order to also avoid conflicting with the biweekly [RISC-V Platform Runtime Services Task Group meeting](https://calendar.google.com/calendar/u/0/embed?src=tech.meetings@riscv.org), this community meeting will migrate to **even weeks**.
+- In combination, this means that the next meeting will be held on **October 31, 2023 3:00 PM UTC**
 
 # October 9, 2023 3:00 PM UTC
 
