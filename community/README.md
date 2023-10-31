@@ -1,19 +1,55 @@
 # Racklet Community Meeting Notes 2023
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on **even** weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on **even** weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/1esalu2VQcSqy_dShd0o7A/badge)](https://hackmd.io/1esalu2VQcSqy_dShd0o7A)
 
 [TOC]
 
-# October 31, 2023 3:00 PM UTC
+# November 14, 2023 4:00 PM UTC
 
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
-- **Date:** October 31, 2023 3:00 PM UTC
+- **Date:** November 14, 2023 4:00 PM UTC (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
 :::
+
+# October 31, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
+- **Date:** October 31, 2023 4:00 PM UTC (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Developing a DeviceTree visualizer: https://github.com/platform-system-interface/dtvis
+    - Live at https://platform-system-interface.github.io/dtvis/
+- Discussion about bootloader compliance on Arm etc.: https://marcin.juszkiewicz.com.pl/2021/01/20/standards-are-boring/
+
+### Dennis
+
+- Discussions regarding creating a "unified" LinuxBoot + u-root bootloader platform
+    - Will probably take a shot at this at some point if I have time
+- Realization: DeviceTrees require headers from the kernel to compile ([/include/dt-bindings](https://github.com/torvalds/linux/tree/master/include/dt-bindings))
+- Maybe we can extend the systemd unified kernel image spec to include all upstream DT sources as well as the headers?
+    - The bootloader can then compile the right sources with the headers while mixing in platform-specific configuration
+    - Then, the bootloader can pass the compiled, platform-specific DT back to the kernel
+    - Is this any more beneficial than just compiling all the DTs in advance and letting the bootloader pick?
+        - What about overlay patches then? Do they still need the headers? How can the overlays specialize to particular kernel versions?
+
+### Verneri
+
+- https://github.com/YosysHQ/yosys
+- https://yosyshq.net/yosys/
 
 # October 23, 2023 3:00 PM UTC
 
