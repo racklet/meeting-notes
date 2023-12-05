@@ -1,6 +1,6 @@
 # Racklet Community Meeting Notes 2023
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Monday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on **even** weeks). Check the the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other ~~Monday~~ Tuesday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/1esalu2VQcSqy_dShd0o7A/badge)](https://hackmd.io/1esalu2VQcSqy_dShd0o7A)
 
@@ -11,9 +11,17 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
 - **Date:** November 14, 2023 4:00 PM UTC (**note the updated time!**)
-- **Host:** @twelho
+- **Host:** @chiplet
 - **Participants:**
+    - Verneri Hirvonen, @chiplet
 :::
+
+## Biweekly Recap
+
+### Verneri
+
+- Designed [pmod-microsd-snooper](https://github.com/racklet/electronics-prototyping/pull/38) PMOD attachment that allows connecting a microSD card simultaneously to an SBC using [pmod-microsd-breakout](https://github.com/chiplet/pmod-microsd-breakout) and a hatlet PMOD port for snooping SDIO traffic during boot.
+- Started designing a dedicated board ([microsd-probe](https://github.com/racklet/electronics-prototyping/pull/39)) for probing SBC SDIO boot traffic.
 
 # October 31, 2023 4:00 PM UTC
 
