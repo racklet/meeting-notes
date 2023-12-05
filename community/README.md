@@ -6,6 +6,45 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# November 28, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
+- **Date:** November 28, 2023 4:00 PM UTC (**note the updated time!**)
+- **Host:** @orangecms
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @racklet 
+    - Ron Minnich, @rminnich
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- DeviceTree Visualizer looking nice now, with fitting node distribution
+    - Asked Linaro if I could use the devicetree.org logo in the app
+- Reworking the build setup in oreboot
+    - Factoring out common utilities shared between boards/SoCs
+        - e.g. invoking objcopy, dtc, etc
+    - Stitch suitable images for flashing and running from SRAM
+        - Including variants and single stages etc
+- Back to DRAM init for the Allwinner D1/D1s
+    - The D1s uses 64MB in-package DDR2, not yet working
+    - Fixed some minor bugs that hadn't yet become visible
+    - The DRAM controller supports at least (LP)DDR 2 and 3
+
+### Verneri
+- Finished design of [microsd-probe](https://github.com/racklet/electronics-prototyping/pull/39), but did not order it yet.
+- I'm thinking of having a second attempt at booting a Pi using emulated SD card on a low-end FPGA. Last time there were problems closing timing with https://github.com/ProjectVault/orp because that was designed for higher-end Xilinx FPGA. This time I would more or less start from scratch targeting iCE40/ECP5 and only implementing features on the read path instead of trying to do full filesystem emulation like the Project Vault does.
+- Found out about https://spade-lang.org/ which is a Rust inspired HDL and an associated waveform viewer ([surfer](https://blog.yosyshq.com/p/community-spotlight-surfer/)). I have not yet looked into these in detail, but the design goals seem nice.
+
+### Ron
+
+- Bringing u-root to the [USB Armory](https://www.withsecure.com/en/solutions/innovative-security-hardware/usb-armory)
+    - Using [TamaGo](https://github.com/usbarmory/tamago)
+    - Not fully there yet, switch to gadget mode missing
+
 # November 14, 2023 4:00 PM UTC
 
 :::info
