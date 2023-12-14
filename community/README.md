@@ -6,6 +6,46 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# December 12, 2023 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community (**note the changed link!**)
+- **Date:** December 12, 2023 4:00 PM UTC (**note the updated time!**)
+- **Host:** @orangecms
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Not much direct work on Racklet, but have been experimenting with the [ChipWhisperer](https://www.newae.com/chipwhisperer) hardware for a course
+    - Secret key extraction from power traces
+    - Fault injection to bypass bootloader authentication
+    - Fault injection to bypass password checks
+- The harware (ChipWhisperer Lite) is quite capable, but the software leave s a bit to be desired
+    - Well-working modules that make attacks easier, but no API stability
+    - Tutorials etc. are broken by software version upgrades
+- All in all, may be useful for reverse-engineering for Racklet as well
+
+### Daniel
+
+- Will meet with Ron to overhaul LinuxBoot
+- Will do a live stream to showcase the LogoFAIL vuln
+    - And why UEFI Forum thinks you need to wait 10 months for a fix
+- Almost done big overhaul of oreboot build setup
+- Almost done big overhaul of D1 DRAM init
+
+### Verneri
+
+- Demo of [pmod-microsd-snooper](https://github.com/racklet/electronics-prototyping/pull/38)
+- Demo of [microsd-probe](https://github.com/racklet/electronics-prototyping/pull/39)
+- Might go ahead and place an order for some prototypes to anticipate the lead time
+- @twelho: looks great, will merge after the holidays after some repository structure refactoring
+
 # November 28, 2023 4:00 PM UTC
 
 :::info
@@ -14,7 +54,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Host:** @orangecms
 - **Participants:**
     - Daniel Maslowski, @orangecms
-    - Verneri Hirvonen, @racklet 
+    - Verneri Hirvonen, @chiplet 
     - Ron Minnich, @rminnich
 :::
 
