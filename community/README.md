@@ -11,9 +11,29 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community
 - **Date:** January 23, 2024 4:00 PM UTC 
-- **Host:** @twelho
+- **Host:** @orangecms
 - **Participants:**
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- JH7110 is now based on PAC and HAL crates in oreboot
+    - Upgraded `embedded-hal` to the recently released version 1.0
+    - Brought up [Little Kernel](https://github.com/littlekernel/lk) (almost working!) on hart 1 (non-SMP)
+        - https://mastodon.social/@CyReVolt/111802036890714525
+        - https://mastodon.social/@CyReVolt/111784797440445427
+    - Will see about running Zephyr on hart 0
+        - WIP: https://github.com/pfarwsi/zephyr-visionfive2/tree/visionfive2
+        - Many SoCs are now AMP (asymmetric multi-processing) systems
+        - Want to gear oreboot toward that use case
+- Will present at RISC-V Munich meetup on Thursday
+- We'll have a hackathon from Tuesday before FOSDEM on
+    - Featuring [TH1520 boards](https://sipeed.com/licheepi4a) (Lichee Pi 4A, Lichee Console 4A)
+    - Philipp Hug has the first setup parts drafted
+- Will probably attend https://2024.rustnl.org/
 
 # January 9, 2024 4:00 PM UTC
 
