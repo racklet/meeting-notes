@@ -6,6 +6,34 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 20, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** February 20, 2024 4:00 PM UTC 
+- **Host:** @orangecms
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Just discovered terminal graphics, and especially vector graphics protocols
+    - Made a [ReGIS demo](https://hostile.education/regis-demo-mountainbytes2024.webm) for MountainBytes
+    - Currently summarizing everything from the 60ies on
+    - Deriving new specs from it for a seemless web native environment
+        - WebALE: Web Application Launch Environment
+        - WebGAP: Web General Application Protocol
+    - Might be interesting for Racklet as well
+    - Think of Plan 9 `drawterm` and `cpu`, but with applications in mind
+    - Main idea: **self-serving** binaries, somewhat like [syslets](https://lwn.net/Articles/236206/) and [the other syslets](https://www.syslets.com/)
+        - you drag them over to e.g. a Racklet SBC
+        - out comes an app plus additional data over time
+        - this is much like web apps are deployed today
+        - maybe I'll call them _netlets_ or _sidelets_ or... ideas?
+
 # February 6, 2024 4:00 PM UTC
 
 :::info
