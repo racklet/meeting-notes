@@ -6,6 +6,30 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# March 5, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** March 5, 2024 4:00 PM UTC 
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Back again after some traveling
+- Master's thesis work started, will see how much extra time I still have
+- Working further on developing the Racklet storage solution prototype on my x86 testing cluster
+    - One of my 2 TB development disks broke: bought 6 * 16 TB disks at a very good price (but still expensive in total...)
+    - At least now I have extra 2 TB disks for testing fitment into the Racklet mini-rack
+- Managed to completely brick an old WD MyBook Live Duo NAS
+    - Needed to re-flash U-Boot, but turns out erasing the NOR flash where U-Boot is installed from the prompt and then running a command that references said flash is not a good idea :sweat_smile:
+- KiCad 8.0 released: https://www.kicad.org/blog/2024/02/Version-8.0.0-Released/
+- Joining KubeCon EU 2024, so won't be able to host the next meeting
+
 # February 20, 2024 4:00 PM UTC
 
 :::info
