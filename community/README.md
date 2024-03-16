@@ -6,6 +6,27 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 6, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** February 6, 2024 4:00 PM UTC 
+- **Host:** @orangecms
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Minor success with Zephyr on the JH7110, getting spurious interrupts
+    - Source apparently the video out subsystem, though it should be off
+- Continued reversing the JH7110 mask ROM and the header
+    - Erratum found in the manual: DTIM really starts at `0x0110_0000`
+    - Figured some fields so far where key material is put in the header
+- We did few steps on the TH1520 at FOSDEM, mostly just discussed oreboot design/architecture
+
 # January 23, 2024 4:00 PM UTC
 
 :::info
