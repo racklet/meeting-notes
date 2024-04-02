@@ -1,10 +1,66 @@
 # Racklet Community Meeting Notes 2024
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Tuesday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Tuesday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg/badge)](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg)
 
 [TOC]
+
+# April 16, 2024 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** April 16, 2024 3:00 PM UTC (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+:::
+
+# April 2, 2024 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** April 2, 2024 3:00 PM UTC (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Verneri Hirvonen, @chiplet
+    - Ron Minnich, @rminnich
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Visited KubeCon + CloudNativeCon EU 2024
+    - Multiple Racklet-style x86/ARM portable mini-clusters were on show
+        - Mostly older or more specialized implementations
+        - Intel Atom/Celeron & RK3588
+        - No major RISC-V adoption in the cloud native space yet
+    - Talos Linux (also Racklet's base OS) is picking up steam
+- For Racklet's backplane/HAT MCU platforms, researched [aWsm](https://github.com/gwsystems/aWsm) and ARM's [bento boxes](https://github.com/arm-software/bento-linker) as an interesting way to bundle/deploy memory-isolated MCU applications
+- More work on getting JuiceFS running on my x86 development cluster
+    - The MinIO operator is [quite](https://github.com/minio/operator/issues/1100) [unusable](https://github.com/minio/operator/pull/2056)
+- Finally acquired some ChipQuik flux!
+
+### Verneri
+
+- Reinstalled workstation OS. Setting up HW development tooling on the new system, but now as a container (run with [distrobox](https://github.com/89luca89/distrobox)) to document the setup: https://github.com/chiplet/vernerin-kontit/blob/main/racklet-hw-env/Containerfile
+    - FPGA blinky works already!
+
+### Daniel
+
+- Working on oreboot design things
+    - Zephyr + Linux codesign (or any combo of OSes?)
+    - We can run Zephyr on the JH7110 S7 core with oreboot
+        - https://github.com/zephyrproject-rtos/zephyr/pull/70514
+    - Experimenting with DTFS (Device Tree File System) ideas
+
+# March 19, 2024 4:00 PM UTC
+
+:::info
+No meeting
+:::
 
 # March 5, 2024 4:00 PM UTC
 
