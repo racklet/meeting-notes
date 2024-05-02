@@ -6,13 +6,43 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# April 16, 2024 3:00 PM UTC
+# May 14, 2024 3:00 PM UTC
 
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community
-- **Date:** April 16, 2024 3:00 PM UTC (**note the updated time!**)
+- **Date:** May 14, 2024 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+:::
+
+# April 30, 2024 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** April 30, 2024 3:00 PM UTC (**note the updated time!**)
+- **Host:** @orangecms
+- **Participants:**
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Daniel
+
+- Got a Milk-V Duo S (SG2000) and a Duo 256M (SG2002)
+    - Figured out how to run code on each
+    - Wrote [a simple Rust tool to do so](https://github.com/orangecms/sg_boot)
+        - The vendor tool is tightly coupled with their build tool
+        - [Helps others](https://github.com/milkv-duo/duo-buildroot-sdk/issues/8) :)
+    - Got basic hello on all 3, including the earlier Duo (CV1800B)
+    - Ported most of DRAM init for the Duo S (DDR3, 512M @ 1866)
+        - Working fine, some parts of BIST (built-in self-test) remain
+        - Reference code is very long (> 10k LoC), but well documented
+
+# April 16, 2024 3:00 PM UTC
+
+:::info
+No meeting
 :::
 
 # April 2, 2024 3:00 PM UTC
