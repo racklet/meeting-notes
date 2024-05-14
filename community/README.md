@@ -13,7 +13,34 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** May 14, 2024 3:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Major work on my x86 cluster serving as the Racklet software testbed
+    - Upgraded from USB3 HDD docks to real M.2 PCIe SATA controllers
+        - 4Kn mode for HDDs
+        - Performance impact surprisingly small, the USB HDD docks do a pretty good job -> advantageous for Racklet
+    - JuiceFS metadata performance is rather slow, tested various databases:
+        - KeyDB -> very fast initially, large amount of operations slow it to a crawl. Lots of segfaults, a bunch of tweaking needed to get running somewhat reliably.
+        - FoundationDB -> very consistent and "lag-free" performance, but rather long latencies causing low performance
+        - TiKV -> middle ground, not nearly as fast as KeyDB but also maintains consistent performance like FoundationDB, wins longer benchmarks like creating 100000 files etc. Rather CPU-heavy though
+    - Storage system is consuming basically all of the CPU capacity -> FUSE overhead is enormous, and starving the backing MinIO and TiKV instances of CPU time leading to pretty abysmal performance, even with SSD caching enabled
+    - Testing CEPH BlueStore next...
+
+### Daniel (couldn't really join, sorry)
+
+- Sophgo/CVITek SoCs
+    - Got a few more SG2002 boards (Sipeed LicheeRV Nano)
+    - Added boot mode buttons to the IO boards for Duo + Duo 256M
+        - https://mastodon.social/@CyReVolt/112430910613557486
+    - Reversed a good bunch of the CV1800B and SG200x mask ROMs
+        - Mostly SG200x, including the Arm one
+    - Really neat target, allowing for loading binaries over USB (serial gadget) anytime
+        - That is a mask ROM function to just call into
 
 # April 30, 2024 3:00 PM UTC
 
