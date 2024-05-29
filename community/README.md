@@ -6,6 +6,31 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# May 28, 2024 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** May 28, 2024 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Busy with thesis work, not much time to work on Racklet currently
+
+### Daniel
+
+- Full-stack demo of oreboot + sbitest on Milk-V Mars (SG2002)
+- Got Linux 6.9.2 up and running with oreboot on the JH7110 + hacks
+    - Need native platform timer patches (pending for upstream)
+    - Defer probing ethernet, temperature sensor and QSPI to the end
+    - `cpu` works, but not `kexec`
+
 # May 14, 2024 3:00 PM UTC
 
 :::info
@@ -29,7 +54,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
         - FoundationDB -> very consistent and "lag-free" performance, but rather long latencies causing low performance
         - TiKV -> middle ground, not nearly as fast as KeyDB but also maintains consistent performance like FoundationDB, wins longer benchmarks like creating 100000 files etc. Rather CPU-heavy though
     - Storage system is consuming basically all of the CPU capacity -> FUSE overhead is enormous, and starving the backing MinIO and TiKV instances of CPU time leading to pretty abysmal performance, even with SSD caching enabled
-    - Testing CEPH BlueStore next...
+    - Testing Ceph BlueStore next...
 
 ### Daniel (couldn't really join, sorry)
 
