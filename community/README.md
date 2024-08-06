@@ -1,10 +1,65 @@
 # Racklet Community Meeting Notes 2024
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Tuesday at [3 PM UTC](https://dateful.com/convert/utc?t=3pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Tuesday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg/badge)](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg)
 
+**Please note the updated meeting time: 4 PM UTC instead of 3 PM UTC!**
+
 [TOC]
+
+# August 20, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** August 20, 2024 4:00 PM UTC (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+:::
+
+# August 6, 2024 3:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+    - Temporarily switched to https://meet.ffmuc.net/racklet-community because the CCC Hamburg one misbehaved
+- **Date:** August 6, 2024 3:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Acquired (one of) the world's last Rock Pi 5B's with more than 8 GiB of RAM (why are these so rare? The blue PCB version seems to be available a bit more frequently...)
+    - Will try some u-root/DT experiments on the platform
+- x86 software develompent cluster developed SATA communication issues: now waiting for new cables to arrive...
+- Framework RISC-V mainboard (JH7110)
+- Snapdragon X (Elite) UEFI and ACPI + DT?
+- The Signaloid C0-microSD module finally saw its first code drop after 4 months: https://github.com/signaloid/C0-microSD-Hardware
+    - Seems to be binary-only atm., no sources yet (but hopefully soon)
+    - The docs page is very promising, they've managed to implement block reads and writes from the SD protocol (the one we need, not SPI or SDIO): https://c0-microsd-docs.signaloid.io/hardware-overview/communication-over-sd-interface.html
+
+### Daniel
+
+- Been reversing the SpacemiT K1x DRAM training binary blob (RISC-V and open source... not)
+    - https://github.com/orangecms/oreboot/blob/all-the-things-wip/src/mainboard/spacemit/k1x/bt0/src/dram.rs
+    - https://gist.github.com/orangecms/8624aa82bab4931f787b5eee572f7668
+    - Some things are a bit confusing due to register reuse and stack allocation
+    - So far the code runs without crashing
+    - Vendor code seems sorta buggy, putting data in stack memory that appears unused
+- Got `kexec` to work on the JH7110 including purgatory
+    - Got a patch for alignment in purgatory upstream
+    - Got kexec file to work (other syscall) based on extra patches (pending in LKML)
+    - QSPI was actually misbehaving due to MTD drivers missing, but adding them made it work fine
+
+# June 11, 2024 3:00 PM UTC
+
+:::info
+No meeting until August
+:::
 
 # May 28, 2024 3:00 PM UTC
 
