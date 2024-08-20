@@ -8,6 +8,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# September 3rd, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** September 3rd, 2024 4:00 PM UTC (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # August 20, 2024 4:00 PM UTC
 
 :::info
@@ -15,7 +24,40 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** August 20, 2024 4:00 PM UTC (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- New SATA cables for x86 software development cluster installed
+- Attempting to migrate Rook Ceph into [PVC cluster mode](https://rook.io/docs/rook/latest/CRDs/Cluster/pvc-cluster/) using the [Local Persistence Volume Static Provisioner](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner)
+    - Should allow for much more flexibility, especially with dedicated DB+WAL devices
+- Experimenting with [Gateway API](https://kubernetes.io/docs/concepts/services-networking/gateway/), will be important for Racklet too
+- More work on https://github.com/twelho/talos-bootstrap for improving Talos ease-of-use
+
+### Daniel
+
+- Finished reversing and translating the K1x DRAM training code
+    - Tested on BPI-F3 4GB - works
+    - Tested on MuseBook 16GB - works :)
+- Got back to [dtvis](https://github.com/platform-system-interface/dtvis/)
+    - Got permission to use the DeviceTree logo from Linaro
+- Forked a [Rust library for Fastboot](https://github.com/platform-system-interface/fastboot)
+
+## Discussion Topics
+
+- Raspberry Pi Pico 2 with RP2350 released
+    - 2x Cortex-M33 + 2x Hazard3 (RISC-V)
+    - Beefier and (officially) faster PIO
+        - Still no clock input: no advantage in synchronizing with SD host signaling compared to RP2040, however, upon reading the datasheet I discovered that one can disable the input synchronizers to gain 2 cycles of latency (also available on RP2040) -> needs further testing
+    - `probe-rs` needs some work
+    - [DEF CON 2024 badge](https://www.hackster.io/news/def-con-32-s-raspberry-pi-rp2350-powered-badge-sits-at-the-center-of-a-major-disagreement-05e96385a3dc) is based on RP2350
+- [WHY2025 badge](https://badge.team/docs/badges/why2025/) will have an ESP32-P4 (main SoC) + ESP32-C3 (for radios) + WCH CH32Vxxx (keyboard)
+- [Akeana](https://www.techpowerup.com/325522/akeana-exits-stealth-mode-with-comprehensive-risc-v-processor-portfolio) as a new RISC-V vendor
+- C910 vector extension broken -> [GhostWrite](https://ghostwriteattack.com/)
 
 # August 6, 2024 3:00 PM UTC
 
