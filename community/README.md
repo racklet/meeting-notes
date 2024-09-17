@@ -8,13 +8,37 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# September 3rd, 2024 4:00 PM UTC
+# October 1st, 2024 4:00 PM UTC
 
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community
-- **Date:** September 3rd, 2024 4:00 PM UTC (**note the updated time!**)
+- **Date:** October 1st, 2024 4:00 PM UTC (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
+:::
+
+# September 17th, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** September 17th, 2024 4:00 PM UTC (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho 
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- On-and-off work on the x86 test cluster software, not much time for other Racklet work
+- Looking a bit more into pub/sub platforms, particularly for metrics, but nothing to report yet
+
+# September 3rd, 2024 4:00 PM UTC
+
+:::info
+No meeting
 :::
 
 # August 20, 2024 4:00 PM UTC
