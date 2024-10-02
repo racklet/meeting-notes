@@ -4,9 +4,16 @@ This document contains the notes of the [Racklet](https://github.com/racklet/) c
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg/badge)](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg)
 
-**Please note the updated meeting time: 4 PM UTC instead of 3 PM UTC!**
-
 [TOC]
+
+# October 15th, 2024 4:00 PM UTC
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** October 15th, 2024 4:00 PM UTC
+- **Host:** @twelho
+- **Participants:**
+:::
 
 # October 1st, 2024 4:00 PM UTC
 
@@ -15,7 +22,22 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** October 1st, 2024 4:00 PM UTC (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+### Dennis
+
+- Not much direct progress on Racklet
+- Investigated driver support for a microcontroller on an X570 motherboard
+
+### Daniel
+
+- Got very far with [Intel ME file system parsers](https://github.com/fiedka/me_fs_rs)
+    - MFS extraction mostly works for older ME versions (~11)
+    - [PoC](https://mastodon.social/@CyReVolt/113194461404852156) integration of FPT and CPDs in Fiedka :octopus: 
+- DRAM init [almost done](https://github.com/oreboot/oreboot/pull/756) for TH1520 (mostly by Kanak Shilledar)
+    - DRAM PHY appears to be a variant of [ARC](https://en.wikipedia.org/wiki/ARC_(processor)) for which there is an [open toolchain](https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/)
 
 # September 17th, 2024 4:00 PM UTC
 
@@ -24,7 +46,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** September 17th, 2024 4:00 PM UTC (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
-    - Dennis Marttinen, @twelho 
+    - Dennis Marttinen, @twelho
     - Daniel Maslowski, @orangecms
 :::
 
@@ -34,6 +56,28 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 - On-and-off work on the x86 test cluster software, not much time for other Racklet work
 - Looking a bit more into pub/sub platforms, particularly for metrics, but nothing to report yet
+
+### Daniel
+
+- Got back to fiedka.app, upgraded its dependencies
+    - Draft for ME partition and file system parsing
+
+## Live session
+
+We got code to run on a Rockchip RK3566 (OKdo ROCK 3) in mask ROM mode.
+https://forum.radxa.com/t/solved-is-there-a-way-to-load-a-program-directly-into-sram-using-usb-otg/5475/9
+
+Using [xrock](https://github.com/xboot/xrock) and [rkbin](https://github.com/rockchip-linux/rkbin):
+```sh
+_DIR=../rkbin/bin/rk35
+_DRAM=$_DIR/rk3566_ddr_528MHz_ultra_v1.10.bin
+_USB=$_DIR/rk356x_usbplug_v1.17.bin
+
+xrock maskrom $_DRAM $_USB --rc4-off
+sleep 2
+xrock version
+# RK3568(3568): 0x33353638 0xffffffff 0xffffffff 0xffffffff
+```
 
 # September 3rd, 2024 4:00 PM UTC
 
