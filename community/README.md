@@ -1,10 +1,27 @@
 # Racklet Community Meeting Notes 2024
 
-This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Tuesday at [4 PM UTC](https://dateful.com/convert/utc?t=4pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
+This document contains the notes of the [Racklet](https://github.com/racklet/) community meeting. The meeting occurs every other Tuesday at [6 PM CET/CEST](https://dateful.com/convert/berlin-germany?t=6pm) (on **even** weeks). Check the [#racklet](https://osfw.slack.com/messages/racklet/) channel on the OSFW Slack for more info.
 
 This document is best viewed and edited online: [![hackmd-github-sync-badge](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg/badge)](https://hackmd.io/xsZjT3XtS2GzG-8ewl8lRg)
 
+> **NOTE:** The meeting time has been changed from UTC to follow CET/CEST, use the link above to check the time in your local time zone!
+
 [TOC]
+
+# November 12th, 2024 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** November 12th, 2024 6:00 PM CET/CEST (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+:::
+
+# October 29th, 2024 6:00 PM CET/CEST
+
+:::info
+No meeting
+:::
 
 # October 15th, 2024 4:00 PM UTC
 
@@ -13,7 +30,26 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** October 15th, 2024 4:00 PM UTC
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Quite busy with my thesis work
+- Looked into [TamaGo](https://github.com/usbarmory/tamago) again
+    - This (and the USB armory) are apparently under WithSecure
+- Looked into how they do DRAM init in bare metal Go for the USB armory with Daniel
+    - Apparently, i.MX6(ULL) SoCs have their DRAM init in hardware, one only needs to provide DRAM parameters (and some other options) via a [config](https://github.com/usbarmory/tamago/blob/6b22a26933dc5218f773bdb5c7a5ba833d944e74/board/usbarmory/mk2/imximage.cfg) through u-boot's [mkimage](https://github.com/usbarmory/armory-boot/blob/656160cd9b230e971b42b7cc7c5757e6111d0c3f/Makefile#L103-L106) and the mask ROM handles the rest
+
+### Daniel
+
+- Started [extending Romulan](https://github.com/orangecms/romulan/blob/CLI-to-teh-limitz/) yet again
+    - Including a diff feature, starting with AMD
+    - Looking at many projects to gather information on processors, including coreboot
+- DRAM init still [almost done](https://github.com/oreboot/oreboot/pull/756) for TH1520, needs debugging now
 
 # October 1st, 2024 4:00 PM UTC
 
@@ -25,6 +61,8 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Dennis Marttinen, @twelho
     - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
 
 ### Dennis
 
