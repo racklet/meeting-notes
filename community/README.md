@@ -8,6 +8,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# November 26th, 2024 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** November 26th, 2024 6:00 PM CET/CEST (**note the updated time!**)
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # November 12th, 2024 6:00 PM CET/CEST
 
 :::info
@@ -15,7 +24,20 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** November 12th, 2024 6:00 PM CET/CEST (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Looking into Gokrazy
+
+### Daniel
+
+- Back on parsing Intel ME firmware
+    - https://github.com/fiedka/me_fs_rs/tree/mfs
 
 # October 29th, 2024 6:00 PM CET/CEST
 
