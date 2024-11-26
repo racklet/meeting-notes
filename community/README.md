@@ -8,6 +8,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# December 10th, 2024 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** November 26th, 2024 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # November 26th, 2024 6:00 PM CET/CEST
 
 :::info
@@ -15,7 +24,30 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** November 26th, 2024 6:00 PM CET/CEST (**note the updated time!**)
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Rounded up the current work for me_fs_rs with a talk
+    - https://metaspora.org/look-at-me-in-rust-labortage2024.pdf
+    - Reversed the [first parts of Gen 2 MFS](https://github.com/fiedka/me_fs_rs/tree/mfs)
+- Went to Hamburg for Arch Summit
+    - We are rewriting the [Arch Linux Package Management in Rust](https://gitlab.archlinux.org/archlinux/alpm/alpm) :crab: 
+    - Interesting discussion around a [signing service](https://gitlab.archlinux.org/archlinux/signstar/)
+
+### Dennis
+
+- Submitted a talk for the KubeCon EU 2025 CFP!
+- Looking into the DNG (Digital Negative) and JPEG-XL ecosystem
+    - Including Rust encoding/decoding support: [jxl-rs](https://github.com/libjxl/jxl-rs)
+- Through the signing service Daniel brought up discovered the [NetHSM](https://www.nitrokey.com/products/nethsm)
+    - Basically a Xeon-based (with disabled ME) networked programmable "Yubikey server"
+    - The [docs](https://docs.nitrokey.com/nethsm/) don't mention Coreboot support...
+    - Might be useful as a concept for Racklet as well, downscaled of course
 
 # November 12th, 2024 6:00 PM CET/CEST
 
@@ -38,6 +70,9 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 - Back on parsing Intel ME firmware
     - https://github.com/fiedka/me_fs_rs/tree/mfs
+    - Added a FIT parser
+    - Can now parse 2nd gen ME firmware directories
+    - Mostly based on MEAnalyzer and Igor Skochinsky's work
 
 # October 29th, 2024 6:00 PM CET/CEST
 
