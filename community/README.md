@@ -12,10 +12,39 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community
-- **Date:** November 26th, 2024 6:00 PM CET/CEST
+- **Date:** December 10th, 2024 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Got [DRAM working in part on the TH1520](https://mastodon.social/@CyReVolt/113617971468084828) by adjusting timings etc
+    - C reference code had different values over time
+- Got a BananaPi BPI-CanMV-K230D-Zero
+    - [No idea](https://mastodon.social/@CyReVolt/113600385979547995) how to [load code over USB/UART](https://github.com/kendryte/k230_docs/blob/main/en/01_software/pc/burntool/images/0.png) yet
+    - First steps running [bare metal Rust code](https://github.com/andelf/k230-bare-metal/) already started by others
+    - Out of a sudden, we get a Canaan USB device
+      ```
+      Bus 003 Device 037: ID 29f1:0230 Canaan Creative Co., Ltd K230 USB Boot Device
+      ```
+- Got a bit further with ME Gen 2 EFFS/MFS parsing
+    - Some [people find the idea unlikely](https://winraid.level1techs.com/t/parsing-effs-partition/34609)
+- Will present on [AMD firmware diffing at Dasharo vPub](https://cfp.3mdeb.com/developers-vpub-0xd-2024/talk/RP8EXT/)
+- Will be at the [OSFW Assembly at 38C3](https://events.ccc.de/congress/2024/hub/en/assembly/osfw/)
+
+### Dennis
+
+- Quite busy with final exams, all done now
+- Getting into PCB design with KiCad
+- Attempting CPU-GPU shared memory on the Raspberry Pi 5
+    - This seems to need a special [VCSM driver](https://github.com/raspberrypi/userland/blob/master/host_applications/linux/libs/sm/user-vcsm.c)
+    - On the Pi 5 the GPU firmware is no longer in charge of memory, just power and clocks
+- Acquiring an ESP32-C6 RISC-V MCU board for some experimentation with [esp-rs](https://github.com/esp-rs/)
 
 # November 26th, 2024 6:00 PM CET/CEST
 
