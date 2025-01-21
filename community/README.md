@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 4th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** February 4th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # January 21st, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,39 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** January 21st, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Daniel hinted at the newly established [mini rack project](https://mini-rack.jeffgeerling.com/) from Jeff Geerling
+    - Uses the same 10" rack form factor as Racklet
+    - 3D-printed plates to mount Pi's etc.
+    - Other useful shelves/mounts listed there as well
+    - Power delivery is a challenge – as we've already discovered with Racklet
+        - PDU discussion [here](https://github.com/geerlingguy/mini-rack/issues/5)
+        - UPS discussion [here](https://github.com/geerlingguy/mini-rack/issues/1)
+        - These are mostly 110/230 V though, nothing yet for USB-C PD etc.
+    - Network switch lists are useful for Racklet
+        - Looking forward to the community discovering powerful-enough PoE switches for multiple nodes
+    - Software/firmware side severely lacking though:
+        - No firmware security/boot integrity/Open Compute -level secure boot
+        - Very basic (mutable) Kubernetes setups only
+    - TL;DR: Useful for sourcing parts for the Racklet hardware side, though we want more density and better firmware security + actual Open Compute -level software (immutable Kubernetes)
+- Achieved over 14k 4K direct random read QD2 IOPS with Ceph on the x86 test cluster! :chart_with_upwards_trend:
+    - In layman's terms: distributed filesystems can be made very snappy at a small scale as well
+    - This proves the viability of Ceph on lower-end hardware, SBCs such as the Rock 5B should not have any issues running this stack
+    - 8 GiB of RAM, 4 threads and Gigabit ethernet is sufficient
+
+### Daniel
+
+- Made lots of progress on the BL808
+    - Got the loader tool to the point where it can load any binary for any core to run immediately
+    - Got [PSRAM working](https://mastodon.social/@CyReVolt/113852399724541310)
+    - Did another [dev live stream on it](https://www.youtube.com/watch?v=wCvZkpvgpm0)
 
 # January 7th, 2025 6:00 PM CET/CEST
 
