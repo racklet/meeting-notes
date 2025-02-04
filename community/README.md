@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# February 18th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** February 18th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # February 4th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,28 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** February 4th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Debugging Ceph performance on the x86 test cluster
+    - Very fast read IOPS and decently fast write IOPS
+    - The MDS (file creations/deletions etc.) is for some reason limited to only around 15 files/second, which is very slow
+    - The MDS journal is probably the culprit, have yet to dig into the profiling details
+- Kernel 6.14 has support for C906 vector extension (0.7) [errata](https://www.phoronix.com/news/Linux-6.14-RISC-V)
+
+### Daniel
+
+- Was at FOSDEM, including 2 OSFW hack days
+    - Ported [DRAM init for K230D to oreboot](https://github.com/oreboot/oreboot/pull/764)
+    - Extended [`kendryte_boot`](https://github.com/orangecms/kendryte_boot) so you can load additional code to RAM
+    - Added `main` stage in oreboot and dummy SBI
+    - Simple SBI print test works
+    - Currently debugging mtimer, `mtime` is stuck at `0`
 
 # January 21st, 2025 6:00 PM CET/CEST
 
@@ -55,6 +85,20 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Got the loader tool to the point where it can load any binary for any core to run immediately
     - Got [PSRAM working](https://mastodon.social/@CyReVolt/113852399724541310)
     - Did another [dev live stream on it](https://www.youtube.com/watch?v=wCvZkpvgpm0)
+
+## Additional notes
+
+We took a closer look at the RISC-V SBI, including the Harte State Management extension and specifically RustSBI, some projects using RustSBI, and how global singletons are initialized in them.
+
+Refs:
+- https://github.com/riscv-non-isa/riscv-sbi-doc/releases/tag/v3.0-rc3
+- https://github.com/rustsbi/rustsbi/network/dependents
+- https://github.com/arceos-hypervisor/riscv_vcpu
+- https://github.com/rustsbi/rustsbi-d1/blob/main/see/src/main.rs
+- https://docs.rs/rcore-console/latest/src/rcore_console/lib.rs.html
+- https://github.com/rustsbi/rustsbi/blob/main/sbi-rt/src/dbcn.rs
+- https://github.com/rcore-os/rCore-Tutorial-v3/blob/main/os/src/console.rs
+- https://github.com/mvdnes/spin-rs/blob/master/src/once.rs
 
 # January 7th, 2025 6:00 PM CET/CEST
 
