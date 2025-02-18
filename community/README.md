@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# March 4th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** March 4th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # February 18th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,59 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** February 18th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Daniel Maslowski, @orangecms
+    - Dennis Marttinen, @twelho
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- oreboot can run barebox just fine
+    - Plus, it runs both in QEMU and [RVVM](https://mastodon.social/@CyReVolt/113971038824718149)
+- Got the [platform timer on the K230 to work](https://mastodon.social/@CyReVolt/113991917309418454)
+    - Needed to set a bit in a debug register that is not remotely documented to be related AFAICT, someone else found it in vendor U-Boot code
+- Got SG2002 DRAM init to work, with a little hardcoding hack
+    - Auto detection needs some fixing somewhere, complicated
+    - [SBI test with timer works](https://mastodon.social/@CyReVolt/114021889908485034) as well
+- WIP libraries for oreboot
+    - Architecture specific helpers for XuanTie platforms
+    - Utilities for MMIO access dropping the `unsafe`
+    - Memory test
+
+### Dennis
+
+- Still fighting with Ceph head latency in the x86 test cluster, will probably need to open an issue to get more insights from the experts
+- The [Sipeed NanoCluster](https://x.com/SipeedIO/status/1887709604349399413) looks very interesting for Racklet
+    - 7 SOMs in a Raspberry Pi form factor
+    - Each SOM with up to [4x Cortex-A76 or 8x Cortex-A55](https://x.com/SipeedIO/status/1891338072656089259) sounds *very* interesting, better than Pi 5 performance (if cooled properly)
+        - Up to 448 cores in an 8 compute module 2U Racklet tray!
+    - Gigabit "trunk" from the SOM carrier might be limiting
+    - RAM amount per SOM is the final decider, hopefully at least 2 GiB per core
+
+## Discussions
+
+We had another look at Arm, its SMM equivalent, discussed how x86 SMM and RISC-V M-mode are similar, and came across
+
+- https://trustedfirmware-a.readthedocs.io/en/latest/design/firmware-design.html
+- ![Trusted boot flow on Arm](https://community.arm.com/resized-image/__size/2080x0/__key/communityserver-blogs-components-weblogfiles/00-00-00-37-98/7802.Figure-1.png)
+- Making Arm look like PC: https://uefi.org/sites/default/files/resources/UEFI_Plugfest_March_2016_AMI.pdf
+- SMM to circumvent OS: https://disobey.fi/2025/profile/disobey2025-284-sounds-from-the-basement-extreme-low-level-game-cheating
+- RK3588 trusted firmware: https://gitlab.collabora.com/hardware-enablement/rockchip-3588/trusted-firmware-a
+- https://interrupt.memfault.com/blog/arm-cortex-m-exceptions-and-nvic
+
+We also discussed DTB shenanigans, see
+
+- https://fosdem.org/2025/schedule/event/fosdem-2025-6224-woa-laptops-a-quest-for-getting-the-right-dtb/
+- https://learn.microsoft.com/en-us/windows-hardware/drivers/dashboard/using-chids
+
+Finally, on European chips, HPC, etc
+
+- https://ecs-brokerage-event.eu/#overview
+- https://www.chips-ju.europa.eu/Projects/
+- https://eurohpc-ju.europa.eu/document/download/7e21bf39-bb19-43b8-88b6-dd51650d348e_en?filename=pdf%20chips%20parrt%202.pdf
+- https://eurohpc-ju.europa.eu/research-innovation/our-projects/european-processor-initiative-epi_en
+- https://www.fz-juelich.de/en/ias/jsc/jupiter/tech
 
 # February 4th, 2025 6:00 PM CET/CEST
 
@@ -42,7 +103,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Ported [DRAM init for K230D to oreboot](https://github.com/oreboot/oreboot/pull/764)
     - Extended [`kendryte_boot`](https://github.com/orangecms/kendryte_boot) so you can load additional code to RAM
     - Added `main` stage in oreboot and dummy SBI
-    - Simple SBI print test works
+    - Simple [SBI print test works](https://mastodon.social/@CyReVolt/113930859208849486)
     - Currently debugging mtimer, `mtime` is stuck at `0`
 
 # January 21st, 2025 6:00 PM CET/CEST
@@ -88,7 +149,7 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 ## Additional notes
 
-We took a closer look at the RISC-V SBI, including the Harte State Management extension and specifically RustSBI, some projects using RustSBI, and how global singletons are initialized in them.
+We took a closer look at the RISC-V SBI, including the Hart State Management extension and specifically RustSBI, some projects using RustSBI, and how global singletons are initialized in them.
 
 Refs:
 - https://github.com/riscv-non-isa/riscv-sbi-doc/releases/tag/v3.0-rc3
