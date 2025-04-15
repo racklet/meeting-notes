@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# April 29th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** April 29th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # April 15th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,62 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** April 15th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+    - Philip Molloy, @pamolloy
+    - Ron Minnich, @rminnich
 :::
+
+## Biweekly Recap
+
+### Daniel
+
+- Got back to Rockchip
+    - Created https://github.com/platform-system-interface/rk_boot
+    - Got first prints on RK356x, already [in oreboot](https://github.com/oreboot/oreboot/tree/main/src/mainboard/rockchip/rk3566/bt0)
+    - Dumped the mask ROM
+    - Started reversing [vendor binaries](https://github.com/rockchip-linux/rkbin/blob/master/bin/rk35/rk3566_ddr_528MHz_ultra_v1.10.bin)
+    - Dumped OTP areas, both "secure" and non-secure
+    - DRAM init will take time, first steps not yet working
+- Confirmed that Ky X1 ([Orange Pi RV2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-RV2.html)) is indeed a rebranded SpacemiT K1x
+    - oreboot code (still in WIP branch) just works on it
+- Went to Embedded World and Hannover Messe
+- Philip and I are doing a LinuxBoot revival
+    - Reworked the website to be more of a landing page
+    - Historical references moved over to the book
+    - Planning to shift the focus to a more general approach
+    - Reevaluating rootfs and kexec implementations
+- Started some work on Qualcomm, having a hard time with setup
+    - Cannot find a UART TX pin on the two devices I have
+    - Ordered two older [DragonBoard 410C](https://www.arrow.de/products/dragonboard410c/arrow-development-tools)s for further development
+    - Started https://github.com/platform-system-interface/qc_boot
+- https://mainlining.org by folks from CCCAC, pmOS et al
+
+### Dennis
+
+- KubeCon was a blast, quite a lot of people joined my talk
+    - Recordings *just* uploaded 1h ago, [here's my talk!](https://www.youtube.com/watch?v=QbR908kgk1Y)
+        - Disclaimer: I haven't even watched it myself yet
+        - Lots of people contacted me from various national and academic supercomputing settings
+- More work on distributed filesystems, learning some hard lessons about latency and overhead
+        - Acquired some M.2 enterprise PLP (Power Loss Protection) SSDs, now testing `fsync` overhead with different Ceph + JuiceFS combinations
+    - Still battling with sequential performance, no combination has gotten over 20 files/s in fs-mark yet
+    - This shouldn't be CPU-bound, but I need to somehow verify that
+        - This affects the viability of distributed filesystems on Racklet
+
+### Device Tree discussion
+
+- How do we deal with kernel + DT matching?
+    - Recompile for the target kernel on demand?
+- Device Tree syntax is versioned, but content is not
+- Linux has a commitment to keep DTs being a pure hardware description
+    - https://docs.kernel.org/devicetree/usage-model.html
+    - https://docs.kernel.org/devicetree/bindings/ABI.html
+    - DT ABI stability [a myth](https://bootlin.com/pub/conferences/2015/elc/petazzoni-dt-as-stable-abi-fairy-tale/petazzoni-dt-as-stable-abi-fairy-tale.pdf)?
+        - video was pulled from YouTube :( ([last reference](https://unix.stackexchange.com/questions/265890/is-it-possible-to-get-the-information-for-a-device-tree-using-sys-of-a-running))
+- Does the DT belong with the bootloader rather than with the kernel?
+    - It used to be that way.
+- General vs special purpose applications
 
 # April 1st, 2025 6:00 PM CET/CEST
 
