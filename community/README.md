@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# May 13th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** May 13th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # April 29th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,22 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** April 29th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Finally found the source of the distributed filesystem performance problems I've been debugging for a year now: it's a **kernel bug** (and another one is likely a Talos Linux bug)
+    - Next steps are to figure out how to contribute patches upstream
+    - The fix increases file ops/s by 10-20x on my x86 test cluster, making distributed filesystems such as Ceph also viable for Racklet-class SBCs
+        - It'll probably even run fine on stuff like the Spacemit K1, the overhead is very low now
+
+### Daniel
+
+- Rockchip DRAM init making progress :hourglass_flowing_sand:
 
 # April 15th, 2025 6:00 PM CET/CEST
 
