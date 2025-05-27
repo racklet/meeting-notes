@@ -6,14 +6,55 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# May 13th, 2025 6:00 PM CET/CEST
+# June 10th, 2025 6:00 PM CET/CEST
 
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community
-- **Date:** May 13th, 2025 6:00 PM CET/CEST
+- **Date:** June 10th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
 :::
+
+# May 27th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** May 27th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Still working on upstreaming the kernel patch
+    - Now getting reliable benchmark results from PTS (`fs-mark`)
+    - Some benchmarks are still failing -> figured out during the meeting, disk quotas are being exceeded
+
+### Daniel
+
+- Getting further with the RK3566
+    - Recognized parts of the code from the open source U-Boot code for earlier SoCs
+
+### Discussion
+
+- Looked a bit into SMM
+    - https://doc.coreboot.org/drivers/smmstorev2.html
+- Exchanged about power/thermal management
+    - ACPI https://uefi.org/htmlspecs/ACPI_Spec_6_4_html/11_Thermal_Management/thermal-objects.html
+    - PSCI https://developer.arm.com/documentation/den0022/latest/
+    - SCMI https://developer.arm.com/documentation/102886/001?lang=en
+
+# May 13th, 2025 6:00 PM CET/CEST
+
+:::info
+No meeting
+:::
+
+**Note**: Daniel is at RustWeek. :crab: :calendar:
 
 # April 29th, 2025 6:00 PM CET/CEST
 
