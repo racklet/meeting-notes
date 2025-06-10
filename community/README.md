@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# June 24th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** June 24th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # June 10th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,27 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** June 10th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Looked into Radxa Orion O6 and its [upstreaming](https://github.com/System64fumo/linux/blob/main/hardware/devices/arm/radxa/orion/orion.md)
+    - Geerling's SBC reviews: https://github.com/geerlingguy/sbc-reviews/issues/62
+    - It's a bit of a mess, the SoC vendor CIX is providing a Device Tree (kind of) with custom kernel
+    - There's also UEFI (SystemReady) firmware, but it's also very broken and basically only there for booting Windows (disables some of the cores that don't work under Windows)
+    - This would be a good candidate to include for a universal LinuxBoot/DT "Rackboot" implementation
+- [PoePwrNegotiator](https://github.com/orbitrod/PoePwrNegotiator) is a cool thing
+    - Blog post: https://roderickkhan.com/posts/2025-05-16-poe-uefi-solution
+
+### Daniel
+
+- Continued with the RK3566
+    - Controller looks very much the same as for earlier SoCs, just the PHY differs a lot
+    - Generally, the controller appears to be simple vs the PHY being rather complex
 
 # May 27th, 2025 6:00 PM CET/CEST
 
