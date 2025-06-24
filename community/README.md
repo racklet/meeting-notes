@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# July 8th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** July 8th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # June 24th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,23 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** June 24th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+### Dennis
+
+- Focus on thesis work, not much time to work on Racklet/firmware stuff
+- Swapped new SSDs into the x86 test cluster
+    - Pro tip: don't deploy DRAM-less SSDs in a 24/7 application
+- My Linux patch for Ceph is getting backported to 6.1, 6.6, 6.12, 6.15 :partying_face: 
+- Offtopic: dug a little bit into ELAN firmware for TrackPoints: https://github.com/twelho/trackpoint
+
+### Daniel
+
+- Again back to the RK356x, turns out I took the wrong config
+    - It is LPDDR4 for sure, had some part mistranslated earlier
+    - Compilers can be very good at optimizing loops btw, e.g., [4 similar ones](https://github.com/u-boot/u-boot/blob/903eb123236ccbd8ef05d43507a2a910b785bd56/drivers/ram/rockchip/sdram_rv1126.c#L944-L978) down to 1 (and another one around it).
 
 # June 10th, 2025 6:00 PM CET/CEST
 
