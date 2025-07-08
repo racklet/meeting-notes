@@ -6,6 +6,21 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 5th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** August 5th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
+# July 22nd, 2025 6:00 PM CET/CEST
+
+:::info
+No meeting
+:::
+
 # July 8th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +28,23 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** July 8th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- Thesis work is taking all allocatable time at the moment
+    - Will be submitted at the end of the month
+    - After that should have more time for Racklet again
+- Found this interesting official firmware tool from Qualcomm in Rust: https://github.com/qualcomm/qdlrs
+- Looked very briefly more into the TrackPoint firmware, seems to be 8K-bootloader-padded 8051
+
+### Daniel
+
+- Pushed a few more things into [psi-spec](https://platform-system-interface.github.io/psi-spec/application-processors.html) and [LinuxBoot](https://github.com/linuxboot/book/pull/145)
 
 # June 24th, 2025 6:00 PM CET/CEST
 
@@ -25,6 +56,8 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
     - Dennis Marttinen, @twelho
     - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
 
 ### Dennis
 
