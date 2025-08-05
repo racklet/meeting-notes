@@ -6,6 +6,15 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
+# August 19th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** August 19th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+:::
+
 # August 5th, 2025 6:00 PM CET/CEST
 
 :::info
@@ -13,7 +22,26 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 - **Date:** August 5th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
 :::
+
+## Biweekly Recap
+
+### Dennis
+
+- MSc thesis finally submitted :tada: 
+- Will be working on Racklet software over the next couple of weeks on the x86 test cluster
+    - First "production" tests, esp. for the filesystem stuff
+- Will try to find time to boot the Rock Pi 5B
+    - Capability evaluation, tests with both [ubuntu-rockchip](https://github.com/Joshua-Riek/ubuntu-rockchip) and mainline
+    - DRAM PHY reverse engineering on the horizon (quite different compared to RK3566...)
+
+### Daniel
+
+- Only made tiny steps with oreboot on the RK3566
+    - Found someone interested from the linux-rockchip community
+    - We still have a [Matrix channel](https://matrix.to/#/#oreboot-dev:matrix.org) btw, but lost the Slack bridge
 
 # July 22nd, 2025 6:00 PM CET/CEST
 
