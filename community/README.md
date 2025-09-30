@@ -6,13 +6,58 @@ This document is best viewed and edited online: [![hackmd-github-sync-badge](htt
 
 [TOC]
 
-# August 19th, 2025 6:00 PM CET/CEST
+# October 14th, 2025 6:00 PM CET/CEST
 
 :::info
 - **Location:** https://jitsi.hamburg.ccc.de/racklet-community
-- **Date:** August 19th, 2025 6:00 PM CET/CEST
+- **Date:** October 14th, 2025 6:00 PM CET/CEST
 - **Host:** @twelho
 - **Participants:**
+:::
+
+# September 30th, 2025 6:00 PM CET/CEST
+
+:::info
+- **Location:** https://jitsi.hamburg.ccc.de/racklet-community
+- **Date:** September 30th, 2025 6:00 PM CET/CEST
+- **Host:** @twelho
+- **Participants:**
+    - Dennis Marttinen, @twelho
+    - Daniel Maslowski, @orangecms
+:::
+
+## Biweekly Recap
+
+### Dennis
+
+- Did some hacking with friends on the SiFive X280 cores in a [Tenstorrent Blackhole P100a](https://tenstorrent.com/hardware/blackhole) AI accelerator card
+    - Booted up Linux using [tt-bh-linux](https://github.com/tenstorrent/tt-bh-linux)
+        - Also, mainline patches have [just been submitted](https://lore.kernel.org/lkml/20250913-tt-bh-dts-v1-0-ddb0d6860fe5@tenstorrent.com/)
+    - Ran some [terminal-doom](https://github.com/cryptocode/terminal-doom)
+    - Also did a [Coremark run](https://openbenchmarking.org/result/2509165-NE-MUSTAAUKK18) with the Phoronix Test suite
+
+### Daniel
+
+- Gave a [talk on the status of RISC-V in mainline Linux](https://metaspora.org/riscv-mainline-linux-2025.pdf) at LinuxDay.at
+- Reworking the oreboot build system and tooling
+- Bootstrapping Allwinner H616 (we can run and print!)
+
+# September 16th, 2025 6:00 PM CET/CEST
+
+:::info
+No meeting
+:::
+
+# September 2nd, 2025 6:00 PM CET/CEST
+
+:::info
+No meeting
+:::
+
+# August 19th, 2025 6:00 PM CET/CEST
+
+:::info
+No meeting
 :::
 
 # August 5th, 2025 6:00 PM CET/CEST
